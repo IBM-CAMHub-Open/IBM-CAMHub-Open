@@ -1,0 +1,83 @@
+#!/bin/bash
+function listRepositories() 
+{
+# 1 - host
+# 2 - org
+# 3 - token
+# 4 - private (true || false) to return the private repos
+
+local grepstring=""
+
+[[ -z "$4" ]] && { echo "Not enough parms to listRepositories" ; exit 1 ; }
+
+[[ "$4" = "true" ]] && grepstring="true|false" || grepstring="false"
+
+[[ "$1" = "github.com" ]] && { httpgit=https://api.$1/ ; }  || { httpgit=https://$1/api/v3/ ; }
+local github=orgs/$2/
+local repos=repos
+local access_token="access_token=$3"
+
+local fullurl="$httpgit$github$repos?$access_token&per_page=100&page="
+
+local wc=1
+local wclast=1
+local page=1
+while [ 0 -lt $wc ] ; do
+	wc=`curl -s $fullurl$page | egrep '"full_name":' | wc -l`
+        curl -s $fullurl$page | egrep '"full_name":|"private":' | cut -f2 -d: | rev | cut -c2- | rev | tr -d '"' | egrep -B1 "$grepstring" | egrep -v "$grepstring" | egrep -v '\-\-' | cut -f2 -d'/' | tr -d ' '
+        let 'page=page+1'
+done
+
+}
+#
+# This will clone out a repos at the path
+#
+# basedir/host/org/repository/branch
+#
+# This is useful when operating on a number of branches
+# from various organizations
+#
+# basedir
+# host
+# org
+# branch
+# token
+# repository
+function cloneRepository()
+{
+[[ -z "$6" ]] && { echo "Missing paramter : cloneRepository" ; exit 1 ; }
+local clonedir=$1
+local clonehost=$2
+local cloneorg=$3
+local clonebranch=$4
+local clonetoken=$5
+local clonerepository=$6
+
+[[ $clonebranch = "DEFAULT" ]] && clonebranchp="" || clonebranchp="-b $4"
+
+[[ `echo $clonedir | cut -c1` = '/' ]] && topath=$clonedir/$clonerepository || topath=$clonedir/$clonehost/$cloneorg/$clonerepository
+
+[[ -d "$topath" ]] && mv $topath ${topath}`date | tr ' ' '_' | tr ':' '-'`
+mkdir -p $topath
+
+[[ `git clone -q $clonebranchp https://$clonetoken@$clonehost/$cloneorg/$clonerepository $topath` ]] && { echo "Clone failed on : https://$clonetoken@$clonehost/$cloneorg/$clonerepository" ; exit 1 ; }
+
+echo "cloneRepository: $topath"
+
+}
+
+function cloneRepositories()
+{
+local sbasedir=$1
+local shost=$2
+local sorg=$3
+local sbranch=$4
+local stoken=$5
+shift; shift; shift; shift; shift;
+while test $# -gt 0
+do
+        cloneRepository $sbasedir $shost $sorg $sbranch $stoken $1
+        shift
+done
+}
+
