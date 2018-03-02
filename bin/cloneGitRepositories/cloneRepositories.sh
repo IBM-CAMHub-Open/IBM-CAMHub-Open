@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-
 [[ `dirname $0 | cut -c1` = '/' ]] && localtoolpath=`dirname $0`/ || localtoolpath=`pwd`/`dirname $0`/
 toolrepositoryroot=$localtoolpath/../../
 

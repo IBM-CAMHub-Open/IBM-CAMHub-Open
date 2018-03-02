@@ -1,5 +1,5 @@
 
-# IBM Cloud Automation Content Hub
+# IBM Cloud Automation Manager Hub
 
 Copyright IBM Corp. 2018, 2018
 
@@ -12,6 +12,7 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
  - [Requirement Downloader](bin/prereqDownloader/)
 
 ## Version Information
+
 
 
 
