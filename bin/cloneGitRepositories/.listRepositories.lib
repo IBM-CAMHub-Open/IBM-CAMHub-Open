@@ -11,7 +11,7 @@ local grepstring=""
 
 [[ "$3" = "true" ]] && grepstring="true|false" || grepstring="false"
 
-[[ "$1" = "github.com" ]] && { httpgit=https://api.$1/ ; }  || { httpgit=https://$1/api/v3/ ; }
+[[ "$1" = "github.com" ]] && { httpgit=https://${CloneWithToken}api.$1/ ; }  || { httpgit=https://$1/api/v3/ ; }
 local github=orgs/$2/
 local repos=repos
 
