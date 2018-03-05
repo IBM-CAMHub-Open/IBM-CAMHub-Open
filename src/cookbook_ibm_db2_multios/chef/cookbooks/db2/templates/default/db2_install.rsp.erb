@@ -1,0 +1,456 @@
+** ============================================================================
+**
+** Sample response file for IBM DB2
+** --------------------------------
+** To select features and settings to install, uncomment the corresponding
+** keywords and specify values for those keywords.  You do not need to select
+** features if you select the TYPICAL or COMPACT installation options.
+**
+** Comments are made by placing either an asterisk (*) or a hash symbol (#) at
+** the start of a line, or by placing ** or ## after the start of a line to
+** comment out the rest of that line.
+** All keywords that are currently uncommented (not preceded by * or #) are
+** mandatory and must be assigned values for the installation to continue.
+** All other keywords are optional. If optional keywords are not specified,
+** the installation will proceed using default values. Lines that start out
+** with two asterisks are documentation and should not be enabled.
+**
+** For more information on creating or configuring an ESE instance with the
+** DB2 pureScale Feature, see "Installing the
+** IBM DB2 pureScale feature for DB2 Server Edition
+** using a response file" in the DB2 Information Center.
+** For more information on configuration parameters, see "Configuring the DB2 database manager with
+** configuration parameters" in the DB2 Information Center.
+**
+** For more information on DB2 registry and environment variables, and configuration
+** parameters, see "DB2 registry and environment variables" in the DB2 Information Center.
+**
+** For more information on how to perform a response file installation, see
+** "Response file considerations" in the DB2 Information Center.
+**
+** Refer to the DB2 Information Center at:
+** http://publib.boulder.ibm.com/infocenter/db2luw/v10r5
+**
+** ============================================================================
+** General Options
+** ---------------
+
+** Only one product can be specified for the following PROD keyword. Specifying
+** multiple products in an installation is not supported.
+PROD                      = DB2_SERVER_EDITION
+
+** The FILE keyword determines the base installation path. If you specify a
+** path that does not yet have this product, this will install a new copy.  If
+** you specify a path that has this product, this will be considered an
+** existing installation intended to install additional functionality.	This is
+** a mandatory keyword for root installation. Remove this keyword for non-root
+** installation. If not removed, its value must be $HOME/sqllib where $HOME
+** represents the HOME directory of the non-root user ID that owns the non-root
+** installation.
+FILE                      = /opt/ibm/db2/V<%= @VERSION %>
+
+** Modify the value of the following LIC_AGREEMENT keyword to indicate that you
+** have read and agreed to the license agreement file in the db2/license
+** directory on the CD.
+LIC_AGREEMENT             = ACCEPT         ** ACCEPT or DECLINE
+
+** If an interactive type is set, db2setup will prompt for CD locations and
+** give feedback as to progress, otherwise nothing will be displayed until the
+** installation is complete.
+*INTERACTIVE              = NONE            ** NONE, YES, MACHINE
+
+** The PACKAGE_LOCATION keyword is used only when the NLPACK is not available
+** and any national languages are to be installed. This keyword specifies the
+** location of the NLPACK.
+*PACKAGE_LOCATION         =                 ** Any valid path
+
+** The CONFIG_ONLY keyword is used to specify that the response file is being
+** used for creating or configuring an instance, and nothing is to be
+** installed. This keyword must be set to YES if a response file is used with
+** db2isetup.
+*CONFIG_ONLY              =                 ** YES or NO
+
+** INSTALL_TYPE keyword is used to select the installation type. If you specify
+** a TYPICAL or a COMPACT install type, no COMP keywords are required. In this
+** case the installer will select the appropriate components for you.  All COMP
+** keywords are ignored by the installer unless the INSTALL_TYPE is set  to
+** CUSTOM. If you select the CUSTOM install type, then ensure that you enable
+** all of the COMP keywords that are required for your database environment.
+**
+** Note: The install type is not related to the language selection.
+** ----------------------------------------------------------------------------
+INSTALL_TYPE              = TYPICAL         ** TYPICAL, COMPACT, CUSTOM
+
+** The following components are part of all TYPICAL installations. If you
+** perform a typical installation, all of these components will be installed on
+** your computer.
+** ----------------------------------------------------------------------------
+
+** DB2 Advanced Copy Services help protect mission-critical data that requires
+** 24x7 availability. It offers an integrated solution designed to implement
+** high-efficiency backup and restore processes and helps eliminate
+** backup-related performance issues.
+*COMP                     = ACS                                 ** Integrated Flash Copy Support
+
+** Provides federated support required to access DB2 for iSeries and DB2 for
+** z/OS and OS/390 data sources.
+*COMP                     = DB2_DATA_SOURCE_SUPPORT             ** DB2 data source support
+
+** Sample database source provides sample data and metadata that allows you to
+** create a sample database using the First Steps application.
+*COMP                     = DB2_SAMPLE_DATABASE                 ** Sample database source
+
+** DB2 Update Service is a web tool that lists the available DB2 product
+** updates, and provides details about product updates.  The DB2 Update Service
+** requires an internet connection.
+*COMP                     = DB2_UPDATE_SERVICE                  ** DB2 Update Service
+
+** First Steps is a graphical tool that will help familiarize you with DB2
+** features and functions.
+*COMP                     = FIRST_STEPS                         ** First Steps
+
+** Guardium Installation Manager Client component will place the Guardium
+** Installation Manager(GIM) Client under DB2 Install Path.
+*COMP                     = GUARDIUM_INST_MNGR_CLIENT           ** Guardium Installation Manager Client
+
+** The DB2 Instance Setup wizard is a Java-based tool you can use to set up
+** instances on your computer after installing DB2.
+*COMP                     = INSTANCE_SETUP_SUPPORT              ** DB2 Instance Setup wizard
+
+** LDAP Exploitation allows DB2 to use an LDAP directory to store database
+** directory and configuration information.
+*COMP                     = LDAP_EXPLOITATION                   ** DB2 LDAP support
+
+** IBM Tivoli System Automation for Multiplatforms provides high availability
+** and disaster recovery capabilities for AIX, Linux, Solaris SPARC, and
+** Windows.
+** If this component is selected, it will either be installed, updated or
+** upgraded by the DB2 installer. Use COMP=TSAMP only if you are running as
+** root user.
+*COMP                     = TSAMP                               ** Tivoli SA MP
+
+
+** The following components are not part of TYPICAL installations, and thus can
+** only be installed through CUSTOM installs.
+** ----------------------------------------------------------------------------
+
+** The base application development tools component contains tools and files
+** (including header files, libraries, and a precompiler) that are needed for
+** developing applications that work with DB2.
+*COMP                     = APPLICATION_DEVELOPMENT_TOOLS       ** Base application development tools
+
+** A scalable, highly-available, high performance file system optimized for
+** multi-petabyte storage management.
+** If this component is selected, it will either be installed, updated or
+** upgraded by the DB2 installer.  Use COMP=GPFS only if you are running as
+** root user.
+*COMP                     = GPFS                                ** General Parallel File System (GPFS)
+
+** Enables users and applications to submit distributed requests for data
+** managed by Informix systems.
+** This feature is only installed and not configured when the PURESCALE feature
+** is selected for installation.
+*COMP                     = INFORMIX_DATA_SOURCE_SUPPORT        ** Informix data source support
+
+** Enables users and applications to submit distributed requests for data
+** managed by Oracle systems.
+*COMP                     = ORACLE_DATA_SOURCE_SUPPORT          ** Oracle data source support
+
+** The IBM DB2 pureScale Feature provides clustering technology to DB2 products
+** on distributed platforms.
+** Selecting the PURESCALE feature will automatically install every other
+** required component. See the DB2 Information Center for more information on
+** the pre-installation planning and prerequisites needed for a successful IBM
+** DB2 pureScale installation and instance setup. Use COMP=PURESCALE only if
+** you are running as root user.
+*COMP                     = PURESCALE                           ** IBM DB2 pureScale Feature
+
+** Spatial Extender client contains the support required for communicating with
+** a Spatial Extender server.
+*COMP                     = SPATIAL_EXTENDER_CLIENT_SUPPORT     ** Spatial Extender client
+
+** Provides Spatial Extender support for the DB2 server, providing the storing
+** and query of geographical information in DB2 tables.
+*COMP                     = SPATIAL_EXTENDER_SERVER_SUPPORT     ** Spatial Extender server support
+
+** The DB2 Text Search component, powered by OmniFind, delivers an integrated,
+** high quality and scalable search technology in DB2 databases.
+** This feature is only installed and not configured when the PURESCALE feature
+** is selected for installation.
+*COMP                     = TEXT_SEARCH                         ** DB2 Text Search
+
+** The following languages apply to all translated components. Enable the
+** language(s) you want installed. If you do not enable any language keywords,
+** then the English language (EN) will still be installed by default.
+** ---------------------------------------------------------------------------
+*LANG                     = BR              ** Portuguese - Brazil (pt_BR)
+*LANG                     = CN              ** Simplified Chinese (zh_CN)
+*LANG                     = CZ              ** Czech (cs_CZ)
+*LANG                     = DE              ** German (de_DE)
+*LANG                     = ES              ** Spanish (es_ES)
+*LANG                     = FR              ** French (fr_FR)
+*LANG                     = IT              ** Italian (it_IT)
+*LANG                     = JP              ** Japanese (ja_JP)
+*LANG                     = KR              ** Korean (ko_KR)
+*LANG                     = PL              ** Polish (pl_PL)
+*LANG                     = RU              ** Russian (ru_RU)
+*LANG                     = TW              ** Traditional Chinese (zh_TW)
+
+
+** (Valid for non-root upgrade only) Upgrade Older Release
+** -------------------------------------------------------
+** Specify whether you want to upgrade any previous versions of the product.
+** Specifying this keyword will remove any previous version and upgrade any
+** settings to the new installation.  Be aware that during upgrade of the
+** current copy, only the product specified in the response file will be
+** installed. Other previously installed products need to be upgraded
+** separately following this upgrade.
+*UPGRADE_PRIOR_VERSIONS   = FALSE           ** TRUE or FALSE
+
+** IBM DB2 pureScale Feature Host Information
+** ------------------------------------------
+** Specify the hosts to which the DB2 product is to be installed. This section
+** must always list the installation initiating host. Do no specify any
+** keywords in this section if you are not installing the IBM DB2 pureScale
+** Feature. Ensure that password-less ssh root access is available on all hosts
+** and between all hosts.
+
+** The HOST keyword is used to specify a host identifier for one set of host
+** keys. This keyword is mandatory if you are installing the IBM DB2 pureScale
+** Feature.
+*HOST                     = host1           ** char(14)  no spaces
+
+** Use the HOSTNAME keyword with the host identifier prefix to identify the
+** name of the host. A host can be a physical machine or LPAR, on which a DB2
+** member or a cluster caching facility will run. If an alias or IP address is
+** provided, the installer will attempt to convert it to a canonical hostname
+** prior to instance creation. The host name must be a unique host name across
+** the network. The following formats are accepted: long name (for example,
+** host1.ibm.com), short name (for example, host1), IP address (IPv4:
+** xxx.xxx.xxx.xxx). This keyword is mandatory if you have specified the HOST
+** keyword.
+*host1.HOSTNAME           =                 ** char(255)  no spaces
+
+** The CLUSTER_INTERCONNECT_NETNAME keyword is used to specify the name of a
+** high speed interconnect name that corresponds to a high speed adapter name.
+** Refer to the DB2 Information Center for valid types of high speed adapters.
+** This keyword is mandatory if you have specified the HOST keyword.
+*host1.CLUSTER_INTERCONNECT_NETNAME =       ** char(255)  no spaces
+
+
+*HOST                     = host2           ** char(14)  no spaces
+*host2.HOSTNAME           =                 ** char(255)  no spaces
+*host2.CLUSTER_INTERCONNECT_NETNAME =       ** char(255)  no spaces
+
+** Administration Server Creation Settings
+** ---------------------------------------
+** Valid for root installation only. User IDs managed by NIS/NIS+ are not
+** supported. If an existing ID is used, make sure it is not locked and its
+** password has not expired.
+DAS_USERNAME              = <%= @DAS_USERNAME %>                 ** char(8)  no spaces, no upper case letters
+*DAS_UID                  =                 ** use db2 generated UID if no values provided(highly recommended) OR a valid unsign int
+DAS_GROUP_NAME            = <%= @DAS_USERNAME %>                 ** char(30)  no spaces
+*DAS_GID                  =                 ** use db2 generated GID if no values provided(highly recommended) OR a valid unsign int
+DAS_HOME_DIRECTORY        = /home/<%= @DAS_USERNAME %>           ** char(64) no spaces
+DAS_PASSWORD              = <%= @DAS_PASSWORD %>                 ** char(8)
+*DAS_SMTP_SERVER          =                 ** char(64) no spaces
+
+** Global Profile Registry Settings
+** --------------------------------
+*DB2ACCOUNT               =                 ** BLANK or char(199)
+*DB2ATLD_PORTS            =                 ** BLANK or 1-65535:1-65535  n1<=n2
+*DB2BIDI                  =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2BQTIME                =                 ** BLANK or 1 - MAX
+*DB2BQTRY                 =                 ** BLANK or 0 - MAX
+*DB2CHGPWD_EEE            =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2CHKPTR                =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2CLIINIPATH            =                 ** BLANK or char(260)
+*DB2CODEPAGE              =                 ** BLANK or 0 - MAX
+*DB2COMM                  =                 ** BLANK or TCPIP
+*DB2COUNTRY               =                 ** BLANK or 1 - 999
+*DB2DBDFT                 =                 ** BLANK or char(8)
+*DB2DEFPREP               =                 ** BLANK, ALL, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2ENVLIST               =                 ** BLANK or char()
+*DB2IQTIME                =                 ** BLANK or 1 - MAX
+*DB2LDAPCACHE             =                 ** YES or NO
+*DB2LDAPHOST              =                 ** BLANK or char()
+*DB2LDAP_BASEDN           =                 ** BLANK or char()
+*DB2LDAP_CLIENT_PROVIDER  =                 ** BLANK, MICROSOFT or IBM
+*DB2LIBPATH               =                 ** BLANK or char()
+*DB2LOADREC               =                 ** BLANK or char(1023)
+*DB2LOCK_TO_RB            =                 ** BLANK or STATEMENT
+*DB2NOEXITLIST            =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2OLDEVMON              =                 ** BLANK or char()
+*DB2OPTIONS               =                 ** BLANK or -/+[a,c,e[c,s],n,o,p,s,t,v,w,x] and/or -[f,l,r,z]filename
+*DB2_OPTSTATS_LOG         =                 ** OFF or ON with parameters {NUM | SIZE | NAME | DIR}
+*DB2PRIORITIES            =                 ** BLANK or char()
+*DB2RQTIME                =                 ** BLANK or 1 - MAX
+*DB2_SET_MAX_CONTAINER_SIZE =               ** -1 (no limit) or any integer greater than 64MB
+*DB2SORT                  =                 ** BLANK or char(1023)
+*DB2SYSTEM                =                 ** char(64)
+*DB2_SYSTEM_MONITOR_SETTINGS =              ** Controls parameters OLD_CPU_USAGE and DISABLE_CPU_USAGE with ON or OFF values
+*DB2_ENABLE_LDAP          =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2_FORCE_NLS_CACHE      =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2_NUM_FAILOVER_NODES   =                 ** BLANK or 0 - 999
+*DB2_SORT_AFTER_TQ        =                 ** BLANK, 0, 1, YES, NO, ON, OFF, Y, N, TRUE, FALSE, T or F
+*DB2INSTOWNER             =                 ** BLANK or char(30)
+*DB2DBMSADDR              =                 ** BLANK or char(10)
+*DB2_DISABLE_FLUSH_LOG    =                 ** BLANK or ON, OFF
+*DB2_LIC_STAT_SIZE        =                 ** BLANK or 0 - 32767
+*DB2LOCALE                =                 ** BLANK or YES, NO
+*DB2NODE                  =                 ** BLANK or YES NO
+*DB2_USE_PAGE_CONTAINER_TAG =               ** BLANK or ON
+*DB2TCPCONNMGRS           =                 ** BLANK or 1 - 8
+*DB2_PARTITIONEDLOAD_DEFAULT =              ** BLANK or YES, NO
+*DB2_INLIST_TO_NLJN       =                 ** BLANK or YES, NO
+*DB2_SELECTIVITY          =                 ** BLANK or YES, NO
+*DB2_REDUCED_OPTIMIZATION =                 ** BLANK, DISABLE, YES, NO, 0 - MAX
+*DB2_BINSORT              =                 ** BLANK or YES, NO
+*DB2BPVARS                =                 ** BLANK or char()
+*DB2_ENABLE_BUFPD         =                 ** BLANK or ON, OFF
+*DB2_EVMON_EVENT_LIST_SIZE = 0              ** A value specified in KB, MB or GB but limited by the available memory from the monitor heap
+*DB2_EXTENDED_OPTIMIZATION =                ** BLANK or ON, OFF
+*DB2FODC                  = Concatenation of all FODC parameters: CORELIMIT, DUMPCORE, DUMDIR and MEMSCAN; and their values ** CORELIMIT, DUMPCORE, DUMPDIR and MEMSCAN parameters are set different for Unix and Windows
+*DB2MAXFSCRSEARCH         =                 ** BLANK or -1, 1 - 33554
+*DB2MEMDISCLAIM           =                 ** BLANK or YES, NO
+*DB2_VENDOR_INI           =                 ** BLANK or char()
+*DB2_XBSA_LIBRARY         =                 ** BLANK or char()
+*DB2LDAP_SEARCH_SCOPE     =                 ** BLANK LOCAL DOMAIN GLOBAL
+*DB2MEMMAXFREE            =                 ** BLANK or char()
+*DB2NTMEMSIZE             =                 ** BLANK or char()
+*DB2_OVERRIDE_BPF         =                 ** BLANK or 1 - MAX
+*DB2_DJ_COMM              =                 ** BLANK or char()
+*DB2ADMINSERVER           =                 ** BLANK or char(64)
+*DB2_PINNED_BP            = NO              ** YES or NO
+*DB2REMOTEPREG            =                 ** BLANK or char(64)
+*DB2_ANTIJOIN             =                 ** BLANK or YES, NO, EXTEND
+*DB2_COLLECT_TS_REC_INFO  =                 ** BLANK or YES, NO
+*DB2PROCESSORS            =                 ** BLANK or 1 - MAX
+*DB2ASSUMEUPDATE          =                 ** BLANK or ON, OFF
+*DB2_SKIPDELETED          =                 ** BLANK or ON, OFF
+*DB2_SQLROUTINE_PREPOPTS  =                 ** BLANK or char()
+*DB2_INDEX_TYPE2          =                 ** BLANK or ON, OFF
+*DB2_APM_PERFORMANCE      =                 ** BLANK or ON, OFF
+*DB2_FMP_COMM_HEAPSZ      =                 ** BLANK or 1 - MAX
+*DB2_EVALUNCOMMITTED      =                 ** BLANK or YES, NO
+*DB2_NO_FORK_CHECK        =                 ** BLANK or ON, OFF
+*DB2_KEEPTABLELOCK        =                 ** BLANK or ON, OFF
+*DB2GRAPHICUNICODESERVER  =                 ** BLANK or ON, OFF
+*DB2_MINIMIZE_LISTPREFETCH =                ** BLANK or YES, NO
+*DB2_TRUSTED_BINDIN       =                 ** BLANK or ON, OFF, CHECK
+*DB2_CLPPROMPT            =                 ** BLANK or char(99)
+*DB2_FORCE_APP_ON_MAX_LOG =                 ** BLANK or TRUE, FALSE
+*DB2_CLP_EDITOR           =                 ** BLANK or char()
+*DB2_CLP_HISTSIZE         =                 ** BLANK or 1 - 500
+*DB2_LOAD_COPY_NO_OVERRIDE =                ** BLANK or LOCAL, DOMAIN, GLOBAL
+*DB2_MAX_NON_TABLE_LOCKS  =                 ** BLANK or 1 - MAX
+*DB2_USE_ALTERNATE_PAGE_CLEANING =          ** BLANK or ON, OFF
+*DB2_SCATTERED_IO         =                 ** BLANK or ON, OFF
+*DB2_NO_MPFA_FOR_NEW_DB   =                 ** BLANK or YES, NO
+*DB2_OBJECT_TABLE_ENTRIES =                 ** BLANK or 0 - 50000
+*DB2_VIEW_REOPT_VALUES    =                 ** BLANK or YES, NO
+*DB2_SELUDI_COMM_BUFFER   =                 ** BLANK or ON, OFF
+*DB2_ENABLE_AUTOCONFIG_DEFAULT =            ** BLANK, YES, NO
+*DB2_OPT_MAX_TEMP_SIZE    =                 ** BLANK or 0 - MAX
+*DB2RCMD_LEGACY_MODE      =                 ** YES, ON, TRUE, 1 or NO, OFF, FALSE, 0
+*DB2_LARGE_PAGE_MEM       =                 ** *, DB
+*DB2_MAX_LOB_BLOCK_SIZE   = 0               ** 0 - 21487483647
+*DB2RSHCMD                = rsh             ** Values are a full path name to rsh, or ssh
+*DB2AUTH                  =                 ** BLANK or char()
+*DB2CONNECT_DISCONNECT_ON_INTERRUPT = NO    ** YES, TRUE, 1 or NO, FALSE, 0
+*DB2CONNECT_ENABLE_EURO_CODEPAGE =          ** BLANK or char()
+*DB2FCMCOMM               = TCPIP4          ** TCPIP4 or TCPIP6
+*DB2FFDC                  =                 ** BLANK, ON, CORE:OFF
+*DB2LOADFLAGS             =                 ** BLANK or char()
+*DB2RSHTIMEOUT            = 30              ** or 1 - 120
+*DB2TCP_CLIENT_CONTIMEOUT = 0               ** 0 - 32767
+*DB2TCP_CLIENT_RCVTIMEOUT = 0               ** 0 - 32767
+*DB2TRC_DEF_BUFFSIZE      =                 ** BLANK or char()
+*DB2YIELD                 =                 ** BLANK or char()
+*DB2_ASYNC_IO_MAXFILOP    = MAXFILOP        ** MAXFILOP - MAX
+*DB2_BAR_AUTONOMIC_DISABLE =                ** BLANK or char()
+*DB2_CONNRETRIES_INTERVAL =                 ** BLANK or char()
+*DB2_DXX_PATHS_ALLOWED_READ =               ** BLANK or char()
+*DB2_DXX_PATHS_ALLOWED_WRITE =              ** BLANK or char()
+*DB2_HADR_BUF_SIZE        = 2*LOGBUFSZ      ** BLANK or 0 - MAX
+*DB2_LOGGING_DETAIL       =                 ** BLANK or char()
+*DB2_MAP_XML_AS_CLOB_FOR_DLC = NO           ** YES, NO
+*DB2_MAX_CLIENT_CONNRETRIES =               ** BLANK or char()
+*DB2_MAX_INACT_STMTS      =                 ** 0 - 4294967296
+*DB2_MDC_ROLLOUT          = IMMEDIATE       ** DEFER, IMMEDIATE or OFF
+*DB2_MINIMUM_CLIENT_LEVEL =                 ** BLANK or char()
+*DB2_NUM_CKPW_DAEMONS     = 3               ** 0 - 100
+*DB2_RESOURCE_POLICY      =                 ** valid path to configuration file
+*DB2_SKIPINSERTED         = OFF             ** ON, OFF
+*DB2_SMS_TRUNC_TMPTABLE_THRESH =            ** -1, 0-n where n is the number of extents per container that are to be maintained
+*DB2_SNAPSHOT_NOAUTH      =                 ** BLANK or char()
+*DB2_TAPEMGR_TAPE_EXPIRATION =              ** BLANK or char()
+*DB2_DJ_COMM              = OFF             ** ON or OFF
+*DB2_UPDDBCFG_SINGLE_DBPARTITION =          ** YES, 1, TRUE or NO, 0, FALSE
+*DB2_USE_DB2JCCT2_JROUTINE =                ** ON, YES, 1, TRUE or OFF, NO, 0, FALSE
+*DB2_UTIL_MSGPATH         = instanceName/tmp directory ** BLANK or char()
+*DB2_WORKLOAD             = Not set         ** BLANK, SAP
+
+** Database Settings
+** -----------------
+*DATABASE                 =                 ** databas1: char(8) no spaces - this is the prefix for this DB set
+*databas1.DATABASE_NAME   =                 ** favorateDB: char(8) no spaces - this is the real database
+*databas1.INSTANCE        =                 ** db2inst1: char(8)  no spaces - one value of INSTANCE keyword
+*databas1.ALIAS           =                 ** alias of databas1: char(8) no spaces and can not start with SYS, DBM or IBM
+*databas1.LOCATION        =                 ** local, remote, LOCAL or REMOTE; For client only product use remote or REMOTE
+*databas1.SYSTEM_NAME     =                 ** some remote host char(64) no spaces: for LOCATION=remote only
+*databas1.AUTHENTICATION  =                 ** CLIENT, SERVER, SERVER_ENCRYPT: optional
+*databas1.PATH            =                 ** the directory for the database: optional
+*databas1.SVCENAME        =                 ** service1: for remote LOCATION only
+*databas1.USERNAME        =                 ** db2user: char(8)  no spaces
+*databas1.PASSWORD        =                 ** db2pwd: char(8)  no spaces
+
+** Contact List Settings
+** ---------------------
+** Valid for root installation only
+DAS_CONTACT_LIST           = LOCAL                ** LOCAL or REMOTE
+*DAS_CONTACT_LIST_HOSTNAME =                ** hostname for REMOTE CONTACT_LIST
+*DAS_CONTACT_LIST_USERNAME =                ** contactL: char(8)  no spaces
+*DAS_CONTACT_LIST_DOMAIN  =                 ** contactLdomain: char(14)
+*DAS_CONTACT_LIST_PASSWORD =                ** contactLpasswd: char(14)
+
+** Contact Information For Each Instance
+** -------------------------------------
+** Valid for root installation only
+*CONTACT                  = contact1        ** contact1, char(80)
+*contact1.NEW_CONTACT     = YES             ** YES or NO
+*contact1.CONTACT_NAME    =                 ** userName
+*contact1.EMAIL           =                 ** sysadmin@yourcompany.com - email address where the notification should be sent
+*contact1.PAGER           =                 ** YES or NO
+*contact1.INSTANCE        =                 ** DB2_INST - instance that this contact belongs to, this should be one of the values of keyword INSTANCE.
+
+** Information Center Settings
+** ---------------------------
+** The default location for accessing the DB2 documentation is the IBM website.
+** Only edit this section if you wish to access DB2 documentation from a
+** different location, such as your local computer or an intranet server.
+
+** The following DB2_DOCHOST keyword is used to specify where the Information
+** Center server is installed. For example, "localhost" for the local computer.
+*DB2_DOCHOST              =                 ** Any valid hostname
+
+** The following DB2_DOCPORT keyword is used to specify the port number of the
+** Information Center server.
+*DB2_DOCPORT              =                 ** 1024-65535
+
+** (Valid for root installation only) Tivoli SA MP
+** -----------------------------------------------
+** This keyword has been deprecated. The IBM Tivoli System Automation for
+** Multiplatforms Base Component (Tivoli SA MP) will be automatically installed
+** for you if you specified TYPICAL as the installation type.  If an older
+** version of the Tivoli SA MP is already installed it will be updated to the
+** version on the DB2 installation media, if that update is supported. The
+** Tivoli SA MP will only be installed or updated if you have the proper
+** license.
+*INSTALL_TSAMP            = NO              ** YES or NO. This keyword is deprecated. Valid for root installation only.
+
+** (Valid for root installation only) Global Secure ToolKit
+** --------------------------------------------------------
+** The Global Secure ToolKit will be automatically installed for you. If you
+** don't want to install it, set the value to NO.
+*INSTALL_ENCRYPTION       = YES             ** YES or NO.Valid for root installation only.

@@ -1,0 +1,21 @@
+{
+    "linux": {
+        "software": {
+            "name": "Linux Utilities",
+            "major_version": [            ],
+            "minor_version": [            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x",
+                "Ubuntu 14.0.4",
+                "Ubuntu 16.0.4"
+            ]
+        },
+        "disk": {},
+        "prerequisites": {},
+        "ports": {},
+        "installation_files": {},
+        "fixpack_files": {},
+        "os_repository": {}
+      }
+}

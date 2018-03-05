@@ -1,0 +1,63 @@
+{
+    "name": "IBM DB2 Enterprise Server Edition V11.1 on a single virtual machine - VMware vSphere",
+    "description": "This template deploys a standalone instance of IBM DB2 Enterprise Server Edition V11.1 on a Linux virtual machine.",
+    "version": "1.0.2",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "VMware vSphere",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "vmware/terraform",
+        "templateFileName": "ibm_db2_v11_standalone.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "IBM DB2 Enterprise Server Edition V11.1 on a single virtual machine",
+      "providerDisplayName": "VMware vSphere",
+      "longDescription": "This template deploys a standalone instance of IBM DB2 Enterprise Server Edition V11.1 on a Linux virtual machine.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " VMware<br>"},
+{
+    "title": "Template Version",
+    "description": "1.0.3.2<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Red Hat Enterprise Linux 7<br>Red Hat Enterprise Linux 6<br>Ubuntu 16.04 LTS<br>Ubuntu 14.04 LTS<br>"},
+{
+    "title": "Topology",
+    "description": "1 virtual machine:<br>  IBM DB2 Enterprise Server Edition - one instance, one database<br>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM DB2 Enterprise Server Edition V11.1<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 2, Memory (GB) 4<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for DB2 V11.1 - <a href=\"https://www.ibm.com/software/reports/compatibility/clarity/index.html\" target=\"_blank\">https://www.ibm.com/software/reports/compatibility/clarity/index.html</a><br>3. IBM Knowledge Center for DB2 V11.1 - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0</a><br>4. IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a><br>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

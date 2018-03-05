@@ -1,0 +1,61 @@
+[
+    {
+        "attributes": {
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "mysql": {
+                "config": {
+                    "data_dir": "/var/lib/mysql",
+                    "databases": {
+                        "database_1": {
+                            "database_name": "default_database",
+                            "host_name": "",
+                            "users": {
+                                "user_1": {
+                                    "name": "defaultUser",
+                                    "password": ""
+                                },
+                                "user_2": {
+                                    "name": "defaultUser2",
+                                    "password": ""
+                                }
+                            }
+                        }
+                    },
+                    "log_file": "/var/log/mysqld.log",
+                    "port": "3306"
+                },
+                "install_from_repo": "true",
+                "os_users": {
+                    "daemon": {
+                        "gid": "mysql",
+                        "home": "/home/mysql",
+                        "ldap_user": "false",
+                        "name": "mysql",
+                        "shell": "/bin/bash"
+                    }
+                },
+                "root_password": "",
+                "version": "5.7.17"
+            }
+        },
+        "depends_on": [],
+        "description": "Base install of Oracle Mysql",
+        "displayname": "oracle_mysql_base",
+        "name": "oracle_mysql_base",
+        "objectname": "oracle_mysql_base",
+        "run_list": [
+            "recipe[oracle_mysql::prereq]",
+            "recipe[oracle_mysql::install]",
+            "recipe[oracle_mysql::service]",
+            "recipe[oracle_mysql::harden]",
+            "recipe[oracle_mysql::config_mysql]",
+            "recipe[oracle_mysql::gather_evidence]",
+            "recipe[oracle_mysql::cleanup]"
+        ],
+        "type": "chef_role"
+    }
+]

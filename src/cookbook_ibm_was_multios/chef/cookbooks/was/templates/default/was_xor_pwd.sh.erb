@@ -1,0 +1,28 @@
+#!/bin/sh
+#########################################################################
+#
+# Licensed Materials - Property of IBM
+#
+# Copyright IBM Corp. 2015. All Rights Reserved.
+#
+#########################################################################
+
+binDir=<%= @INSTALL_LOCATION %>/bin
+export REPLACE_WAS_HOME=<%= @INSTALL_LOCATION %>
+. $binDir/setupCmdLine.sh
+
+if [ -f ${JAVA_HOME}/bin/java ]; then
+    JAVA_EXE="${JAVA_HOME}/bin/java"
+else
+    JAVA_EXE="${JAVA_HOME}/jre/bin/java"
+fi
+
+
+if [ $# -eq 1 ]
+
+then
+        "${JAVA_EXE}" "-Dwas.install.root=$WAS_HOME" "-Dws.ext.dirs=$WAS_EXT_DIRS:$WAS_USER_DIRS" "-Djava.ext.dirs=$JAVA_EXT_DIRS" $JVM_EXTRA_CMD_ARGS -classpath "$WAS_CLASSPATH" com.ibm.ws.bootstrap.WSLauncher com.ibm.ws.security.util.PasswordEncoder "$@" | tail -1 | awk '{print $NF}' | tr -d '"'
+else
+        echo USAGE:  was_xor_pwd.sh password
+        exit
+fi

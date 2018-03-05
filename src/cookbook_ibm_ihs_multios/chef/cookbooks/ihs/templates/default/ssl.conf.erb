@@ -1,0 +1,8 @@
+LoadModule ibm_ssl_module modules/mod_ibm_ssl.so
+  Listen <%= @SSLPORT %>
+  <VirtualHost *:<%= @SSLPORT %>>
+    SSLEnable
+  </VirtualHost>
+SSLDisable	  
+KeyFile <%= @KEYSTORE %>
+

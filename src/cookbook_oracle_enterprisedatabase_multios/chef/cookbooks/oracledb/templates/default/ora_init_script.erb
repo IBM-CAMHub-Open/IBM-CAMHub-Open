@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# IBM Corporation
+# Copyright IBM Corp. 2016, 2017
+#
+# ora_init_script.sh
+# Init file for Oracle database server
+#
+# chkconfig: 35 99 02
+# description: Oracle database server
+
+exit_var=0
+
+case "$1" in
+'start')
+        su - <%= @ORAUSER %> -c "<%= @ORAHOME %>/bin/dbstart <%= @ORAHOME %>"
+        RETVAL=$?
+        [ "$RETVAL" = 0 ] && touch /var/lock/subsys/oracle
+        ;;
+
+'stop')
+        su - <%= @ORAUSER %> -c "<%= @ORAHOME %>/bin/dbshut <%= @ORAHOME %>"
+        RETVAL=$?
+        [ "$RETVAL" = 0 ] && rm -f /var/lock/subsys/oracle
+        ;;
+
+'status')
+        if [ -f /var/lock/subsys/oracle ]
+        then
+          echo started
+          exit_var=0
+        else
+          echo stopped
+          exit_var=3
+        fi
+        ;;
+
+*)
+        echo "Usage: $0 { start | stop | status }"
+        exit 1
+        ;;
+
+esac
+exit $exit_var

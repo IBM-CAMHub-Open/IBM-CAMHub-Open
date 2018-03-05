@@ -1,0 +1,61 @@
+{
+    "tomcat": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "Perform post-install cleanup"
+            ]
+        },
+        "configure_tomcat_init.rb": {
+            "description": [
+                "Create init script (configure_tomcat_init.rb)",
+                "Create init script."
+            ]
+        },
+        "configure_tomcat_server.rb": {
+            "description": [
+                "Configure tomcat server recipe (configure_tomcat_server.rb)",
+                "Setup the main server configuration file"
+            ]
+        },
+        "configure_tomcat_users.rb": {
+            "description": []
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "Include recipes for a standard installation"
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Gather evidence recipe (gather_evidence.rb)",
+                "Gather evidence that installation was successful"
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "Perform an installation of selected tomcat package on the target node."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisites recipe (prereq.rb)",
+                "Perform prerequisite tasks."
+            ]
+        },
+        "prereq_check.rb": {
+            "description": [
+                "Prerequisites recipe (prereq_check.rb)",
+                "Verify required prerequisites, validate input"
+            ]
+        },
+        "service.rb": {
+            "description": [
+                "Service setup recipe (service.rb)",
+                "Configure tomcat service"
+            ]
+        }
+    }
+}

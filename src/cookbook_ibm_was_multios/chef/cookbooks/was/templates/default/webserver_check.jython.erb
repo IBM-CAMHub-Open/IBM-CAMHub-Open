@@ -1,0 +1,5 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+print AdminTask.listServers('[-serverType "WEB_SERVER" -nodeName <%= @NODE_NAME %>]')

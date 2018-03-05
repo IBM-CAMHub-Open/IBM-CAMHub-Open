@@ -1,0 +1,64 @@
+{
+    "db2": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "This recipe will remove any temporary installation files created as part of the automation."
+            ]
+        },
+        "create_db.rb": {
+            "description": [
+                "Create database recipe (create_db.rb)",
+                "This recipe will create instances and databases as specified in attributes."
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "The default recipe for the cookbook. It is recommended to not use the default recipe, but explicitly specify a run_list for the deployment node."
+            ]
+        },
+        "fixpack.rb": {
+            "description": [
+                "Fixpack recipe (fixpack.rb)",
+                "This recipe performs product fixpack installation."
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Evidence gathering recipe (gather_evidence.rb)",
+                "This recipe will collect functional product information and store it in an archive."
+            ]
+        },
+        "harden.rb": {
+            "description": [
+                "Product hardening recipe (harden.rb)",
+                "This recipe performs security hardening tasks."
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "This recipe performs the product installation."
+            ]
+        },
+        "license.rb": {
+            "description": [
+                "License recipe (license.rb)",
+                "This recipe will apply the license file from a repo server, in case a base package cannot be installed."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisite recipe (prereq.rb)",
+                "This recipe configures the operating prerequisites for the product."
+            ]
+        },
+        "prereq_check.rb": {
+            "description": [
+                "Prerequisites check recipe (prereq_check.rb)",
+                "Recipe to ensure that pre-requisites are in place for a cookbook to run."
+            ]
+        }
+    }
+}

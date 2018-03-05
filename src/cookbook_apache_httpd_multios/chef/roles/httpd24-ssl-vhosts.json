@@ -1,0 +1,181 @@
+{
+  "name": "httpd24-ssl-vhosts",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ibm": {
+      "sw_repo": "",
+      "sw_repo_password": "",
+      "sw_repo_user": "repouser"
+    },
+    "httpd": {
+      "os_users": {
+        "web_content_owner": {
+          "name": "webmaster",
+          "gid": "webmaster",
+          "ldap_user": "false"
+        }
+      },
+      "version": "2.4",
+      "install_from_repo": "false",
+      "server_admin": "webmaster",
+      "log_dir": "/var/log/httpd",
+      "log_level": "info",
+      "document_root": "/var/www/html5",
+      "tarball": "httpd24-1.1-5.el6.x86_64.tar.gz",
+
+      "ssl": {
+        "certificate_path" : "/etc/httpd/ssl",
+        "log_level" : "warn",
+        "transfer_log" : "ssl_transfer_log",
+        "certificate_name" : "global_cert",
+        "sslcompression" : "Off",
+        "sslproxycacertificatefile" : "PleaseProvide",
+        "sslproxycacertificatepath" : "PleaseProvide",
+        "sslproxycarevocationcheck" : "PleaseProvide",
+        "sslproxycarevocationfile" : "PleaseProvide"
+      },
+
+      "proxy": {
+        "ProxyPreserveHost" : "On",
+        "rules" : { "ProxyPass" :
+                       [ {  "path" : "/sw/",
+                            "url" : "http://localhost"},
+                         {  "path" : "/sw1/",
+                            "url" : "http://localhost"}
+                       ],
+                    "ProxyPassReverse" :
+                       [ {  "path" : "/sw/",
+                            "url" : "http://localhost"},
+                         {  "path" : "/sw1/",
+                            "url" : "http://localhost"}
+                       ]
+        }
+      },
+
+      "vhosts_enabled": "true",
+
+      "virtualhosts" : {
+        "default_http_server":{
+          "vhost_type": "name_based",
+          "vhost_listen": "80",
+          "server_name" : "default_http_server",
+          "document_root" : "/var/www/default_http_server",
+          "log_dir" : "/var/log/httpd",
+          "error_log" : "default_http_server_error_log",
+          "custom_log" : "default_http_server_custom_log",
+          "custom_log_format" : "combined",
+          "server_admin" : "webmaster",
+
+          "disabled" : "false",
+
+          "ssl_enabled" : "false",
+          "global_ssl_config" : "true",
+
+          "proxy_enabled" : "false",
+          "global_proxy_config" : "false"
+        },
+        "default_https_server":{
+          "vhost_type": "name_based",
+          "vhost_listen": "443",
+          "server_name" : "default_https_server",
+          "document_root" : "/var/www/default_https_server",
+          "log_dir" : "/var/log/httpd",
+          "error_log" : "default_https_server_error_log",
+          "custom_log" : "default_https_server_custom_log",
+          "custom_log_format" : "combined",
+          "server_admin" : "webmaster",
+
+          "disabled" : "false",
+
+          "ssl_enabled" : "true",
+          "global_ssl_config" : "true",
+
+          "proxy_enabled" : "true",
+          "global_proxy_config" : "true"
+        },
+        "custom_server":{
+          "vhost_type": "name_based",
+          "vhost_listen": "8008",
+          "server_name" : "custom_server",
+          "document_root" : "/var/www/custom_server",
+          "log_dir" : "/var/log/httpd",
+          "error_log" : "custom_server_error_log",
+          "custom_log" : "custom_server_custom_log",
+          "custom_log_format" : "combined",
+          "server_admin" : "webmaster",
+
+          "disabled" : "false",
+
+          "ssl_enabled" : "true",
+          "global_ssl_config" : "true",
+
+          "proxy_enabled" : "true",
+          "global_proxy_config" : "true"
+        },
+        "custom_server2":{
+          "vhost_type": "name_based",
+          "vhost_listen": "8009",
+          "server_name" : "custom_server2",
+          "document_root" : "/var/www/custom_server2",
+          "log_dir" : "/var/log/httpd",
+          "error_log" : "custom_server2_error_log",
+          "custom_log" : "custom_server2_custom_log",
+          "custom_log_format" : "combined",
+          "server_admin" : "webmaster",
+
+          "disabled" : "false",
+
+          "ssl_enabled" : "true",
+          "global_ssl_config" : "false",
+          "ssl": {
+            "certificate_path" : "/etc/httpd/ssl",
+            "certificate_name" : "custom_server2",
+            "log_level" : "warn",
+            "transfer_log" : "ssl_transfer_log",
+            "sslcompression" : "",
+            "sslproxycacertificatefile" : "",
+            "sslproxycacertificatepath" : "",
+            "sslproxycarevocationcheck" : "",
+            "sslproxycarevocationfile" : ""
+          },
+
+          "proxy_enabled" : "true",
+          "global_proxy_config" : "false",
+          "proxy": {
+            "ProxyPreserveHost" : "On",
+            "rules" : { "ProxyPass" :
+                           [ {  "path" : "/apple/",
+                                "url" : "http://localhost"},
+                             {  "path" : "/apple1/",
+                                "url" : "http://localhost"}
+                           ],
+                        "ProxyPassReverse" :
+                           [ {  "path" : "/apple/",
+                                "url" : "http://localhost"},
+                             {  "path" : "/apple1/",
+                                "url" : "http://localhost"} ]
+                      }
+            }
+          }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[httpd::prereq]",
+    "recipe[httpd::install]",
+    "recipe[httpd::config_httpd_conf]",
+    "recipe[httpd::config_ssl]",
+    "recipe[httpd::config_vhosts]",
+    "recipe[httpd::service]",
+    "recipe[httpd::gather_evidence]",
+    "recipe[httpd::cleanup]"
+  ],
+  "env_run_lists": {
+
+  }
+}

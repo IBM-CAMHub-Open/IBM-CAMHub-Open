@@ -1,0 +1,127 @@
+#! /bin/sh
+#
+# It works well with /bin/sh
+
+
+test -x /opt/mqm/bin/dspmq || exit 5
+test -x /opt/mqm/bin/strmqm || exit 5
+test -x /opt/mqm/bin/endmqm || exit 5
+
+QUEUE_MANAGERS='<%= @queue_managers %>'
+STOP_METHOD='-w'
+
+if test "x$QUEUE_MANAGERS" = x ; then
+# Default to deal with all defined QMs
+QUEUE_MANAGERS='*'
+fi
+
+if test "x$QUEUE_MANAGERS" = 'x*' ; then
+# Expand * to list of all queue managers
+QUEUE_MANAGERS=`su mqm -s /bin/sh -c "/opt/mqm/bin/dspmq" | sed -e 's/^QMNAME(\([^)]*\)).*/\1/'`
+fi
+
+if test "x$STOP_METHOD" = x ; then
+# Default to quiesce and wait
+STOP_METHOD='-w'
+fi
+
+. /lib/lsb/init-functions
+
+stop_qm()
+{
+  QM=$1
+  echo "Stopping queue manager $QM"
+  su mqm -s /bin/sh -c "/opt/mqm/bin/endmqm $STOP_METHOD $QM" > /dev/null 2>&1
+  STAT=$?
+  if test $STAT -eq 0 ; then
+    log_success_msg "Queue manager $QM stopped"
+  elif test $STAT -eq 40 ; then
+    log_warning_msg "Queue manager $QM not available"
+  elif test $STAT -eq 16 ; then
+    log_warning_msg "Queue manager $QM does not exist"
+  else
+    log_failure_msg "Stopping queue manager $QM failed (rc=$STAT)"
+  fi
+}
+
+start_qm()
+{
+  QM=$1
+  echo "Starting queue manager $QM"
+  su mqm -s /bin/sh -c "/opt/mqm/bin/strmqm $QM" > /dev/null 2>&1
+  STAT=$?
+  if test $STAT -eq 0 ; then
+    log_success_msg "Queue manager $QM started"
+  elif test $STAT -eq 5 ; then
+    log_warning_msg "Queue manager $QM is already running"
+  elif test $STAT -eq 16 ; then
+    log_warning_msg "Queue manager $QM does not exist"
+  else
+    log_failure_msg "Starting queue manager $QM failed (rc=$STAT)"
+  fi
+}
+
+qm_status()
+{
+  QM=$1
+  su mqm -s /bin/sh -c "/opt/mqm/bin/dspmq" | grep "^QMNAME($QM).*STATUS(Running)\$" > /dev/null 2>&1
+}
+
+qm_status_verbose()
+{
+  QM=$1
+  echo "Getting status of queue manager $QM"
+  su mqm -s /bin/sh -c "/opt/mqm/bin/dspmq" | grep "^QMNAME($QM).*STATUS(.*)\$" > /dev/null 2>&1
+  STAT=$?
+  if test $STAT -eq 0 ; then
+    QMSTATUS=`su mqm -s /bin/sh -c "/opt/mqm/bin/dspmq" | grep "^QMNAME($QM).*STATUS(.*)\$" | grep --only-matching 'STATUS([^)]*)' | sed -e 's/STATUS(\([^)]*\))/\1/'`
+    log_success_msg "Queue manager $QM status is: $QMSTATUS"
+  else
+    log_warning_msg "Queue manager $QM does not exist"
+  fi
+}
+
+case "$1" in
+  start)
+    echo "Starting Queue Managers:"
+    for QM in $QUEUE_MANAGERS ; do
+      start_qm $QM
+    done
+    ;;
+  stop)
+    echo "Stopping Queue Managers:"
+    for QM in $QUEUE_MANAGERS ; do
+      stop_qm $QM
+    done
+    ;;
+  try-restart)
+    echo "Restarting Active Queue Managers:"
+    for QM in $QUEUE_MANAGERS ; do
+      qm_status $QM && (stop_qm $QM; start_qm $QM)
+    done
+    ;;
+  restart)
+    echo "Restarting All Queue Managers:"
+    for QM in $QUEUE_MANAGERS ; do
+      qm_status $QM && stop_qm $QM
+      start_qm $QM
+    done
+    ;;
+  force-reload)
+    $0 try-restart
+    ;;
+  reload)
+    log_warning_msg "reload does nothing"
+    exit 3
+    ;;
+  status)
+    echo "Checking Queue Manager Status:"
+    for QM in $QUEUE_MANAGERS ; do
+      qm_status_verbose $QM
+    done
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload}"
+    exit 1
+    ;;
+esac

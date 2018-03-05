@@ -1,0 +1,31 @@
+{
+  "name":"db2_v111_install",
+  "description":"DB2 v11.1 role for default installation and configuration",
+  "json_class":"Chef::Role",
+  "chef_type":"role",
+  "default_attributes":{
+    "ibm":{
+      "sw_repo":"",
+      "sw_repo_user": "repouser",
+      "sw_repo_password": "",
+      "sw_repo_self_signed_cert": "true",
+      "sw_repo_auth": "true"
+    },
+    "db2": {
+      "das_password": "",
+      "das_username": "db2das1",
+      "base_version": "none",
+      "fp_version": "11.1.2.2",
+      "install_dir": "/opt/ibm/db2/V11.1"
+    }
+  },
+  "run_list":[
+    "recipe[db2::prereq_check]",
+    "recipe[db2::prereq]",
+    "recipe[db2::install]",
+    "recipe[db2::fixpack]",
+    "recipe[db2::license]",
+    "recipe[db2::gather_evidence]",
+    "recipe[db2::cleanup]"
+  ]
+}

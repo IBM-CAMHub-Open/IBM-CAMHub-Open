@@ -1,0 +1,28 @@
+{
+    "ibm_cloud_utils": {
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "Perform minimal product installation"
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Default recipe (gather_evidence.rb)",
+                "Perform product verification steps"
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Default recipe (install.rb)",
+                "Perform product installation steps"
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Default recipe (prereq.rb)",
+                "Perform  product prerequisite steps"
+            ]
+        }
+    }
+}

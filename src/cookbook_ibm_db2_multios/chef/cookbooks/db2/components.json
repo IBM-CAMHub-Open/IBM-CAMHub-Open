@@ -1,0 +1,155 @@
+[
+    {
+        "$dynamicmaps": {
+            "db2": {
+                "instances": {
+                    "$count": "0",
+                    "$displayname": "DB2 instances",
+                    "$key": "instance",
+                    "$max": "4",
+                    "instance($INDEX)": {
+                        "$dynamicmaps": {
+                            "databases": {
+                                "$count": "0",
+                                "$displayname": "DB2 databases",
+                                "$key": "database",
+                                "$max": "4",
+                                "database($INDEX)": {
+                                    "$dynamicmaps": {
+                                        "database_users": {
+                                            "$count": "0",
+                                            "$displayname": "DB2 database users",
+                                            "$key": "db_user",
+                                            "$max": "4"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "attributes": {
+            "db2": {
+                "instances": {
+                    "instance($INDEX)": {
+                        "databases": {
+                            "database($INDEX)": {
+                                "codeset": "UTF-8",
+                                "database_update": {
+                                    "FAILARCHPATH": "default",
+                                    "LOGARCHMETH1": "default",
+                                    "LOGFILSIZ": "default",
+                                    "LOGSECOND": "default",
+                                    "NEWLOGPATH": "default"
+                                },
+                                "database_users": {
+                                    "db_user($INDEX)": {
+                                        "ldap_user": "false",
+                                        "user_access": "none",
+                                        "user_gid": "dbgroup1",
+                                        "user_home": "default",
+                                        "user_name": "dbuser1",
+                                        "user_password": ""
+                                    }
+                                },
+                                "db_collate": "SYSTEM",
+                                "db_data_path": "/home/db2inst1",
+                                "db_name": "db01",
+                                "db_path": "/home/db2inst1",
+                                "pagesize": "4096",
+                                "territory": "US"
+                            }
+                        },
+                        "fcm_port": "60000",
+                        "fenced_groupname": "db2fenc1",
+                        "fenced_password": "",
+                        "fenced_username": "db2fenc1",
+                        "instance_dir": "/home/db2inst1",
+                        "instance_groupname": "db2iadm1",
+                        "instance_password": "",
+                        "instance_prefix": "INST1",
+                        "instance_type": "ESE",
+                        "instance_username": "db2inst1",
+                        "port": "50000"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Creates a new DB2 instance and database over an existing DB2 installation",
+        "displayname": "db2_create_db",
+        "name": "db2_create_db",
+        "objectname": "db2_create_db",
+        "run_list": [
+            "recipe[db2::create_db]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "db2": {
+                "base_version": "none",
+                "das_password": "",
+                "das_username": "db2das1",
+                "fp_version": "10.5.0.8",
+                "install_dir": "/opt/ibm/db2/V10.5"
+            },
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_auth": "true",
+                "sw_repo_password": "",
+                "sw_repo_self_signed_cert": "true",
+                "sw_repo_user": "repouser"
+            }
+        },
+        "depends_on": [],
+        "description": "DB2 v10.5 role for default installation and configuration",
+        "displayname": "db2_v105_install",
+        "name": "db2_v105_install",
+        "objectname": "db2_v105_install",
+        "run_list": [
+            "recipe[db2::prereq_check]",
+            "recipe[db2::prereq]",
+            "recipe[db2::install]",
+            "recipe[db2::fixpack]",
+            "recipe[db2::gather_evidence]",
+            "recipe[db2::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "db2": {
+                "base_version": "none",
+                "das_password": "",
+                "das_username": "db2das1",
+                "fp_version": "11.1.2.2",
+                "install_dir": "/opt/ibm/db2/V11.1"
+            },
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_auth": "true",
+                "sw_repo_password": "",
+                "sw_repo_self_signed_cert": "true",
+                "sw_repo_user": "repouser"
+            }
+        },
+        "depends_on": [],
+        "description": "DB2 v11.1 role for default installation and configuration",
+        "displayname": "db2_v111_install",
+        "name": "db2_v111_install",
+        "objectname": "db2_v111_install",
+        "run_list": [
+            "recipe[db2::prereq_check]",
+            "recipe[db2::prereq]",
+            "recipe[db2::install]",
+            "recipe[db2::fixpack]",
+            "recipe[db2::license]",
+            "recipe[db2::gather_evidence]",
+            "recipe[db2::cleanup]"
+        ],
+        "type": "chef_role"
+    }
+]

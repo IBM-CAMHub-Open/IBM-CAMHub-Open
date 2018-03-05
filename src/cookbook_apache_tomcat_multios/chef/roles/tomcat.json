@@ -1,0 +1,77 @@
+{
+  "name": "tomcat",
+  "description": "Tomcat installation and configuration with SSL and admin user enabled.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ibm": {
+      "sw_repo": "",
+      "sw_repo_user": "repouser",
+      "sw_repo_password": ""
+    },
+    "tomcat": {
+      "install_dir": "/opt/tomcat8",
+      "version": "8.0.15",
+      "instance_dirs": {
+        "temp_dir": "/var/tmp/tomcat8/temp",
+        "work_dir": "/var/tmp/tomcat8/work",
+        "log_dir": "/var/log/tomcat8",
+        "webapps_dir": "/var/lib/tomcat8/webapps"
+      },
+      "os_users": {
+        "daemon": {
+          "name": "tomcat",
+          "gid": "tomcat",
+          "ldap_user": "false"
+        }
+      },
+      "ssl": {
+        "enabled": "true",
+        "keystore": {
+          "password": ""
+        },
+        "port": "8443"
+      },
+      "http": {
+        "port": "8080"
+      },
+      "java": {
+        "vendor": "openjdk",
+        "java_sdk": "false",
+        "version": "1.8.0"
+      },
+      "ui_control": {
+        "all_roles": {
+          "manager-gui": "enabled",
+          "manager-script": "enabled",
+          "manager-jmx": "enabled",
+          "manager-status": "enabled",
+          "admin-gui": "enabled"
+        },
+        "users": {
+          "administrator": {
+            "name": "admin",
+            "status": "enabled",
+            "password": "",
+            "user_roles": {
+              "manager-gui": "enabled",
+              "manager-script": "enabled",
+              "manager-jmx": "enabled",
+              "manager-status": "enabled",
+              "admin-gui": "enabled"
+            }
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[tomcat]"
+  ],
+  "env_run_lists": {
+
+  }
+}

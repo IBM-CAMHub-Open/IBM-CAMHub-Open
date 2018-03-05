@@ -1,0 +1,512 @@
+{
+    "wmq": {
+        "advanced": {
+            "choice": [
+                "true",
+                "false"
+            ],
+            "default": "false",
+            "description": "Install IBM MQ Advanced components: File Transfer, IBM MQ Telemetry, and Advanced Message Security.",
+            "displayname": "IBM MQ Advanced Components",
+            "hidden": "false",
+            "options": [
+                "true",
+                "false"
+            ],
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "data_dir": {
+            "default": "/var/mqm",
+            "description": "The directory to install IBM MQ Data files, recommended /var/mqm",
+            "displayname": "IBM MQ Data Directory",
+            "hidden": "false",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "fixpack": {
+            "default": "1",
+            "description": "The fixpack of IBM MQ to install.",
+            "displayname": "IBM MQ Fixpack",
+            "hidden": "false",
+            "max": "20",
+            "min": "1",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "global_mq_service": {
+            "description": "Option to defined service for all IBM MQ Queue Manager",
+            "displayname": "IBM MQ Global Service control",
+            "hidden": "false"
+        },
+        "install_dir": {
+            "default": "/opt/mqm",
+            "description": "The directory to install IBM MQ Binaries, recommended /opt/mqm",
+            "displayname": "IBM MQ Installation Directory",
+            "hidden": "false",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "log_dir": {
+            "default": "/var/mqm/log",
+            "description": "The directory to install IBM MQ Log Directory, recommended -> node[wmq][data_dir]/log",
+            "displayname": "IBM MQ Log Directory",
+            "hidden": "false",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_core_rmem_default": {
+            "default": "262144",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_rmem_default",
+            "displayname": "IBM MQ Kernel net_core_rmem_default",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_core_rmem_max": {
+            "default": "4194304",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_rmem_max",
+            "displayname": "IBM MQ Kernel net_core_rmem_max",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_core_wmem_default": {
+            "default": "262144",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_wmem_default",
+            "displayname": "IBM MQ Kernel net_core_wmem_default",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_core_wmem_max": {
+            "default": "1048576",
+            "description": "WebSphere MQ Server Kernel Configuration net_core_wmem_max",
+            "displayname": "IBM MQ Kernel net_core_wmem_max",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_fin_timeout": {
+            "default": "60",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_fin_timeout",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_fin_timeout",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_keepalive_intvl": {
+            "default": "75",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_intvl",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_keepalive_intvl",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_keepalive_time": {
+            "default": "7200",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_keepalive_time",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_keepalive_time",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_rmem": {
+            "default": "4096    87380   4194304",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_rmem",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_rmem",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_sack": {
+            "default": "1",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_sack",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_sack",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_timestamps": {
+            "default": "1",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_timestamps",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_timestamps",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_window_scaling": {
+            "default": "1",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_window_scaling",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_window_scaling",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "net_ipv4_tcp_wmem": {
+            "default": "4096    87380   4194304",
+            "description": "WebSphere MQ Server Kernel Configuration net_ipv4_tcp_wmem",
+            "displayname": "IBM MQ Kernel net_ipv4_tcp_wmem",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "nofile_value": {
+            "default": "10240",
+            "description": "WebSphere MQ Server Ulimit Nofile Value",
+            "displayname": "IBM MQ Kernel Ulimit nofile_value",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "os_users": {
+            "mqm": {
+                "comment": {
+                    "default": "IBM MQ User",
+                    "description": "Comment associated with the IBM MQ User",
+                    "displayname": "IBM MQ OS User Comment",
+                    "hidden": "false",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "gid": {
+                    "default": "mqm",
+                    "description": "Group ID of the Unix OS User for IBM MQ",
+                    "displayname": "IBM MQ OS Group ID",
+                    "hidden": "false",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "home": {
+                    "default": "/home/mqm",
+                    "description": "Home Directory of Default OS User for IBM MQ User.",
+                    "displayname": "IBM MQ OS User Home Directory",
+                    "hidden": "false",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "ldap_user": {
+                    "default": "false",
+                    "description": "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user.",
+                    "displayname": "IBM MQ Use LDAP for Authentication",
+                    "hidden": "false",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "boolean"
+                },
+                "name": {
+                    "default": "mqm",
+                    "description": "Name of the Unix OS User that owns and controls IBM MQ",
+                    "displayname": "IBM MQ OS Username",
+                    "hidden": "false",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "shell": {
+                    "default": "/bin/bash",
+                    "description": "Location of the IBM MQ User Shell",
+                    "displayname": "IBM MQ OS User Shell",
+                    "hidden": "false",
+                    "parm_type": "component",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "perms": {
+            "default": "775",
+            "description": "Default permissions for IBM MQ files on Unix",
+            "displayname": "IBM MQ OS Permissions",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "qmgr": {
+            "qmgr($INDEX)": {
+                "description": {
+                    "default": "Queue Manager 1",
+                    "description": "Description of the Queue Manager",
+                    "displayname": "IBM MQ Queue Manager Description",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "dlq": {
+                    "default": "SYSTEM.DEAD.LETTER.QUEUE",
+                    "description": "Queue Manager dead letter queue",
+                    "displayname": "IBM MQ Queue Manager dead letter queue",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "listener_port": {
+                    "default": "1414",
+                    "description": "Port the Queue Manager listens on.",
+                    "displayname": "IBM MQ Queue Manager Listener Port",
+                    "hidden": "false",
+                    "max": "50000",
+                    "min": "1025",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "loggingtype": {
+                    "choice": [
+                        "ll",
+                        "lc"
+                    ],
+                    "default": "lc",
+                    "description": "Type of logging to use ll(Linear), lc(Circular)",
+                    "displayname": "IBM MQ Queue Manager Logging",
+                    "hidden": "false",
+                    "options": [
+                        "ll",
+                        "lc"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "logsize": {
+                    "default": "16384",
+                    "description": "Size of the IBM MQ Logs",
+                    "displayname": "IBM MQ Queue Manager Log Size",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "qmgr1",
+                    "description": "Name of the Queue Manager to Create",
+                    "displayname": "IBM MQ Queue Manager Name",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "primarylogs": {
+                    "default": "10",
+                    "description": "Number of primary logs to create.",
+                    "displayname": "IBM MQ Queue Manager Primary Logs",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "secondarylogs": {
+                    "default": "20",
+                    "description": "Number of Secondary Logs",
+                    "displayname": "IBM MQ Queue Manager Secondary Logs",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "role",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "qmgr_dir": {
+            "default": "/var/mqm/qmgrs",
+            "description": "The directory to install IBM MQ Queue Manager Directory, recommended node[wmq][data_dir]/qmgrs",
+            "displayname": "IBM MQ Queue Manager Directory",
+            "hidden": "false",
+            "parm_type": "component",
+            "precedence_level": "role",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "service_name": {
+            "default": "mq",
+            "description": "WebSphere MQ service name",
+            "displayname": "IBM MQ Service Name",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "swap_file": {
+            "default": "/swapfile",
+            "description": "Swap file name",
+            "displayname": "Swap Filename",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "swap_file_size": {
+            "default": "512",
+            "description": "UNIX Swap size in megabytes",
+            "displayname": "IBM MQ Unix swap file size",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "version": {
+            "choice": [
+                "8.0",
+                "9.0"
+            ],
+            "default": "9.0",
+            "description": "The Version of IBM MQ to install, eg, 8.0",
+            "displayname": "IBM MQ Version",
+            "hidden": "false",
+            "options": [
+                "8.0",
+                "9.0"
+            ],
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "vm_swappiness": {
+            "default": "0",
+            "description": "WebSphere MQ Server Kernel Configuration vm_swappiness",
+            "displayname": "IBM MQ Kernel vm_swappiness",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        }
+    }
+}

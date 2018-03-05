@@ -1,0 +1,300 @@
+{
+    "linux": {
+        "filesystems": {
+            "filesystem($INDEX)": {
+                "device": {
+                    "default": "/dev/xvdc",
+                    "description": "Device to mount to, leave blank if unknown, the system will search for it.",
+                    "displayname": "device",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "force": {
+                    "default": "true",
+                    "description": "Force the mount true or false",
+                    "displayname": "force",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "fstype": {
+                    "default": "ext4",
+                    "description": "File System Type",
+                    "displayname": "fstype",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "group": {
+                    "default": "default",
+                    "description": "Group owner of the mount point",
+                    "displayname": "group",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "label": {
+                    "default": "filesystem1",
+                    "description": "Label of the file system",
+                    "displayname": "label",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "mountpoint": {
+                    "default": "/var/filesystem1",
+                    "description": "Directory to mount to, directory will be created",
+                    "displayname": "mountpoint",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "options": {
+                    "default": "defaults",
+                    "description": "Advanced options for mounting the disk",
+                    "displayname": "options",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "perms": {
+                    "default": "default",
+                    "description": "Permissions for the mount point.",
+                    "displayname": "perms",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "size": {
+                    "default": "true",
+                    "description": "Size in GB of the disk",
+                    "displayname": "size",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "user": {
+                    "default": "default",
+                    "description": "Owner of the mount point.",
+                    "displayname": "user",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "physicalvolumes": {
+            "physicalvolume($INDEX)": {
+                "device": {
+                    "default": "",
+                    "description": "Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size",
+                    "displayname": "device",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "logicalvolumes": {
+                    "logicalvolume($INDEX)": {
+                        "filesystem": {
+                            "default": "ext4",
+                            "description": "The stsandard filesystem type.",
+                            "displayname": "filesystem",
+                            "hidden": "false",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "lv_name": {
+                            "default": "lv_name",
+                            "description": "Name of the logical volume.",
+                            "displayname": "lv_name",
+                            "hidden": "false",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "lv_size": {
+                            "default": "10g",
+                            "description": "Size of the filesystem, use standard lvm file size format",
+                            "displayname": "lv_size",
+                            "hidden": "false",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "mountpoint": {
+                            "default": "/var/filesystem1",
+                            "description": "Mount Point of the file system attached to the Logical Volume",
+                            "displayname": "mountpoint",
+                            "hidden": "false",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "options": {
+                            "default": "rw",
+                            "description": "Name of the logical volume.",
+                            "displayname": "options",
+                            "hidden": "false",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "selectable": "true",
+                            "type": "string"
+                        }
+                    }
+                },
+                "size": {
+                    "default": "10",
+                    "description": "Size if GB of the device.",
+                    "displayname": "size",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "vg_name": {
+                    "default": "vgname",
+                    "description": "Name of the Volume Group to be assigned to the Physical Volume.",
+                    "displayname": "vg_name",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "yum_repositories": {
+            "repo01": {
+                "baseurl": {
+                    "default": "https://xx",
+                    "description": "URL For accessing YUM Repository",
+                    "displayname": "Base YUM URL",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "description": {
+                    "default": "Yum Repository 1",
+                    "description": "Description of the YUM respository",
+                    "displayname": "Description",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "enabled": {
+                    "default": "true",
+                    "description": "Enable True/False Flag",
+                    "displayname": "Enable YUM Repo",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "boolean"
+                },
+                "gpgcheck": {
+                    "default": "true",
+                    "description": "GPGCheck True/False Flag",
+                    "displayname": "Enable GPGCheck Repo",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "boolean"
+                },
+                "gpgkey": {
+                    "default": "",
+                    "description": "Location of GPG Key",
+                    "displayname": "GPG Key for Repository",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "repositoryid": {
+                    "default": "CAM Repository",
+                    "description": "Repository ID Name",
+                    "displayname": "Respository ID",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "sslcacert": {
+                    "description": "Location of  sslcacert ",
+                    "displayname": "Location of  sslcacert ",
+                    "hidden": "false"
+                },
+                "sslverify": {
+                    "default": "true",
+                    "description": "sslverify True/False Flag",
+                    "displayname": "Enable sslverify Repo",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

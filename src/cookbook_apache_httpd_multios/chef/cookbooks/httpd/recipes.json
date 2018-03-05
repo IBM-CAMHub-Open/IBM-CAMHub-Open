@@ -1,0 +1,58 @@
+{
+    "httpd": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "Perform post-install cleanup"
+            ]
+        },
+        "config_httpd_conf.rb": {
+            "description": [
+                "Configure httpd server recipe (config_httpd_conf.rb)",
+                "Setup the main server configuration file"
+            ]
+        },
+        "config_ssl.rb": {
+            "description": [
+                "SSL configuration recipe (config_proxy.rb)",
+                "Install mod_ssl, create SSL configuration file, create certificates"
+            ]
+        },
+        "config_vhosts.rb": {
+            "description": [
+                "vhost configuration recipe (config_vhost.rb)",
+                "Create vhost configuration file"
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "The default recipe for the cookbook. It is recommended to not use the default recipe, but explicitly specify a run_list for the deployment node."
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Gather evidence recipe (gather_evidence.rb)",
+                "Gather evidence that installation was successful"
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "Perform an installation of selected httpd package on the target node."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisites recipe (prereq.rb)",
+                "Perform prerequisite tasks."
+            ]
+        },
+        "service.rb": {
+            "description": [
+                "Service control recipe (service.rb)",
+                "Enable and start the httpd service"
+            ]
+        }
+    }
+}

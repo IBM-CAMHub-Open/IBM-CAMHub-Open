@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<agent-input>
+  <server>
+    <repository location='<%= @WAS_REPO_LOCATION %>'/>
+    <% if node['was_liberty']['install_javafp'] == "true" %>
+    <repository location='<%= @JAVA_REPO_LOCATION %>'/>
+    <% end %>
+  </server>
+  <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='<%= @IMSHARED %>'/>
+  <profile id='WebSphere Liberty' installLocation='<%= @INSTALL_LOCATION %>'/>
+  <install>
+    <offering profile='<%= @PROFILE_ID %>' id='<%= @OFFERING_ID %>' features='<%= @FEATURE_LIST %>' installFixes='none'/>
+    <% if node['was_liberty']['install_javafp'] == "true" %>
+    <offering profile='<%= @PROFILE_ID %>' id='<%= @SDK_OFFERING_ID %>' features='<%= @SDK_FEATURES %>' installFixes='none'/>
+    <% end %>
+  </install>
+</agent-input>

@@ -1,0 +1,170 @@
+[
+    {
+        "$dynamicmaps": {
+            "wmq": {
+                "qmgr": {
+                    "$count": "0",
+                    "$displayname": "IBM MQ Queue Managers",
+                    "$key": "qmgr",
+                    "$max": "4"
+                }
+            }
+        },
+        "attributes": {
+            "ibm": {
+                "expand_area": "/tmp/ibm_cloud/expand_area",
+                "log_dir": "/var/log/ibm_cloud",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser",
+                "temp_dir": "/tmp/ibm_cloud"
+            },
+            "wmq": {
+                "qmgr": {
+                    "qmgr($INDEX)": {
+                        "description": "Default Queue Manager",
+                        "dlq": "SYSTEM.DEAD.LETTER.QUEUE",
+                        "listener_port": "1414",
+                        "loggingtype": "lc",
+                        "logsize": "16384",
+                        "name": "QMGR1",
+                        "primarylogs": "10",
+                        "secondarylogs": "20"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "WMQ Configure Queue Manager",
+        "displayname": "wmq_create_qmgrs",
+        "name": "wmq_create_qmgrs",
+        "objectname": "wmq_create_qmgrs",
+        "run_list": [
+            "recipe[wmq::config_qmgr_single]",
+            "recipe[wmq::start_qmgr]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_auth": "true",
+                "sw_repo_password": "",
+                "sw_repo_self_signed_cert": "true",
+                "sw_repo_user": "repouser"
+            },
+            "wmq": {
+                "advanced": "false",
+                "data_dir": "/var/mqm",
+                "fixpack": "5",
+                "global_mq_service": "true",
+                "install_dir": "/opt/mqm",
+                "log_dir": "/var/mqm/log",
+                "net_core_rmem_default": "10240",
+                "net_core_rmem_max": "4194304",
+                "net_core_wmem_default": "262144",
+                "net_ipv4_tcp_fin_timeout": "60",
+                "net_ipv4_tcp_keepalive_intvl": "75",
+                "net_ipv4_tcp_keepalive_time": "7200",
+                "net_ipv4_tcp_rmem": "4096    87380   4194304",
+                "net_ipv4_tcp_sack": "1",
+                "net_ipv4_tcp_timestamps": "1",
+                "net_ipv4_tcp_window_scaling": "1",
+                "net_ipv4_tcp_wmem": "4096    87380   4194304",
+                "os_users": {
+                    "mqm": {
+                        "comment": "MQseries User",
+                        "gid": "mqm",
+                        "home": "/home/mqm",
+                        "ldap_user": "false",
+                        "name": "mqm",
+                        "shell": "/bin/bash"
+                    }
+                },
+                "perms": "755",
+                "qmgr_dir": "/var/mqm/qmgrs",
+                "service_name": "mq",
+                "swap_file": "/swapfile",
+                "swap_file_size": "512",
+                "version": "8.0"
+            }
+        },
+        "depends_on": [],
+        "description": "WMQ V8 Install on Linux",
+        "displayname": "wmq_v8_install",
+        "name": "wmq_v8_install",
+        "objectname": "wmq_v8_install",
+        "run_list": [
+            "recipe[wmq::prereq_check]",
+            "recipe[wmq::prereq]",
+            "recipe[wmq::install]",
+            "recipe[wmq::fixpack]",
+            "recipe[wmq::service]",
+            "recipe[wmq::gather_evidence]",
+            "recipe[wmq::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_auth": "true",
+                "sw_repo_password": "",
+                "sw_repo_self_signed_cert": "true",
+                "sw_repo_user": "repouser"
+            },
+            "wmq": {
+                "advanced": "false",
+                "data_dir": "/var/mqm",
+                "fixpack": "1",
+                "global_mq_service": "true",
+                "install_dir": "/opt/mqm",
+                "log_dir": "/var/mqm/log",
+                "net_core_rmem_default": "10240",
+                "net_core_rmem_max": "4194304",
+                "net_core_wmem_default": "262144",
+                "net_ipv4_tcp_fin_timeout": "60",
+                "net_ipv4_tcp_keepalive_intvl": "75",
+                "net_ipv4_tcp_keepalive_time": "7200",
+                "net_ipv4_tcp_rmem": "4096    87380   4194304",
+                "net_ipv4_tcp_sack": "1",
+                "net_ipv4_tcp_timestamps": "1",
+                "net_ipv4_tcp_window_scaling": "1",
+                "net_ipv4_tcp_wmem": "4096    87380   4194304",
+                "os_users": {
+                    "mqm": {
+                        "comment": "MQseries User",
+                        "gid": "mqm",
+                        "home": "/home/mqm",
+                        "ldap_user": "false",
+                        "name": "mqm",
+                        "shell": "/bin/bash"
+                    }
+                },
+                "perms": "755",
+                "qmgr_dir": "/var/mqm/qmgrs",
+                "service_name": "mq",
+                "swap_file": "/swapfile",
+                "swap_file_size": "512",
+                "version": "9.0"
+            }
+        },
+        "depends_on": [],
+        "description": "WMQ V9 Install on linix",
+        "displayname": "wmq_v9_install",
+        "name": "wmq_v9_install",
+        "objectname": "wmq_v9_install",
+        "run_list": [
+            "recipe[wmq::prereq_check]",
+            "recipe[wmq::prereq]",
+            "recipe[wmq::install]",
+            "recipe[wmq::fixpack]",
+            "recipe[wmq::service]",
+            "recipe[wmq::gather_evidence]",
+            "recipe[wmq::cleanup]"
+        ],
+        "type": "chef_role"
+    }
+]

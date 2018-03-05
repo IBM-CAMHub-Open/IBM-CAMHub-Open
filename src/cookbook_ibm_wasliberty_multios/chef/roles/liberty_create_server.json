@@ -1,0 +1,34 @@
+{
+    "name" : "liberty_create_server",
+    "description" : "create and configure a liberty server instance",
+    "json_class" : "Chef::Role",
+    "chef_type" : "role",
+    "default_attributes" : {
+      "was_liberty" : {
+        "install_dir" : "/opt/IBM/WebSphere/Liberty",
+        "liberty_servers": {
+          "server($INDEX)" : {
+            "name" : "defaultServer",
+            "jvm_params" : "-Xms256m -Xmx2048m",
+            "httpport" : "9080",
+            "httpsport" : "9443",
+            "feature" : "webProfile-7.0 adminCenter-1.0",
+            "keystore_id" : "defaultKeyStore",
+            "keystore_password": "",
+            "users" : {
+              "admin_user": {
+                "name": "admin",
+                "password": "",
+                "role" : "admin"
+              }
+            }
+          }
+        },
+        "wlp_user_dir": "/var/liberty/usr"
+      }
+    },
+    "run_list" : [
+        "recipe[wasliberty::create_server]",
+        "recipe[wasliberty::config_srv]"
+    ]
+}

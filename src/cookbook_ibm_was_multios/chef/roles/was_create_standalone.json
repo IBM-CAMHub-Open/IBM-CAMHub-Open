@@ -1,0 +1,39 @@
+{
+  "name": "was_create_standalone",
+  "description": "Create the standalone profile and start the server",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "profiles": {
+            "standalone_profiles": {
+              "standalone1": {
+                "profile": "AppSrv01",
+                "server": "server1",
+                "cell": "cell01",
+                "keystorepassword": ""
+              }
+            }
+          },
+          "wsadmin": {
+            "standalone": {
+              "jvmproperty": {
+                "property_value_initial": "256",
+                "property_value_maximum": "512"
+              }
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_standalone]",
+        "recipe[was::configure_standalone]",
+        "recipe[was::cleanup]"
+      ],
+      "env_run_lists": {
+
+      }
+}

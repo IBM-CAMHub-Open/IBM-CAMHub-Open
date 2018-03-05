@@ -1,0 +1,76 @@
+{
+    "ihs": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "Perform post-install cleanup"
+            ]
+        },
+        "config_admin_conf.rb": {
+            "description": [
+                "Configure admin server recipe (config_admin_conf.rb)",
+                "Create admin.conf and service script for the admin server"
+            ]
+        },
+        "config_httpd_conf.rb": {
+            "description": [
+                "Main server configuration recipe (config_httpd_conf.rb)",
+                "Configure main server and service file"
+            ]
+        },
+        "config_ssl_selfsigned.rb": {
+            "description": [
+                "SSL configuration recipe (config_ssl_selfsigned.rb)",
+                "Configure a SSL vhost and associated self-signed certificates"
+            ]
+        },
+        "config_wasplugin.rb": {
+            "description": [
+                "WAS plugin configuration recipe (config_wasplugin.rb)",
+                "Configure the WAS plugin"
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "Perform minimal product installation"
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Gather evidence recipe (gather_evidence.rb)",
+                "Gather evidence that installation was successful"
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "Perform installation of the main asset"
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisites recipe (prereq.rb)",
+                "Perform prerequisite actions"
+            ]
+        },
+        "prereq_check.rb": {
+            "description": [
+                "Prerequisites recipe (prereq_check.rb)",
+                "Verify required prerequisites, validate input"
+            ]
+        },
+        "service_admin.rb": {
+            "description": [
+                "Configure admin server recipe (service_admin.rb)",
+                "Configure and manage admin server service"
+            ]
+        },
+        "service_httpd.rb": {
+            "description": [
+                "Configure web server recipe (service_httpd.rb)",
+                "Configure and manage web service"
+            ]
+        }
+    }
+}

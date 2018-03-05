@@ -1,0 +1,66 @@
+{
+    "ihs": {
+        "software": {
+            "name": "IBM HTTP Server ",
+            "major_version": [
+                "8.5.5",
+                "9.0.0"
+            ],
+            "minor_version": [
+                "8.5.5.12",
+                "9.0.0.4"
+            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x",
+                "Ubuntu 14.x",
+                "Ubuntu 16.x"
+            ]
+        },
+        "disk": {
+            "/tmp": "2048",
+            "/var": "512",
+            "/opt/IBM/IHS": "2048",
+            "/tmp/ibm_cloud": "2048"
+        },
+        "prerequisites": {
+            "Min Memory": "1024",
+            "Min Disk": "20GB",
+            "Min CPU": "1",
+            "Remote Root Access": "yes",
+            "Internal Firewall": "off"
+        },
+        "ports": {
+            "Http Port": "80",
+            "Https Port": "443",
+            "Admin Port": "8008",
+            "Min CPU": "1"
+        },
+        "installation_files": {
+            "8.5.5": {
+                "X86_64": {
+                    "repo_root": "IM Repository File",
+                    "file": ["com.ibm.websphere.IHS.v85_8.5.5012.20170627_1018", "com.ibm.websphere.PLG.v85_8.5.5012.20170627_1018"]
+                }
+            },
+            "9.0.0": {
+                "X86_64": {
+                    "repo_root": "IM Repository File",
+                    "file": ["com.ibm.websphere.IHS.v90_9.0.4.20170523_1327", "com.ibm.websphere.PLG.v90_9.0.4.20170523_1327"]
+                }
+            }
+        },
+        "os_repository": {
+            "redhat": {
+                "x86_64": {
+                    "libraries": "curl, iproute"
+                }
+            },
+            "debian": {
+                "x86_64": {
+                    "libraries": "curl, iproute2"
+                }
+            }
+        }
+    }
+}

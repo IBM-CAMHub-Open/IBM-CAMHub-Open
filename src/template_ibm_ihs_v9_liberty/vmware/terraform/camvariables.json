@@ -1,0 +1,715 @@
+{
+  "input_namespaces": [
+    {
+      "name": "advanced_content_runtime_chef",
+      "label": "Advanced Content Runtime"
+    }
+  ],
+  "output_namespace": "content_template_output",
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "ssh_keys",
+      "label": "SSH Keys"
+    },
+    {
+      "name": "environment",
+      "label": "Environment"
+    },
+    {
+      "name": "ihsnode01",
+      "label": "IHSNode01"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "ibm_stack_name",
+      "type": "string",
+      "description": "A unique stack name.",
+      "hidden": true,
+      "label": "A unique stack name.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
+    {
+      "name": "allow_unverified_ssl",
+      "type": "string",
+      "description": "Communication with vsphere server with self signed certificate",
+      "default": true,
+      "hidden": true,
+      "label": "Communication with vsphere server with self signed certificate",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHSNode01_dns_servers",
+      "type": "list",
+      "description": "DNS servers for the virtual network adapter",
+      "hidden": false,
+      "label": "DNS Servers - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_dns_suffixes",
+      "type": "list",
+      "description": "Name resolution suffixes for the virtual network adapter",
+      "hidden": false,
+      "label": "DNS Suffixes - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_root_disk_keep_on_remove",
+      "type": "string",
+      "description": "Delete template disk volume when the virtual machine is deleted",
+      "default": "false",
+      "hidden": true,
+      "label": "Delete template disk volume when the virtual machine is deleted - IHSNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        },
+        {
+          "value": "true",
+          "label": "True"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_domain",
+      "type": "string",
+      "description": "Domain Name of virtual machine",
+      "hidden": false,
+      "label": "Domain Name - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_ihs_java_version",
+      "type": "string",
+      "description": "The Java version to be used with IBM HTTP Server",
+      "default": "8.0.4.70",
+      "hidden": true,
+      "label": "IBM HTTP Server Java version - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_os_users_ihs_shell",
+      "type": "string",
+      "description": "Location of the IBM HTTP Server operating system user shell",
+      "default": "/sbin/nologin",
+      "hidden": true,
+      "label": "IBM HTTP Server OS user shell - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_admin_server_enabled",
+      "type": "string",
+      "description": "IBM HTTP Server Admin Server Enable(true/false)",
+      "default": "false",
+      "hidden": true,
+      "label": "IBM HTTP Server admin server enabled - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_version",
+      "type": "string",
+      "description": "The version of IBM HTTP Server to install",
+      "default": "9.0.0.4",
+      "hidden": false,
+      "label": "IBM HTTP Server install version - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_install_dir",
+      "type": "string",
+      "description": "The directory to install IBM HTTP Server",
+      "default": "/opt/IBM/HTTPServer",
+      "hidden": false,
+      "label": "IBM HTTP Server installation directory - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_install_mode",
+      "type": "string",
+      "description": "The mode of installation for IBM HTTP Server",
+      "default": "nonAdmin",
+      "hidden": true,
+      "label": "IBM HTTP Server installation mode - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_plugin_enabled",
+      "type": "string",
+      "description": "IBM HTTP Server Plugin Enabled",
+      "default": "true",
+      "hidden": true,
+      "label": "IBM HTTP Server plugin enabled - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_plugin_was_webserver_name",
+      "type": "string",
+      "description": "IBM HTTP Server Plugin Hostname, normally the FQDN",
+      "default": "webserver1",
+      "hidden": false,
+      "label": "IBM HTTP Server plugin hostname - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_plugin_install_dir",
+      "type": "string",
+      "description": "IBM HTTP Server Plugin Installation Direcrtory",
+      "default": "/opt/IBM/WebSphere/Plugins",
+      "hidden": false,
+      "label": "IBM HTTP Server plugin installation directory - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_port",
+      "type": "string",
+      "description": "The IBM HTTP Server default port for HTTP requests",
+      "default": "8080",
+      "hidden": true,
+      "label": "IBM HTTP Server port - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_os_users_ihs_gid",
+      "type": "string",
+      "description": "The group name for the IBM HTTP Server user",
+      "default": "ihsgrp",
+      "hidden": true,
+      "label": "IBM HTTP Server user group name - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_os_users_ihs_name",
+      "type": "string",
+      "description": "The username for IBM HTTP Server",
+      "default": "ihssrv",
+      "hidden": false,
+      "label": "IBM HTTP Server username - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "IHSNode01_ihs_java_legacy",
+      "type": "string",
+      "description": "The Java version to be used with IBM HTTP Server version 8.5.5",
+      "default": "java8",
+      "hidden": false,
+      "label": "IBM HTTP Server v855 Java version - IHSNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "java6",
+          "label": "java6"
+        },
+        {
+          "value": "java8",
+          "label": "java8",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsnode01"
+    },
+    {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_im_repo",
+      "type": "string",
+      "description": "IBM Software  Installation Manager Repository URL (https://<hostname/IP>:<port>/IMRepo) ",
+      "hidden": true,
+      "label": "IBM Software Installation Manager Repository",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo}"
+    },
+    {
+      "name": "ibm_im_repo_password",
+      "type": "string",
+      "description": "IBM Software  Installation Manager Repository Password",
+      "hidden": true,
+      "label": "IBM Software Installation Manager Repository Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo_password}"
+    },
+    {
+      "name": "ibm_im_repo_user",
+      "type": "string",
+      "description": "IBM Software  Installation Manager Repository username",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Installation Manager Repository Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "string",
+      "description": "IBM Software Repo Password",
+      "hidden": true,
+      "label": "IBM Software Repo Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repo Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "IBM Software Repo Username",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repo Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "IHSNode01-image",
+      "type": "string",
+      "description": "Operating system image id / template that should be used when creating the virtual image",
+      "hidden": false,
+      "label": "Operating System ID / Template - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01-os_admin_user",
+      "type": "string",
+      "description": "Name of the admin user account in the virtual machine that will be accessed via SSH",
+      "hidden": false,
+      "label": "Operating System Username - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01-os_password",
+      "type": "string",
+      "description": "Operating System Password for the Operating System User to access virtual machine",
+      "hidden": false,
+      "label": "Operating system password - IHSNode01",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "ibm_pm_private_ssh_key",
+      "type": "string",
+      "description": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_private_ssh_key}"
+    },
+    {
+      "name": "ibm_pm_public_ssh_key",
+      "type": "string",
+      "description": "Public CAMC SSH key value which is used to connect to a guest, used on VMware only.",
+      "hidden": true,
+      "label": "Public CAMC SSH key value which is used to connect to a guest, used on VMware only.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key}"
+    },
+    {
+      "name": "IHSNode01-name",
+      "type": "string",
+      "description": "Short hostname of virtual machine",
+      "hidden": false,
+      "label": "Short hostname - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_root_disk_controller_type",
+      "type": "string",
+      "description": "Type of template disk controller",
+      "default": "scsi",
+      "hidden": false,
+      "label": "Template Disk Controller - IHSNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "scsi",
+          "label": "scsi",
+          "default": "true"
+        },
+        {
+          "value": "scsi-lsi-parallel",
+          "label": "scsi-lsi-parallel"
+        },
+        {
+          "value": "scsi-buslogic",
+          "label": "scsi-buslogic"
+        },
+        {
+          "value": "scsi-paravirtual",
+          "label": "scsi-paravirtual"
+        },
+        {
+          "value": "scsi-isi-sas",
+          "label": "scsi-isi-sas"
+        },
+        {
+          "value": "ide",
+          "label": "ide"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_root_disk_datastore",
+      "type": "string",
+      "description": "Data store or storage cluster name for target virtual machine's disks",
+      "hidden": false,
+      "label": "Template Disk Datastore - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_root_disk_type",
+      "type": "string",
+      "description": "Type of template disk volume",
+      "default": "eager_zeroed",
+      "hidden": false,
+      "label": "Template Disk Type - IHSNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "eager_zeroed",
+          "label": "Thick Provision Eager Zeroed",
+          "default": "true"
+        },
+        {
+          "value": "lazy",
+          "label": "Thick Provision Lazy Zeroed"
+        },
+        {
+          "value": "thin",
+          "label": "Thin Provision",
+          "group_name": "virtualmachine"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_ipv4_gateway",
+      "type": "string",
+      "description": "IPv4 gateway for vNIC configuration",
+      "hidden": false,
+      "label": "Virtual Machine Gateway Address - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_ipv4_address",
+      "type": "string",
+      "description": "IPv4 address for vNIC configuration",
+      "hidden": false,
+      "label": "Virtual Machine IP Address - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_memory",
+      "type": "string",
+      "description": "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024",
+      "default": 4096,
+      "hidden": false,
+      "label": "Virtual Machine Memory - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_ipv4_prefix_length",
+      "type": "string",
+      "description": "IPv4 prefix length for vNIC configuration. The value must be a number between 8 and 32",
+      "hidden": false,
+      "label": "Virtual Machine Netmask Prefix - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_number_of_vcpu",
+      "type": "string",
+      "description": "Number of virtual CPU for the virtual machine, which is required to be a positive Integer",
+      "default": 2,
+      "hidden": false,
+      "label": "Virtual Machine vCPUs - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_network_interface_label",
+      "type": "string",
+      "description": "vSphere port group or network label for virtual machine's vNIC",
+      "hidden": false,
+      "label": "Virtual Machine vSphere Port Group - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_cluster",
+      "type": "string",
+      "description": "Target vSphere cluster to host the virtual machine",
+      "hidden": false,
+      "label": "vSphere Cluster - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHSNode01_datacenter",
+      "type": "string",
+      "description": "Target vSphere datacenter for virtual machine creation",
+      "hidden": false,
+      "label": "vSphere Datacenter - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHSNode01_folder",
+      "type": "string",
+      "description": "Target vSphere folder for virtual machine",
+      "hidden": false,
+      "label": "vSphere Folder Name - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHSNode01_adapter_type",
+      "type": "string",
+      "description": "Network adapter type for vNIC Configuration",
+      "default": "vmxnet3",
+      "hidden": false,
+      "label": "vSphere Network Adapter Type - IHSNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "vmxnet3",
+          "label": "vmxnet3",
+          "default": "true"
+        },
+        {
+          "value": "e1000",
+          "default": "e1000"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "user_public_ssh_key",
+      "type": "string",
+      "description": "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH.",
+      "default": "None",
+      "hidden": false,
+      "label": "User Public SSH Key - ssh_keys",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ssh_keys"
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "IHSNode01_ip",
+      "label": "IP Addresss",
+      "description": "The Public and Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "IHSNode01_name",
+      "label": "Node Name",
+      "description": "The chef node name",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "IHSNode01_roles",
+      "label": "Chef Roles",
+      "description": "The chef roles deployed",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "stack_id",
+      "label": "Generated Stack ID",
+      "description": "The generated stack id",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
+  ]
+}

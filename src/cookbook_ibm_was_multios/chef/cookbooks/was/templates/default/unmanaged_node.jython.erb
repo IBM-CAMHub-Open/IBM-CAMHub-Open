@@ -1,0 +1,13 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+node_name="<%= @NODE_NAME %>"
+host_name="<%= @HOST_NAME %>"
+
+print "INFO: Creating unmanaged node definition:  \"%s\" on host \"%s\"" % (node_name,host_name)
+
+AdminTask.createUnmanagedNode('[-nodeName <%= @NODE_NAME %> -hostName <%= @HOST_NAME %> -nodeOperatingSystem <%= @OS %>]')
+print "INFO: Saving configuration & syncing nodes." 
+
+saveAndSync()

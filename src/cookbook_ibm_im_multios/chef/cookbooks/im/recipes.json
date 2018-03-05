@@ -1,0 +1,46 @@
+{
+    "im": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe ( cleanup.rb )",
+                "This recipe will delete temp directory where installers were copied as they are not required any further."
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "The default recipe for the cookbook. It is recommended to not use the default recipe, but explicitly specify a run_list for the deployment node."
+            ]
+        },
+        "environment_check.rb": {
+            "description": [
+                "environment_check recipe (environment_check.rb)",
+                "This recipe will test that the external environment is ready to have a cookbook installed"
+            ]
+        },
+        "fixpack.rb": {
+            "description": [
+                "Fixpack recipe (fixpack.rb)",
+                "This recipe performs product fixpack installation."
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Gather evidence recipe (gather_evidence.rb)",
+                "It will create log file mentioning installed application version."
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Install  recipe (install.rb)",
+                "Installation recipe, source the version, unpack the file and install product"
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisites recipe (prereq.rb)",
+                "This recipe configures the operating prerequisites for the pattern."
+            ]
+        }
+    }
+}

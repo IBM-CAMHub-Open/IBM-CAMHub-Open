@@ -1,0 +1,69 @@
+{
+    "oracledb": {
+        "software": {
+            "name": "Oracle Enterprise Database",
+            "major_version": [
+                "v12c"
+            ],
+            "minor_version": [
+                "12.1.0.1.0",
+                "12.1.0.2.0",
+                "12.2.0.1.0"
+            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x"
+            ]
+        },
+        "disk": {
+            "/tmp": "1024",
+            "/var": "1024",
+            "/u01": "2048",
+            "/tmp/ibm_cloud": "2048"
+        },
+        "prerequisites": {
+            "Min Memory": "1024",
+            "Min Disk": "20GB",
+            "Min CPU": "1",
+            "Remote Root Access": "yes",
+            "Internal Firewall": "off"
+        },
+        "ports": {
+            "Oracle Listener Port": "1521",
+            "Min CPU": "1"
+        },
+        "installation_files": {
+            "12.1.0.1.0": {
+                "X86_64": {
+                    "repo_root": "/oracle/ee/v12c/base",
+                    "file": ["V38500-01_1of2.zip", "V38500-01_2of2.zip", "V38501-01_1of2.zip", "V38501-01_2of2.zip"]
+                }
+            },
+            "12.1.0.2.0": {
+                "X86_64": {
+                    "repo_root": "/oracle/ee/v12c/base",
+                    "file": ["V46095-01_1of2.zip", "V46095-01_2of2.zip", "V46096-01_1of2.zip", "V46096-01_2of2.zip"]
+                }
+            },
+            "12.2.0.1.0": {
+                "X86_64": {
+                    "repo_root": "/oracle/ee/v12c/base",
+                    "file": ["V839960-01.zip", "V840012-01.zip"]
+                }
+            }
+        },
+        "os_repository": {
+            "RHEL 6.x": {
+                "x86_64": {
+                    "libraries": "binutils, compat-libcap1.x86_64, compat-libstdc++-33, gcc, gcc-c++, glibc, glibc-devel, ksh, libgcc, libstdc++, libstdc++-devel, libaio, libaio-devel, libXext, libXtst, libX11, libXau, libxcb, libXi, make, sysstat, unzip, net-tools"
+                }
+            },
+            "RHEL 7.x": {
+                "x86_64": {
+                    "libraries": "binutils, compat-libcap1.x86_64, compat-libstdc++-33, gcc, gcc-c++, glibc, glibc-devel, ksh, libgcc, libstdc++, libstdc++-devel, libaio, libaio-devel, libXtst, libXi, make, sysstat, unzip, net-tools"
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# IBM Corporation
+# Copyright IBM Corp. 2006, 2017
+#
+# ora_rdbms_validation.sh
+# Validates Oracle database installation
+
+exec  >  >(tee -a <%= @evidence_dir %>/<%= @evidence_log %>)
+exec 2> >(tee -a <%= @evidence_dir %>/<%= @evidence_log %> >&2)
+orabase=<%= @orabase %>
+
+
+FAILFLAG=0
+
+ge_fail() {
+  printf "ERROR: $(date +"%Y:%m:%d %T %Z"): ${1}\n"
+  FAILFLAG=1
+}
+
+ge_pass() {
+  printf "INFO: $(date +"%Y:%m:%d %T %Z"): ${1}\n"
+}
+
+ge_pass "Gaterhing Evidence for Oracle RDBMS Installtion ..."
+
+ge_pass "1. Checking install base directory ... "
+if [ ! -f $orabase ]; then
+    ge_pass "exists, installation is done."
+else
+    ge_fail "doesn't exist, meaning installation is not done."
+fi
+
+ge_pass "2. Checking oracle user creation ..."
+cat /etc/passwd | grep <%= @orauser %>  && ge_pass "up" || ge_fail "down"
+
+ge_pass "3. Checking /etc/init.d/oracle ..."
+if [ -f /etc/init.d/oracle ]; then
+    ge_pass "exists."
+else
+    ge_fail "not exist.\n"
+fi
+
+ge_pass "4. Checking oracle services ... \n"
+ps -ef | grep "oracle"  && ge_pass "up" || ge_fail "down"
+
+ge_pass "5. Checking listening port ... \n"
+netstat -an | grep ":<%= @listen %> "  && ge_pass "up" || ge_fail "down"
+
+if [ "${FAILFLAG}" != "0" ]; then
+  exit 1
+else
+  ge_pass "Product successfully installed."
+fi

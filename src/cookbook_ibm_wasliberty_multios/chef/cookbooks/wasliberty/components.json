@@ -1,0 +1,241 @@
+[
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "was_liberty": {
+                "base_version": "17.0.2",
+                "edition": "core",
+                "install_dir": "/opt/IBM/WebSphere/Liberty",
+                "install_grp": "root",
+                "install_user": "root",
+                "java_version": "8.0",
+                "wlp_user_dir": "/opt/IBM/WebSphere/Liberty/usr"
+            }
+        },
+        "depends_on": [],
+        "description": "Installs WAS Liberty Core",
+        "displayname": "liberty_core_install",
+        "name": "liberty_core_install",
+        "objectname": "liberty_core_install",
+        "run_list": [
+            "recipe[wasliberty::prereq]",
+            "recipe[wasliberty::install]",
+            "recipe[wasliberty::gather_evidence]",
+            "recipe[wasliberty::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "$dynamicmaps": {
+            "was_liberty": {
+                "liberty_servers": {
+                    "$count": "0",
+                    "$displayname": "IBM Liberty Servers",
+                    "$key": "server",
+                    "$max": "4"
+                }
+            }
+        },
+        "attributes": {
+            "was_liberty": {
+                "install_dir": "/opt/IBM/WebSphere/Liberty",
+                "liberty_servers": {
+                    "server($INDEX)": {
+                        "feature": "webProfile-7.0 adminCenter-1.0",
+                        "httpport": "9080",
+                        "httpsport": "9443",
+                        "jvm_params": "-Xms256m -Xmx2048m",
+                        "keystore_id": "defaultKeyStore",
+                        "keystore_password": "",
+                        "name": "defaultServer",
+                        "users": {
+                            "admin_user": {
+                                "name": "admin",
+                                "password": "",
+                                "role": "admin"
+                            }
+                        }
+                    }
+                },
+                "wlp_user_dir": "/var/liberty/usr"
+            }
+        },
+        "depends_on": [],
+        "description": "create and configure a liberty server instance",
+        "displayname": "liberty_create_server",
+        "name": "liberty_create_server",
+        "objectname": "liberty_create_server",
+        "run_list": [
+            "recipe[wasliberty::create_server]",
+            "recipe[wasliberty::config_srv]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "was_liberty": {
+                "base_version": "17.0.2",
+                "edition": "base",
+                "install_dir": "/opt/IBM/WebSphere/Liberty",
+                "install_grp": "root",
+                "install_user": "root",
+                "java_version": "8.0",
+                "wlp_user_dir": "/opt/IBM/WebSphere/Liberty/usr"
+            }
+        },
+        "depends_on": [],
+        "description": "installs WAS Liberty Base",
+        "displayname": "liberty_install",
+        "name": "liberty_install",
+        "objectname": "liberty_install",
+        "run_list": [
+            "recipe[wasliberty::prereq]",
+            "recipe[wasliberty::install]",
+            "recipe[wasliberty::gather_evidence]",
+            "recipe[wasliberty::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "was_liberty": {
+                "base_version": "17.0.2",
+                "edition": "nd",
+                "install_dir": "/opt/IBM/WebSphere/Liberty",
+                "install_grp": "root",
+                "install_user": "root",
+                "java_version": "8.0",
+                "wlp_user_dir": "/opt/IBM/WebSphere/Liberty/usr"
+            }
+        },
+        "depends_on": [],
+        "description": "installs WAS Liberty ND",
+        "displayname": "liberty_nd_install",
+        "name": "liberty_nd_install",
+        "objectname": "liberty_nd_install",
+        "run_list": [
+            "recipe[wasliberty::prereq]",
+            "recipe[wasliberty::install]",
+            "recipe[wasliberty::gather_evidence]",
+            "recipe[wasliberty::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ssh": {
+                "private_key": {
+                    "path": "/root/.ssh/CAMkey.pem"
+                }
+            },
+            "was_liberty": {
+                "farm": {
+                    "central_node": "",
+                    "logFileName": "serverfarm.log",
+                    "pluginInstallRoot": "plugin_install_root",
+                    "sslCertlabel": "definedbyuser",
+                    "sslKeyringLocation": "/tmp/liberty/sslkeyring",
+                    "sslStashfileLocation": "/tmp/liberty/stashfile",
+                    "webserverName": "websrv",
+                    "webserverPort": "88",
+                    "webserverSecurePort": "99"
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "create and configure a liberty server farm",
+        "displayname": "liberty_plugin_generate",
+        "name": "liberty_plugin_generate",
+        "objectname": "liberty_plugin_generate",
+        "run_list": [
+            "recipe[wasliberty::server_farm]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ssh": {
+                "private_key": {
+                    "path": "/root/.ssh/CAMkey.pem"
+                }
+            },
+            "was_liberty": {
+                "farm": {
+                    "httpd_plugins_dir": "",
+                    "httpd_user": "",
+                    "logFileName": "serverfarm.log",
+                    "pluginInstallRoot": "plugin_install_root",
+                    "sslCertlabel": "definedbyuser",
+                    "sslKeyringLocation": "/tmp/liberty/sslkeyring",
+                    "sslStashfileLocation": "/tmp/liberty/stashfile",
+                    "webserverName": "websrv",
+                    "webserverPort": "88",
+                    "webserverSecurePort": "99",
+                    "webserverhost": ""
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "create and configure a liberty server farm",
+        "displayname": "liberty_plugin_merge",
+        "name": "liberty_plugin_merge",
+        "objectname": "liberty_plugin_merge",
+        "run_list": [
+            "recipe[wasliberty::server_farm]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ssh": {
+                "private_key": {
+                    "path": "/root/.ssh/CAMkey.pem"
+                }
+            },
+            "was_liberty": {
+                "farm": {
+                    "logFileName": "serverfarm.log",
+                    "pluginInstallRoot": "plugin_install_root",
+                    "sslCertlabel": "definedbyuser",
+                    "sslKeyringLocation": "/tmp/liberty/sslkeyring",
+                    "sslStashfileLocation": "/tmp/liberty/stashfile",
+                    "webserverName": "websrv",
+                    "webserverPort": "88",
+                    "webserverSecurePort": "99"
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "create and configure a liberty server farm",
+        "displayname": "liberty_plugin_merge_setup",
+        "name": "liberty_plugin_merge_setup",
+        "objectname": "liberty_plugin_merge_setup",
+        "run_list": [
+            "recipe[wasliberty::server_farm]"
+        ],
+        "type": "chef_role"
+    }
+]

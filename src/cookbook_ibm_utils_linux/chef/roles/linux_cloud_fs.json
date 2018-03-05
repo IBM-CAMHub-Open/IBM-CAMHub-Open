@@ -1,0 +1,27 @@
+{
+  "name":"linux_cloud_fs",
+  "description":"Configure File Systems on Cloud",
+  "json_class":"Chef::Role",
+  "chef_type":"role",
+  "default_attributes":{
+    "linux": {
+      "filesystems": {
+        "filesystem($INDEX)": {
+          "device": "/dev/xvdc",
+          "fstype": "ext4",
+          "label": "filesystem1",
+          "mountpoint": "/var/filesystem1",
+          "user": "default",
+          "group": "default",
+          "perms": "default",
+          "options": "defaults",
+          "size": "40",
+          "force": "true"
+        }
+      }
+    }
+  },
+  "run_list":[
+    "recipe[linux::create_fs]"
+  ]
+}

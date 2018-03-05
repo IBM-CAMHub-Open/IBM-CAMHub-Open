@@ -1,0 +1,110 @@
+[
+    {
+        "attributes": {
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "tomcat": {
+                "http": {
+                    "port": "8080"
+                },
+                "install_dir": "/opt/tomcat8",
+                "instance_dirs": {
+                    "log_dir": "/var/log/tomcat8",
+                    "temp_dir": "/var/tmp/tomcat8/temp",
+                    "webapps_dir": "/var/lib/tomcat8/webapps",
+                    "work_dir": "/var/tmp/tomcat8/work"
+                },
+                "java": {
+                    "java_sdk": "false",
+                    "vendor": "openjdk",
+                    "version": "1.8.0"
+                },
+                "os_users": {
+                    "daemon": {
+                        "gid": "tomcat",
+                        "ldap_user": "false",
+                        "name": "tomcat"
+                    }
+                },
+                "ssl": {
+                    "enabled": "true",
+                    "keystore": {
+                        "password": ""
+                    },
+                    "port": "8443"
+                },
+                "ui_control": {
+                    "all_roles": {
+                        "admin-gui": "enabled",
+                        "manager-gui": "enabled",
+                        "manager-jmx": "enabled",
+                        "manager-script": "enabled",
+                        "manager-status": "enabled"
+                    },
+                    "users": {
+                        "administrator": {
+                            "name": "admin",
+                            "password": "",
+                            "status": "enabled",
+                            "user_roles": {
+                                "admin-gui": "enabled",
+                                "manager-gui": "enabled",
+                                "manager-jmx": "enabled",
+                                "manager-script": "enabled",
+                                "manager-status": "enabled"
+                            }
+                        }
+                    }
+                },
+                "version": "8.0.15"
+            }
+        },
+        "depends_on": [],
+        "description": "Tomcat installation and configuration with SSL and admin user enabled.",
+        "displayname": "tomcat",
+        "name": "tomcat",
+        "objectname": "tomcat",
+        "run_list": [
+            "recipe[tomcat]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "tomcat": {
+                "http": {
+                    "port": "8080"
+                },
+                "install_dir": "/opt/tomcat8",
+                "java": {
+                    "version": "1.8.0"
+                },
+                "version": "8.5.12"
+            }
+        },
+        "depends_on": [],
+        "description": "Basic Tomcat installation and configuration.",
+        "displayname": "tomcat-basic",
+        "name": "tomcat-basic",
+        "objectname": "tomcat-basic",
+        "run_list": [
+            "recipe[tomcat::prereq_check]",
+            "recipe[tomcat::prereq]",
+            "recipe[tomcat::install]",
+            "recipe[tomcat::configure_tomcat_server]",
+            "recipe[tomcat::configure_tomcat_init]",
+            "recipe[tomcat::service]",
+            "recipe[tomcat::gather_evidence]",
+            "recipe[tomcat::cleanup]"
+        ],
+        "type": "chef_role"
+    }
+]

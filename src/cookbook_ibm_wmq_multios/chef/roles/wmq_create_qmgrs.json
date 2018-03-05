@@ -1,0 +1,34 @@
+{
+  "name": "wmq_create_qmgrs",
+  "description": "WMQ Configure Queue Manager",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ibm": {
+      "temp_dir": "/tmp/ibm_cloud",
+      "log_dir": "/var/log/ibm_cloud",
+      "expand_area": "/tmp/ibm_cloud/expand_area",
+      "sw_repo": "",
+      "sw_repo_user": "repouser",
+      "sw_repo_password": ""
+    },
+    "wmq": {
+      "qmgr": {
+          "qmgr($INDEX)": {
+            "name": "QMGR1",
+            "description": "Default Queue Manager",
+            "listener_port": "1414",
+            "loggingtype": "lc",
+            "primarylogs": "10",
+            "secondarylogs": "20",
+            "logsize": "16384",
+            "dlq": "SYSTEM.DEAD.LETTER.QUEUE"
+          }
+       }
+     }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[wmq::config_qmgr_single]",
+    "recipe[wmq::start_qmgr]"
+  ]
+}

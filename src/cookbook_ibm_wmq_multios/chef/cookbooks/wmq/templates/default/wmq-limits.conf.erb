@@ -1,0 +1,17 @@
+<%= @user %>  soft  nproc   4096
+<%= @user %>  hard  nproc   4096
+<%= @user %>  soft  nofile  <%= @nofile_value %>
+<%= @user %>  hard  nofile  <%= @nofile_value %>
+<%= @user %>  soft  stack   32768
+<%= @user %>  hard  stack   32768
+<%= @user %>  soft  memlock 3145728
+<%= @user %>  hard  memlock 3145728
+
+root  soft  nproc   4096
+root  hard  nproc   4096
+root  soft  nofile  <%= @nofile_value %>
+root  hard  nofile  <%= @nofile_value %>
+root  soft  stack   32768
+root  hard  stack   32768
+root  soft  memlock 3145728
+root  hard  memlock 3145728

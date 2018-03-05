@@ -1,0 +1,983 @@
+{
+  "input_namespaces": [
+    {
+      "name": "advanced_content_runtime_chef",
+      "label": "Advanced Content Runtime"
+    }
+  ],
+  "output_namespace": "content_template_output",
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "ssh_keys",
+      "label": "SSH Keys"
+    },
+    {
+      "name": "environment",
+      "label": "Environment"
+    },
+    {
+      "name": "tomcatnode01",
+      "label": "TomcatNode01"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "ibm_stack_name",
+      "type": "string",
+      "description": "A unique stack name.",
+      "hidden": true,
+      "label": "A unique stack name.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
+    {
+      "name": "aws_ami_owner_id",
+      "type": "string",
+      "description": "AWS AMI Owner ID",
+      "default": "309956199498",
+      "hidden": false,
+      "label": "AWS AMI Owner ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "aws_region",
+      "type": "string",
+      "description": "AWS Region Name",
+      "default": "us-east-1",
+      "hidden": false,
+      "label": "AWS Region Name",
+      "secured": false,
+      "options": [
+        {
+          "value": "us-east-1",
+          "label": "US East (N. Virginia)",
+          "default": true
+        },
+        {
+          "value": "us-east-2",
+          "label": "US East (Ohio)"
+        },
+        {
+          "value": "us-west-1",
+          "label": "US West (N. California)"
+        },
+        {
+          "value": "us-west-2",
+          "label": "US West (Oregon)"
+        },
+        {
+          "value": "ca-central-1",
+          "label": "Canada (Central)"
+        },
+        {
+          "value": "eu-west-1",
+          "label": "EU (Ireland)"
+        },
+        {
+          "value": "eu-central-1",
+          "label": "EU (Frankfurt)"
+        },
+        {
+          "value": "eu-west-2",
+          "label": "EU (London)"
+        },
+        {
+          "value": "ap-northeast-1",
+          "label": "Asia Pacific (Tokyo)"
+        },
+        {
+          "value": "ap-northeast-2",
+          "label": "Asia Pacific (Seoul)"
+        },
+        {
+          "value": "ap-southeast-1",
+          "label": "Asia Pacific (Singapore)"
+        },
+        {
+          "value": "ap-southeast-2",
+          "label": "Asia Pacific (Sydney)"
+        },
+        {
+          "value": "ap-south-1",
+          "label": "Asia Pacific (Mumbai)"
+        },
+        {
+          "value": "sa-east-1",
+          "label": "South America (São Paulo)"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "TomcatNode01_root_block_device_delete_on_termination",
+      "type": "string",
+      "description": "AWS Root Block Device Delete on Termination",
+      "default": "true",
+      "hidden": false,
+      "label": "AWS Root Block Device Delete on Termination",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "False"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "TomcatNode01_root_block_device_volume_size",
+      "type": "string",
+      "description": "AWS Root Block Device Volume Size",
+      "default": 100,
+      "hidden": false,
+      "label": "AWS Root Block Device Volume Size",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "TomcatNode01_root_block_device_volume_type",
+      "type": "string",
+      "description": "AWS Root Block Device Volume Type",
+      "default": "gp2",
+      "hidden": false,
+      "label": "AWS Root Block Device Volume Type",
+      "secured": false,
+      "options": [
+        {
+          "value": "gp2",
+          "label": "General Purpose SSD",
+          "default": "true"
+        },
+        {
+          "value": "io1",
+          "label": "Provisioned IOPS SSD"
+        },
+        {
+          "value": "st1",
+          "label": "Throughput Optimized HDD"
+        },
+        {
+          "value": "sc1",
+          "label": "Cold HDD"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "aws_sg_camc_name",
+      "type": "string",
+      "description": "AWS Security Group Name",
+      "hidden": false,
+      "label": "AWS Security Group Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "TomcatNode01_subnet_name",
+      "type": "string",
+      "description": "AWS Subnet Name",
+      "hidden": false,
+      "label": "AWS Subnet Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "aws_vpc_name",
+      "type": "string",
+      "description": "AWS VPC Name",
+      "hidden": false,
+      "label": "AWS VPC Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "TomcatNode01_associate_public_ip_address",
+      "type": "string",
+      "description": "AWS assign a public IP to instance",
+      "default": "true",
+      "hidden": false,
+      "label": "AWS assign a public IP to instance",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "False"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "string",
+      "description": "IBM Software Repo Password",
+      "hidden": true,
+      "label": "IBM Software Repo Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repo Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "IBM Software Repo Username",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repo Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_pm_private_ssh_key",
+      "type": "string",
+      "description": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest. - ssh_keys",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "ssh_keys",
+      "default": "${advanced_content_runtime_chef.ibm_pm_private_ssh_key}"
+    },
+    {
+      "name": "ibm_pm_public_ssh_key_name",
+      "type": "string",
+      "description": "Public CAMC SSH key name used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Public CAMC SSH key name used to connect to the virtual guest. - ssh_keys",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "ssh_keys",
+      "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key_name}"
+    },
+    {
+      "name": "user_public_ssh_key",
+      "type": "string",
+      "description": "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH.",
+      "default": "None",
+      "hidden": false,
+      "label": "User Public SSH Key - ssh_keys",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ssh_keys"
+    },
+    {
+      "name": "TomcatNode01-image",
+      "type": "string",
+      "description": "Operating system image id / template that should be used when creating the virtual image",
+      "default": "RHEL-7.4_HVM_GA",
+      "hidden": false,
+      "label": "Operating System ID / Template - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "TomcatNode01-os_admin_user",
+      "type": "string",
+      "description": "Name of the admin user account in the virtual machine that will be accessed via SSH",
+      "hidden": false,
+      "label": "Operating System Username - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "TomcatNode01-name",
+      "type": "string",
+      "description": "Short hostname of virtual machine",
+      "hidden": false,
+      "label": "Short hostname - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "TomcatNode01_tomcat_http_port",
+      "type": "string",
+      "description": "The Tomcat port to service HTTP requests.",
+      "default": "8080",
+      "hidden": false,
+      "label": "Tomcat HTTP port - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_java_java_sdk",
+      "type": "string",
+      "description": "Specifies the use of a Java Development Kit (false) or Runtime Environment (true).",
+      "default": "false",
+      "hidden": false,
+      "label": "Tomcat Java Flavor - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_java_vendor",
+      "type": "string",
+      "description": "Currently only openjdk is supported as the Tomcat java vendor.",
+      "default": "openjdk",
+      "hidden": false,
+      "label": "Tomcat Java Vendor - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ssl_enabled",
+      "type": "string",
+      "description": "Indicates whether to enable the Tomcat SSL connector.",
+      "default": "true",
+      "hidden": false,
+      "label": "Tomcat SSL enabled - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ssl_keystore_password",
+      "type": "string",
+      "description": "The keystore password used in Tomcat for SSL configuration.",
+      "hidden": false,
+      "label": "Tomcat SSL keystore password - TomcatNode01",
+      "secured": true,
+      "regex": "^[!-~]{8,32}$",
+      "regexdesc": "Allow 8 to 32 printable ASCII characters except space.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ssl_port",
+      "type": "string",
+      "description": "Tomcat port for SSL communication",
+      "default": "8443",
+      "hidden": false,
+      "label": "Tomcat SSL port - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_status",
+      "type": "string",
+      "description": "Specifies whether to enable the admin user in the Tomcat configuration.",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat admin status - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_password",
+      "type": "string",
+      "description": "Password of the admin user to be configured in Tomcat.",
+      "hidden": false,
+      "label": "Tomcat admin user password - TomcatNode01",
+      "secured": true,
+      "regex": "^[!-~]{8,32}$",
+      "regexdesc": "Allow 8 to 32 printable ASCII characters except space.",
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_name",
+      "type": "string",
+      "description": "Name of the admin user to be configured in Tomcat.",
+      "default": "admin",
+      "hidden": false,
+      "label": "Tomcat admin username - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_os_users_daemon_name",
+      "type": "string",
+      "description": "Specifies the user for the Tomcat daemon.",
+      "default": "tomcat",
+      "hidden": false,
+      "label": "Tomcat daemon user - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_os_users_daemon_gid",
+      "type": "string",
+      "description": "Specifies the name of the Operating System group for Tomcat daemon users.",
+      "default": "tomcat",
+      "hidden": false,
+      "label": "Tomcat daemon user group - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_os_users_daemon_ldap_user",
+      "type": "string",
+      "description": "Specifies whether the Tomcat daemon user is stored in LDAP.",
+      "default": "false",
+      "hidden": false,
+      "label": "Tomcat daemon user ldap - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_install_dir",
+      "type": "string",
+      "description": "Specifies the directory to install Tomcat.",
+      "default": "/opt/tomcat8",
+      "hidden": false,
+      "label": "Tomcat install directory - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_version",
+      "type": "string",
+      "description": "The version of Tomcat to be installed.",
+      "default": "8.0.15",
+      "hidden": false,
+      "label": "Tomcat install version - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_java_version",
+      "type": "string",
+      "description": "The version of Java to be used for Tomcat.",
+      "default": "1.8.0",
+      "hidden": false,
+      "label": "Tomcat java version - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_instance_dirs_log_dir",
+      "type": "string",
+      "description": "Specifies the directory for Tomcat log files.",
+      "default": "/var/log/tomcat8",
+      "hidden": false,
+      "label": "Tomcat logs directory - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_all_roles_admin-gui",
+      "type": "string",
+      "description": "Tomcat roles: admin-gui",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat roles: admin-gui - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_all_roles_manager-gui",
+      "type": "string",
+      "description": "Tomcat roles: manager-gui",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat roles: manager-gui - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_all_roles_manager-jmx",
+      "type": "string",
+      "description": "Tomcat roles: manager-jmx",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat roles: manager-jmx - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_all_roles_manager-script",
+      "type": "string",
+      "description": "Tomcat roles: manager-script",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat roles: manager-script - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_all_roles_manager-status",
+      "type": "string",
+      "description": "Tomcat roles: manager-status",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat roles: manager-status - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_instance_dirs_temp_dir",
+      "type": "string",
+      "description": "Specifies the temporary directory for Tomcat.",
+      "default": "/var/tmp/tomcat8/temp",
+      "hidden": false,
+      "label": "Tomcat temp directory - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_user_roles_admin-gui",
+      "type": "string",
+      "description": "Tomcat users administrator roles: admin-gui",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat users administrator roles: admin-gui - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_user_roles_manager-gui",
+      "type": "string",
+      "description": "Tomcat users administrator roles: manager-gui",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat users administrator roles: manager-gui - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_user_roles_manager-jmx",
+      "type": "string",
+      "description": "Tomcat users administrator roles: manager-jmx",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat users administrator roles: manager-jmx - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_user_roles_manager-script",
+      "type": "string",
+      "description": "Tomcat users administrator roles: manager-script",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat users administrator roles: manager-script - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_ui_control_users_administrator_user_roles_manager-status",
+      "type": "string",
+      "description": "Tomcat users administrator roles: manager-status",
+      "default": "enabled",
+      "hidden": false,
+      "label": "Tomcat users administrator roles: manager-status - TomcatNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "enabled",
+          "label": "enabled",
+          "default": true
+        },
+        {
+          "value": "disabled",
+          "label": "disabled"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_instance_dirs_webapps_dir",
+      "type": "string",
+      "description": "Specifies the Tomcat directory for web applications.",
+      "default": "/var/lib/tomcat8/webapps",
+      "hidden": false,
+      "label": "Tomcat webapps directory - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01_tomcat_instance_dirs_work_dir",
+      "type": "string",
+      "description": "Specifies the Tomcat working directory.",
+      "default": "/var/tmp/tomcat8/work",
+      "hidden": false,
+      "label": "Tomcat work directory - TomcatNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "tomcatnode01"
+    },
+    {
+      "name": "TomcatNode01-flavor",
+      "type": "string",
+      "description": "TomcatNode01 Flavor",
+      "default": "t2.medium",
+      "hidden": false,
+      "label": "TomcatNode01 Flavor",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "TomcatNode01-mgmt-network-public",
+      "type": "string",
+      "description": "Expose and use public IP of virtual machine for internal communication",
+      "default": "true",
+      "hidden": false,
+      "label": "Use Public Management Network",
+      "secured": false,
+      "options": [
+        {
+          "value": false,
+          "label": false
+        },
+        {
+          "value": true,
+          "label": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "runtime_domain",
+      "type": "string",
+      "description": "domain name",
+      "default": "${advanced_content_runtime_chef.runtime_domain}",
+      "hidden": true,
+      "label": "domain name",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "cloud"
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "TomcatNode01_ip",
+      "label": "IP Addresss",
+      "description": "The Public and Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "TomcatNode01_name",
+      "label": "Node Name",
+      "description": "The chef node name",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "TomcatNode01_roles",
+      "label": "Chef Roles",
+      "description": "The chef roles deployed",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "stack_id",
+      "label": "Generated Stack ID",
+      "description": "The generated stack id",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+exec >  >(tee -a <%= @evidence_dir %>/<%= @evidence_log %>)
+exec 2> >(tee -a <%= @evidence_dir %>/<%= @evidence_log %> >&2)
+
+FAILFLAG=0
+
+ge_fail() {
+  echo "ERROR: $(date +"%Y:%m:%d %T %Z"): ${1}"
+  FAILFLAG=1
+}
+
+ge_pass() {
+  echo "INFO: $(date +"%Y:%m:%d %T %Z"): ${1}"
+}
+
+# Verify install_dir, catalina_dir, daemon user are correct
+/bin/ps axo user:12,pid,cmd | grep -v grep | \
+  grep -E "httpd|apache2" | \
+  grep <%= @httpd_user %> && \
+  ge_pass "Process running under user <%= @httpd_user %>" || \
+  ge_fail "Process is not running as prescribed."
+
+# Verify httpd is running on prescribed web access port
+netstat -tulpn | grep -E "httpd|apache2" |
+  grep ":<%= @listen %> " && \
+  ge_pass "httpd is listening on prescribed http port <%= @listen %>" || \
+  ge_fail "httpd is NOT listening on prescribed http port <%= @listen %>"
+
+# Verify httpd is running on prescribed SSL port (if requested)
+<% if @ssl_enabled == 'true' %>
+  netstat -tulpn | grep -E "httpd|apache2" |
+  grep ":<%= @ssl_port %> " && \
+  ge_pass "httpd is listening on prescribed https port <%= @ssl_port %>" || \
+  ge_fail "httpd is NOT listening on prescribed https port <%= @ssl_port %>"
+<% end %>
+
+if [ "${FAILFLAG}" != "0" ]; then
+  exit 1
+else
+  echo "Product successfully installed."
+fi

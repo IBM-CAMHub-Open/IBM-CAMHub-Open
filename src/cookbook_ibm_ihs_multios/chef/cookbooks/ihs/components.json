@@ -1,0 +1,232 @@
+[
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "ihs": {
+                "admin_server": {
+                    "enabled": "false"
+                },
+                "install_dir": "/opt/IBM/HTTPServer",
+                "install_mode": "admin",
+                "java": {
+                    "legacy": "java8",
+                    "version": "8.0.4.70"
+                },
+                "os_users": {
+                    "ihs": {
+                        "gid": "ihsgrp",
+                        "name": "ihssrv",
+                        "shell": "/sbin/nologin"
+                    }
+                },
+                "plugin": {
+                    "enabled": "true",
+                    "install_dir": "/opt/IBM/WebSphere/Plugins",
+                    "was_webserver_name": "webserver1"
+                },
+                "port": "80",
+                "version": "9.0.0.4"
+            }
+        },
+        "depends_on": [],
+        "description": "IHS frontend for WAS Liberty, admin install mode",
+        "displayname": "ihs-liberty-admin",
+        "name": "ihs-liberty-admin",
+        "objectname": "ihs-liberty-admin",
+        "run_list": [
+            "recipe[ihs::prereq_check]",
+            "recipe[ihs::prereq]",
+            "recipe[ihs::install]",
+            "recipe[ihs::config_httpd_conf]",
+            "recipe[ihs::config_admin_conf]",
+            "recipe[ihs::config_ssl_selfsigned]",
+            "recipe[ihs::config_wasplugin]",
+            "recipe[ihs::service_httpd]",
+            "recipe[ihs::service_admin]",
+            "recipe[ihs::gather_evidence]",
+            "recipe[ihs::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "ihs": {
+                "admin_server": {
+                    "enabled": "false"
+                },
+                "install_dir": "/opt/IBM/HTTPServer",
+                "install_mode": "nonAdmin",
+                "java": {
+                    "legacy": "java8",
+                    "version": "8.0.4.70"
+                },
+                "os_users": {
+                    "ihs": {
+                        "gid": "ihsgrp",
+                        "name": "ihssrv",
+                        "shell": "/sbin/nologin"
+                    }
+                },
+                "plugin": {
+                    "enabled": "true",
+                    "install_dir": "/opt/IBM/WebSphere/Plugins",
+                    "was_webserver_name": "webserver1"
+                },
+                "port": "8080",
+                "version": "9.0.0.4"
+            }
+        },
+        "depends_on": [],
+        "description": "IHS frontend for WAS Liberty, nonAdmin install mode",
+        "displayname": "ihs-liberty-nonadmin",
+        "name": "ihs-liberty-nonadmin",
+        "objectname": "ihs-liberty-nonadmin",
+        "run_list": [
+            "recipe[ihs::prereq_check]",
+            "recipe[ihs::prereq]",
+            "recipe[ihs::install]",
+            "recipe[ihs::config_httpd_conf]",
+            "recipe[ihs::config_admin_conf]",
+            "recipe[ihs::config_ssl_selfsigned]",
+            "recipe[ihs::config_wasplugin]",
+            "recipe[ihs::service_httpd]",
+            "recipe[ihs::service_admin]",
+            "recipe[ihs::gather_evidence]",
+            "recipe[ihs::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "ihs": {
+                "admin_server": {
+                    "enabled": "true",
+                    "password": "",
+                    "port": "8008",
+                    "username": "ihsadmin"
+                },
+                "install_dir": "/opt/IBM/HTTPServer",
+                "install_mode": "admin",
+                "java": {
+                    "legacy": "java8",
+                    "version": "8.0.4.70"
+                },
+                "os_users": {
+                    "ihs": {
+                        "gid": "ihsgrp",
+                        "name": "ihssrv",
+                        "shell": "/sbin/nologin"
+                    }
+                },
+                "plugin": {
+                    "enabled": "true",
+                    "install_dir": "/opt/IBM/WebSphere/Plugins",
+                    "was_webserver_name": "webserver1"
+                },
+                "port": "80",
+                "version": "9.0.0.4"
+            }
+        },
+        "depends_on": [],
+        "description": "IHS frontend for WAS, admin install mode",
+        "displayname": "ihs-wasmode-admin",
+        "name": "ihs-wasmode-admin",
+        "objectname": "ihs-wasmode-admin",
+        "run_list": [
+            "recipe[ihs::prereq_check]",
+            "recipe[ihs::prereq]",
+            "recipe[ihs::install]",
+            "recipe[ihs::config_httpd_conf]",
+            "recipe[ihs::config_admin_conf]",
+            "recipe[ihs::config_ssl_selfsigned]",
+            "recipe[ihs::config_wasplugin]",
+            "recipe[ihs::service_httpd]",
+            "recipe[ihs::service_admin]",
+            "recipe[ihs::gather_evidence]",
+            "recipe[ihs::cleanup]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser"
+            },
+            "ihs": {
+                "admin_server": {
+                    "enabled": "true",
+                    "password": "",
+                    "port": "8008",
+                    "username": "ihsadmin"
+                },
+                "install_dir": "/opt/IBM/HTTPServer",
+                "install_mode": "nonAdmin",
+                "java": {
+                    "legacy": "java8",
+                    "version": "8.0.4.70"
+                },
+                "os_users": {
+                    "ihs": {
+                        "gid": "ihsgrp",
+                        "name": "ihssrv",
+                        "shell": "/sbin/nologin"
+                    }
+                },
+                "plugin": {
+                    "enabled": "true",
+                    "install_dir": "/opt/IBM/WebSphere/Plugins",
+                    "was_webserver_name": "webserver1"
+                },
+                "port": "8080",
+                "version": "9.0.0.4"
+            }
+        },
+        "depends_on": [],
+        "description": "IHS frontend for WAS, nonAdmin install mode",
+        "displayname": "ihs-wasmode-nonadmin",
+        "name": "ihs-wasmode-nonadmin",
+        "objectname": "ihs-wasmode-nonadmin",
+        "run_list": [
+            "recipe[ihs::prereq_check]",
+            "recipe[ihs::prereq]",
+            "recipe[ihs::install]",
+            "recipe[ihs::config_httpd_conf]",
+            "recipe[ihs::config_admin_conf]",
+            "recipe[ihs::config_ssl_selfsigned]",
+            "recipe[ihs::config_wasplugin]",
+            "recipe[ihs::service_httpd]",
+            "recipe[ihs::service_admin]",
+            "recipe[ihs::gather_evidence]",
+            "recipe[ihs::cleanup]"
+        ],
+        "type": "chef_role"
+    }
+]

@@ -1,0 +1,24 @@
+
+create
+templatePath=<%= @INSTALL_LOCATION %>/profileTemplates/management
+serverType=JOB_MANAGER
+profilePath=<%= @PROFILEPATH %>
+profileName=<%= @PROFILENAME %>
+cellName=<%= @CELLNAME %>
+nodeName=<%= @NODENAME %>
+hostName=<%= @HOSTNAME %>
+<% if node['was']['config']['enable_admin_security'] == "true" %>
+enableAdminSecurity=true
+adminUserName=<%= @ADMINUSERNAME %>
+adminPassword=<%= @ADMINPASSWORD %>
+<% else %>
+enableAdminSecurity=false
+<% end %>
+portsFile=<%= @PORTSFILE %>
+<% if node['was']['config']['use_default_certs'] == "false" %>
+personalCertDN=<%= @PERSONALCERTDN %>
+personalCertValidityPeriod=<%= @PERSONALCERTVALIDITYPERIOD %>
+signingCertDN=<%= @SIGNINGCERTDN %>
+signingCertValidityPeriod=<%= @SIGNINGCERTVALIDITYPERIOD %>
+keyStorePassword=<%= @KEYSTOREPASSWORD %>
+<% end %>

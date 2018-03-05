@@ -1,0 +1,35 @@
+{
+  "name": "was_create_nodeagent",
+  "description": "WAS-Create-NODE",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "profiles": {
+            "node_profile": {
+               "profile": "AppSrv01",
+               "keystorepassword": ""
+             }
+          },
+          "wsadmin": {
+            "nodeagent": {
+              "jvmproperty": {
+                "property_value_initial": "256",
+                "property_value_maximum": "512"
+              }
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_managed]",
+        "recipe[was::configure_nodeagent]",
+        "recipe[was::cleanup]"
+      ],
+      "env_run_lists": {
+
+      }
+}

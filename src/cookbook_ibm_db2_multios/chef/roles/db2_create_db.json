@@ -1,0 +1,56 @@
+{
+  "name":"db2_create_db",
+  "description":"Creates a new DB2 instance and database over an existing DB2 installation",
+  "json_class":"Chef::Role",
+  "chef_type":"role",
+  "default_attributes":{
+    "db2": {
+      "instances": {
+        "instance($INDEX)": {
+          "databases": {
+            "database($INDEX)": {
+              "db_name": "db01",
+              "db_data_path": "/home/db2inst1",
+              "db_path": "/home/db2inst1",
+              "pagesize": "4096",
+              "territory": "US",
+              "codeset": "UTF-8",
+              "db_collate": "SYSTEM",
+              "database_update": {
+                "NEWLOGPATH": "default",
+                "FAILARCHPATH": "default",
+                "LOGARCHMETH1": "default",
+                "LOGFILSIZ": "default",
+                "LOGSECOND": "default"
+              },
+              "database_users": {
+                "db_user($INDEX)": {
+                  "user_name": "dbuser1",
+                  "user_gid": "dbgroup1",
+                  "user_password": "",
+                  "user_home": "default",
+                  "ldap_user": "false",
+                  "user_access": "none"
+                }
+              }
+            }
+          },
+          "instance_username": "db2inst1",
+          "instance_prefix": "INST1",
+          "instance_type": "ESE",
+          "instance_groupname": "db2iadm1",
+          "instance_password": "",
+          "instance_dir": "/home/db2inst1",
+          "port": "50000",
+          "fenced_username": "db2fenc1",
+          "fenced_groupname": "db2fenc1",
+          "fenced_password": "",
+          "fcm_port": "60000"
+        }
+      }
+    }
+  },
+  "run_list":[
+      "recipe[db2::create_db]"
+  ]
+}

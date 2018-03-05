@@ -1,0 +1,19 @@
+LISTENER =
+  (DESCRIPTION_LIST =
+    (DESCRIPTION =
+      (ADDRESS_LIST =
+        (ADDRESS = (PROTOCOL = TCP)(HOST = <%= @HOST %>)(PORT = <%= @PORT %>))
+      )
+    )
+  )
+
+SID_LIST_LISTENER =
+  (SID_LIST =
+    (SID_DESC =
+      (GLOBAL_DBNAME = <%= @SID_NAME %>)
+      (ORACLE_HOME = <%= @ORACLE_HOME %>)
+      (SID_NAME = <%= @SID_NAME %>)
+    )
+  )
+
+LOCAL_OS_AUTHENTICATION_LISTENER=OFF

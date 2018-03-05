@@ -1,0 +1,10 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+cluster_name="<%= @CLUSTER_NAME %>"
+
+clusterMembers = listServersInCluster( cluster_name )
+
+for clusterMember in clusterMembers:
+  nodeName = AdminConfig.showAttribute( clusterMember, "nodeName" )
+  serverName = AdminConfig.showAttribute( clusterMember, "memberName" )
+  print nodeName + "_" + serverName

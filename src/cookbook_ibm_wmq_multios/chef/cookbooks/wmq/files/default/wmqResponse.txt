@@ -1,0 +1,8 @@
+mqm.base.sdk
+mqm.base.runtime
+mqm.base.samples
+mqm.client.rte
+mqm.java.rte
+mqm.man.en_US.data
+mqm.msg.en_US
+mqm.server.rte

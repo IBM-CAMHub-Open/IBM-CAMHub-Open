@@ -1,0 +1,29 @@
+{
+  "name":"linux_cloud_lvm",
+  "description":"Configure LVM File Systems on Cloud",
+  "json_class":"Chef::Role",
+  "chef_type":"role",
+  "default_attributes":{
+    "linux": {
+      "physicalvolumes": {
+        "physicalvolume($INDEX)": {
+          "logicalvolumes": {
+            "logicalvolume($INDEX)": {
+              "mountpoint": "/var/filesystem1",
+               "lv_name": "lvname",
+               "filesystem": "ext4",
+               "lv_size": "10G",
+               "options": "rw"
+             }
+          },
+          "device": "",
+          "vg_name": "vgname",
+          "size": "50"
+        }
+      }
+    } 
+   },
+  "run_list":[
+    "recipe[linux::create_lvm]"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "httpd24-base-install",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ibm": {
+      "sw_repo": "",
+      "sw_repo_password": "",
+      "sw_repo_user": "repouser"
+    },
+    "httpd": {
+      "os_users": {
+        "web_content_owner": {
+          "name": "webmaster",
+          "gid": "webmaster",
+          "ldap_user": "false",
+          "home": "/home/webmaster",
+          "shell": "/bin/bash"
+        }
+      },
+      "version": "2.4",
+      "install_from_repo": "false",
+      "log_dir": "/var/log/httpd",
+      "log_level": "info",
+      "document_root": "/var/www/html5",
+      "http_home": "/var/www",
+      "data_dir_mode": "0755",
+      "listen": "8080",
+      "server_name": "orpheus.ibm.com",
+      "server_admin": "webmaster@orpheus.ibm.com",
+      "php_mod_enabled": "true",
+      "vhosts_enabled": "false"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[httpd::prereq]",
+    "recipe[httpd::install]",
+    "recipe[httpd::config_httpd_conf]",
+    "recipe[httpd::service]",
+    "recipe[httpd::gather_evidence]",
+    "recipe[httpd::cleanup]"
+  ],
+  "env_run_lists": {
+
+  }
+}

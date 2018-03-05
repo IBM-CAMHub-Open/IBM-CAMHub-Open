@@ -1,0 +1,60 @@
+{
+    "oracle_mysql": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "This recipe will remove any temporary installation files created as part of the automation."
+            ]
+        },
+        "config_mysql.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "This recipe performs the product installation."
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "The default recipe for the cookbook. It is recommended to not use the default recipe, but explicitly specify a run_list for the deployment node."
+            ]
+        },
+        "fixpack.rb": {
+            "description": [
+                "Fixpack recipe (fixpack.rb)",
+                "This recipe performs product fixpack installation."
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Evidence gathering recipe (gather_evidence.rb)",
+                "This recipe will collect functional product information and store it in an archive."
+            ]
+        },
+        "harden.rb": {
+            "description": [
+                "Product hardening recipe (harden.rb)",
+                "This recipe performs security hardening tasks.",
+                "This custom resource changes the default MySQL root password"
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "This recipe performs the product installation."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisite recipe (prereq.rb)",
+                "This recipe configures the operating prerequisites for the product.",
+                "Archive names for RHEL6/7 and version separation"
+            ]
+        },
+        "service.rb": {
+            "description": [
+                "Service control recipe (service.rb)",
+                "Enable and start the MySQL service"
+            ]
+        }
+    }
+}

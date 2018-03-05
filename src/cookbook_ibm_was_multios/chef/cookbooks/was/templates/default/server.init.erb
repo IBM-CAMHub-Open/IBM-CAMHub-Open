@@ -1,0 +1,126 @@
+#!/bin/sh
+#
+
+# IBM Confidential OCO Source Material
+# 5724-I63, 5724-H88, 5655-N02, 5733-W70 (C) COPYRIGHT International Business Machines Corp. 2005, 2006
+# The source code for this program is not published or otherwise divested
+# of its trade secrets, irrespective of what has been deposited with the
+# U.S. Copyright Office.
+
+# The next lines are for chkconfig on RedHat systems.
+# chkconfig: 2345 98 02
+# description: Starts and stops WebSphere Application Server \
+#              instances. This service was created via the \
+#              wasservice command.
+
+# The next lines are for chkconfig on SuSE systems.
+### BEGIN INIT INFO
+# Provides: WebSphere_init_<%= @SERVERNAME %>
+# Required-Start: $network $syslog
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 6
+# Short-Description: Starts and stops WebSphere Application Server instances
+# Description: Starts and stops WebSphere Application Server instances
+### END INIT INFO
+
+
+# *** THE FOLLOWING BLOCK IS PROGRAMMATICALLY MAINTAINED. ***
+# *** PLEASE ALTER ONLY VIA THE WASSERVICE TOOL. ***
+# START BLOCK
+SERVERNAME="<%= @SERVERNAME %>"
+PROFILEPATH="<%= @PROFILEPATH %>"
+WASHOME="<%= @INSTALL_LOCATION %>"
+STARTARGS=""
+STOPARGS=""
+SERVICENAME="<%= @SERVICENAME %>_was.init"
+RUNASUSER="<%= @USERNAME %>"
+# END BLOCK
+
+startScript=startServer.sh
+stopScript=stopServer.sh
+
+binDir="${PROFILEPATH}/bin"
+LOCKFILE="/var/lock/subsys/${SERVICENAME}"
+RETVAL=0
+
+start_was()
+{
+    startCmd="${binDir}/${startScript}"
+    if [ -f "${startCmd}" -a -x "${startCmd}" ] ; then
+        echo "Starting WebSphere Application Server - ${SERVERNAME} ..."
+        if [ -z "${RUNASUSER}" ]; then
+          "${startCmd}" "${SERVERNAME}" ${STARTARGS} $@
+        else
+          su -c "\"${startCmd}\" \"${SERVERNAME}\" ${STARTARGS} $@" ${RUNASUSER}
+        fi
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && touch "${LOCKFILE}"
+    else
+        echo "Failure starting WebSphere Application Server - ${SERVERNAME}"
+        echo "The service definition may be invalid - script ${startCmd}"
+        echo "could not be found or was not executable."
+    fi
+}
+
+stop_was()
+{
+    stopCmd="${binDir}/${stopScript}"
+    if [ -f "${stopCmd}" -a -x "${stopCmd}" ] ; then
+        echo "Stopping WebSphere Application Server - $SERVERNAME ..."
+        if [ -z "${RUNASUSER}" ]; then
+          "${stopCmd}" "${SERVERNAME}" ${STOPARGS} $@
+        else
+          su -c "\"${stopCmd}\" \"${SERVERNAME}\" ${STOPARGS} $@" ${RUNASUSER}
+        fi
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && rm -f "${LOCKFILE}"
+    else
+        echo "Failure stopping WebSphere Application Server - ${SERVERNAME}"
+        echo "The service definition may be invalid - script ${stopCmd}"
+        echo "could not be found or was not executable."
+    fi
+}
+
+stat_was()
+{
+    if ps ax | grep -v grep | grep "${PROFILEPATH}" | grep "${SERVERNAME}" > /dev/null ; then
+        echo "WebSphere Application Server - $SERVERNAME is running."
+    else
+        echo "WebSphere Application Server - $SERVERNAME is not running."
+        RETVAL=3
+    fi
+}
+
+case "$1" in
+  start)
+    shift
+    start_was $@
+    ;;
+
+  stop)
+    shift
+    stop_was $@
+    ;;
+
+  restart)
+    stop_was
+    start_was
+    ;;
+
+  status)
+    stat_was
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|status|restart}"
+    exit 1
+    ;;
+esac
+
+
+if [ $RETVAL -ne 0 ]; then
+    echo exit code: $RETVAL
+fi
+
+exit $RETVAL

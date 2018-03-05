@@ -1,0 +1,22 @@
+#!/bin/bash
+################################################################################
+# Copyright IBM Corp. 2017, 2017
+################################################################################
+JAVA_HOME=<%= @java_home %>
+export JAVA_HOME
+PATH=$JAVA_HOME/bin:$PATH
+export PATH
+CATALINA_HOME=<%= @catalina_home %>
+export CATALINA_HOME
+CATALINA_BASE=<%= @catalina_base %>
+export CATALINA_BASE
+CATALINA_USER=<%= @tomcat_user %>
+export CATALINA_USER
+CATALINA_GROUP=<%= @tomcat_group %>
+export CATALINA_GROUP
+CATALINA_PID='<%= @catalina_pid %>'
+export CATALINA_PID
+CATALINA_OPTS='<%= @catalina_opts %>'
+export CATALINA_OPTS
+JAVA_OPTS='<%= @java_opts %>'
+export JAVA_OPTS

@@ -1,0 +1,16 @@
+<% if node['oracledb']['release_patchset'] == '12.1.0.2.0' %>  <%# ~ip_checker %>
+oracle.install.responseFileVersion=/oracle/install/rspfmt_crsinstall_response_schema_v12.1.0
+<% elsif node['oracledb']['release_patchset'] == '12.2.0.1.0' %>  <%# ~ip_checker %>
+oracle.install.responseFileVersion=/oracle/install/rspfmt_crsinstall_response_schema_v12.2.0
+<% end %>
+ORACLE_HOSTNAME=<%= @HOSTNAME %>
+INVENTORY_LOCATION=<%= @ORAINVENTORY %>
+SELECTED_LANGUAGES=en
+oracle.install.option=HA_SWONLY
+ORACLE_BASE=<%= @ORABASE %>
+ORACLE_HOME=<%= @ORAHOME %>
+oracle.install.asm.OSDBA=asmdba
+oracle.install.asm.OSOPER=asmoper
+oracle.install.asm.OSASM=asmadmin
+oracle.installer.autoupdates.option=SKIP_UPDATES
+oracle.install.crs.config.storageOption=LOCAL_ASM_STORAGE

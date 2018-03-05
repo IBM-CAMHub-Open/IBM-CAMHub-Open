@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ##### Copyright ######################################################
+# Licensed Materials - Property of IBM (c) Copyright IBM Corp. 2012.
+# All Rights Reserved. US Government Users Restricted Rights-Use, duplication
+# or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+####################################################################### -->
+
+<agent-input clean="true" temporary="true">
+
+<server>
+<repository location='<%= @REPO_LOCATION %>' />
+</server>
+
+<install modify='false'>
+<offering id='<%= @OFFERING_ID %>' profile='<%= @PROFILE_ID %>' version='<%= @OFFERING_VERSION %>' installFixes='recommended'/>
+<% if @INSTALL_JAVA == "true" %>
+<offering id='<%= @JAVA_OFFERING_ID %>' profile='<%= @PROFILE_ID %>' version='<%= @JAVA_OFFERING_VERSION %>' features='<%= @JAVA_FEATURE_LIST %>' installFixes='recommended'/>
+<% end %>
+</install>
+
+<profile id='<%= @PROFILE_ID %>' installLocation='<%= @INSTALL_LOCATION %>'>
+<data key='eclipseLocation' value='<%= @INSTALL_LOCATION %>'/>
+<data key='user.import.profile' value='false'/>
+<data key='cic.selector.nl' value='en'/>
+<% if (@OFFERING_ID.include? "IHS.v85") && (@OFFERING_VERSION.split('.')[2].to_i%1000  >=  11) %>
+<data key='user.wasjava' value='<%= @node['ihs']['java']['legacy'] %>'/>
+<% end %>
+<% if @OFFERING_ID.include? "IHS" %>
+<data key='user.ihs.httpPort' value='<%= node['ihs']['port'].to_i %>'/>
+<data key='user.ihs.allowNonRootSilentInstall' value='true'/>
+<% end %>
+</profile>
+
+<preference name='com.ibm.cic.common.core.preferences.connectTimeout' value='30'/>
+<preference name='com.ibm.cic.common.core.preferences.readTimeout' value='45'/>
+<preference name='com.ibm.cic.common.core.preferences.downloadAutoRetryCount' value='0'/>
+<preference name='offering.service.repositories.areUsed' value='true'/>
+<preference name='com.ibm.cic.common.core.preferences.ssl.nonsecureMode' value='<%= @IM_REPO_NONSECUREMODE %>'/>
+<preference name='com.ibm.cic.common.core.preferences.http.disablePreemptiveAuthentication' value='false'/>
+<preference name='http.ntlm.auth.kind' value='NTLM'/>
+<preference name='http.ntlm.auth.enableIntegrated.win32' value='true'/>
+<preference name='com.ibm.cic.common.core.preferences.keepFetchedFiles' value='false'/>
+<preference name='PassportAdvantageIsEnabled' value='false'/> <%# ~password_checker %>
+<preference name='com.ibm.cic.common.core.preferences.searchForUpdates' value='false'/>
+<preference name='com.ibm.cic.agent.ui.displayInternalVersion' value='false'/>
+<preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='<%= @IMSHARED %>'/>
+
+</agent-input>

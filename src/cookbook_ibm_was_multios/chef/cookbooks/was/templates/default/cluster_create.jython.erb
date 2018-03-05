@@ -1,0 +1,15 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+cluster_name="<%= @CLUSTER_NAME %>"
+cell_name="<%= @CELL_NAME %>"
+rep_domain=<%= @REP_DOMAIN %>
+
+print "INFO: Creating Cluster \"%s\" for cell \"%s\"" % (cluster_name,cell_name)
+
+createCluster( cell_name, cluster_name, rep_domain )
+
+print "INFO: Saving configuration & syncing nodes."
+
+saveAndSync()

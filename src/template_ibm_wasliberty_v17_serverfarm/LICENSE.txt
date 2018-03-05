@@ -1,0 +1,9 @@
+Licensed Materials - Property of IBM 
+
+For use by authorized subscribers only.  
+
+Refer to Service Description and SLA available here:  
+http://www-03.ibm.com/software/sla/sladb.nsf/sla/saas
+
+D0021ZX IBM Cloud Automation Library, Enterprise Middleware
+© Copyright IBM Corp. 2017

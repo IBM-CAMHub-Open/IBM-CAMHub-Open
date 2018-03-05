@@ -1,0 +1,14 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+node_name="<%= @NODE_NAME %>"
+webserver_name="<%= @WEBSERVER_NAME %>"
+
+print "INFO: Creating managed webserver definition:  \"%s\" on node \"%s\"" % (webserver_name,node_name)
+
+AdminTask.createWebServer('<%= @NODE_NAME %>', '[-name <%= @WEBSERVER_NAME %> -templateName <%= @WEBSERVER_TYPE %> -serverConfig [-webPort <%= @WEBSERVER_PORT %> -serviceName -webInstallRoot <%= @WEBSERVER_INSTALLDIR %> -webProtocol HTTP -configurationFile -errorLogfile -accessLogfile -pluginInstallRoot <%= @PLUGIN_INSTALLDIR %> -webAppMapping <%= @WEBAPP_MAPPING %>] -remoteServerConfig [-adminPort <%= @ADMINSERVER_PORT %> -adminUserID <%= @ADMINSERVER_USER %> -adminPasswd <%= @ADMINSERVER_PASSWORD %> HTTP]]')
+
+print "INFO: Saving configuration & syncing nodes." 
+
+saveAndSync()

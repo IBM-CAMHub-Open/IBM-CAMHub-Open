@@ -1,0 +1,63 @@
+{
+    "name": "Apache HTTP Server basic deployment on a single virtual machine - Amazon EC2",
+    "description": "This template deploys Apache HTTP Server with a basic configuration on a Linux virtual machine.",
+    "version": "1.0.2",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Amazon EC2",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "amazon/terraform",
+        "templateFileName": "apache_http_v24_standalone_basic.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "Apache HTTP Server basic deployment on a single virtual machine",
+      "providerDisplayName": "Amazon EC2",
+      "longDescription": "This template deploys Apache HTTP Server with a basic configuration on a Linux virtual machine.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " Amazon<br>"},
+{
+    "title": "Template Version",
+    "description": "1.0.3.2<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Red Hat Enterprise Linux 7<br>Ubuntu 16.04 LTS<br>"},
+{
+    "title": "Topology",
+    "description": "1 virtual machine:<br>  httpd service instance<br>"},
+{
+    "title": "Software Deployed",
+    "description": "Apache HTTP Server V2.4<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " t2.small, vCPU 1, Mem (GiB) 2, EBS (GB) 25<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. The user is responsible for obtaining the appropriate software licenses and downloads prior to template deployment.<br>2. Detailed system requirements for Apache HTTP Server - <a href=\"http://httpd.apache.org/\" target=\"_blank\">http://httpd.apache.org/</a><br>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

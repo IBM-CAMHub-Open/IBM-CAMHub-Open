@@ -1,0 +1,29 @@
+' The archive to unzip
+ zip_arch = "<%= @zipfile %>"
+' The folder to unpack to
+dest_folder = "<%= @target_dir %>"
+
+' Cleanup the paths
+Set objRegEx = CreateObject("VBScript.RegExp")
+objRegEx.Global = True
+objRegEx.Pattern = "[\\/]+"
+
+zip_arch = objRegEx.Replace(zip_arch,"\")
+dest_folder = objRegEx.Replace(dest_folder,"\")
+
+
+' Create the destination folder if missing
+Set os_obj = CreateObject("Scripting.FileSystemObject")
+If NOT os_obj.FolderExists(dest_folder) Then
+   os_obj.CreateFolder(dest_folder)
+End If
+
+' Unzip the archive
+set sh_obj = CreateObject("Shell.Application")
+set all_files=sh_obj.NameSpace(zip_arch).items
+
+' Supress the progress bar and confirmation messages
+sh_obj.NameSpace(dest_folder).CopyHere all_files, &H4& + &H10&
+
+Set os_obj = Nothing
+Set sh_obj = Nothing

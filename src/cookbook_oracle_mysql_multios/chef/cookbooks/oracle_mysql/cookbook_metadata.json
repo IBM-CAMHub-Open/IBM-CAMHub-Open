@@ -1,0 +1,67 @@
+{
+    "oracle_mysql": {
+        "software": {
+            "name": "Oracle MySQL",
+            "major_version": [
+                "5.7"
+            ],
+            "minor_version": [
+                "5.7.17"
+            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x",
+                "Ubuntu 14.0.x",
+                "Ubuntu 16.0.x"
+            ]
+        },
+        "disk": {
+            "/tmp": "512",
+            "/var": "512",
+            "/var/lib/mysql": "512",
+            "/tmp/ibm_cloud": "512"
+        },
+        "prerequisites": {
+            "Min Memory": "1024",
+            "Min Disk": "20GB",
+            "Min CPU": "1",
+            "Remote Root Access": "yes",
+            "Internal Firewall": "off"
+        },
+        "ports": {
+            "MySQL Port": "3306"
+        },
+        "installation_files": {
+            "5.7.17": {
+                "RHEL 6.x": {
+                    "repo_root": "/oracle/mysql/v5.7.17/base",
+                    "file": ["mysql-5.7.17-1.el6.x86_64.rpm-bundle.tar"]
+                },
+                "RHEL 7.x": {
+                    "repo_root": "/oracle/mysql/v5.7.17/base",
+                    "file": ["mysql-5.7.17-1.el7.x86_64.rpm-bundle.tar"]
+                },
+                "Ubuntu 14.x": {
+                    "repo_root": "/oracle/mysql/v5.7.17/base",
+                    "file": ["mysql-5.7.17-1ubuntu14.04_amd64.deb-bundle.tar"]
+                },
+                "Ubuntu 16.x": {
+                    "repo_root": "/oracle/mysql/v5.7.17/base",
+                    "file": ["mysql-5.7.17-1ubuntu16.04_amd64.deb-bundle.tar"]
+                }
+            }
+        },
+        "os_repository": {
+            "redhat": {
+                "x86_64": {
+                    "libraries": "libmecab, libaio1"
+                }
+            },
+            "debian": {
+                "x86_64": {
+                    "libraries": "libmecab, libaio1"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name":"liberty_nd_install",
+    "description":"installs WAS Liberty ND",
+    "json_class":"Chef::Role",
+    "chef_type":"role",
+    "default_attributes":{
+      "ibm" : {
+        "sw_repo" : "",
+        "sw_repo_user" : "repouser",
+        "sw_repo_password" : "",
+        "im_repo" : "",
+        "im_repo_user" : "repouser",
+        "im_repo_password" : ""
+      },
+      "was_liberty" : {
+        "edition": "nd",
+        "install_user": "root",
+        "install_grp": "root",
+        "install_dir" : "/opt/IBM/WebSphere/Liberty",
+        "java_version" : "8.0",
+        "base_version" : "17.0.2",
+        "wlp_user_dir": "/opt/IBM/WebSphere/Liberty/usr"
+      }
+    },
+    "run_list":[
+        "recipe[wasliberty::prereq]",
+        "recipe[wasliberty::install]",
+        "recipe[wasliberty::gather_evidence]",
+        "recipe[wasliberty::cleanup]"
+    ]
+}

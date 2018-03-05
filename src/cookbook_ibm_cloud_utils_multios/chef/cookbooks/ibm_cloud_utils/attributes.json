@@ -1,0 +1,111 @@
+{
+    "ibm": {
+        "im_repo": {
+            "default": "",
+            "description": "IBM Software  Installation Manager Repository URL (https://<hostname/IP>:<port>/IMRepo) ",
+            "displayname": "IBM Software Installation Manager Repository",
+            "hidden": "false",
+            "parm_type": "pattern",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "im_repo_password": {
+            "default": "",
+            "description": "IBM Software  Installation Manager Repository Password",
+            "displayname": "IBM Software Installation Manager Repository Password",
+            "hidden": "false",
+            "parm_type": "none",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "true",
+            "type": "string"
+        },
+        "im_repo_self_signed_cert": {
+            "default": "false",
+            "description": "IBM Software  Installation Manager Repository Self Signed Certificate (True/False)",
+            "displayname": "IBM Software Installation Manager Repository Self Signed Certificate (True/False)",
+            "hidden": "false",
+            "parm_type": "none",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "im_repo_user": {
+            "default": "repouser",
+            "description": "IBM Software  Installation Manager Repository username",
+            "displayname": "IBM Software Installation Manager Repository Username",
+            "hidden": "false",
+            "parm_type": "pattern",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "sw_repo": {
+            "default": "",
+            "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+            "displayname": "IBM Software Repo Root",
+            "hidden": "false",
+            "parm_type": "pattern",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "sw_repo_auth": {
+            "default": "true",
+            "description": "IBM Software  Software Manager  Authentication Enabled",
+            "displayname": "IBM Software Software Repository Authentication Enabled",
+            "hidden": "false",
+            "parm_type": "none",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "sw_repo_password": {
+            "default": "",
+            "description": "IBM Software Repo Password",
+            "displayname": "IBM Software Repo Password",
+            "hidden": "false",
+            "parm_type": "none",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "sw_repo_self_signed_cert": {
+            "default": "false",
+            "description": "IBM Software  Software Manager Repository Self Signed Certificate (True/False)",
+            "displayname": "IBM Software Software Repository Self Signed Certificate (True/False)",
+            "hidden": "false",
+            "parm_type": "none",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "sw_repo_user": {
+            "default": "repouser",
+            "description": "IBM Software Repo Username",
+            "displayname": "IBM Software Repo Username",
+            "hidden": "false",
+            "parm_type": "pattern",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        }
+    }
+}

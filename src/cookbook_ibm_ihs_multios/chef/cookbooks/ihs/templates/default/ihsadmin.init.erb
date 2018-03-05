@@ -1,0 +1,163 @@
+#!/bin/sh
+################################################################################
+#
+# Licensed Materials - Property of IBM
+#
+# Copyright IBM Corp. 2015, 2017. All Rights Reserved.
+#
+# This program is part of a chef cookbook. It's purpose is to manage
+#   service <%= @SERVICENAME %>
+# It is not intended for any other use, and should not be run manually.
+#
+################################################################################
+
+# The next lines are for chkconfig on RedHat systems.
+# chkconfig: 2345 99 02
+# description: Starts and stops IBM HTTP Admin Server.
+
+# The next lines are for chkconfig on SuSE systems.
+### BEGIN INIT INFO
+# Provides: ihsadmin.init
+# Required-Start: $network $syslog
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 6
+# Short-Description: Starts and stops IBM HTTP Admin Server instances
+# Description: Starts and stops IBM HTTP Admin Server instances
+### END INIT INFO
+
+OPTIONS="$@"
+IHSHOME="<%= @INSTALLDIR %>"
+SERVICENAME="<%= @SERVICENAME %>"
+INSTALLMODE="<%= @INSTALLMODE %>"
+IHSVERSION="<%= @IHSVERSION %>"
+APACHECTL="${IHSHOME}/bin/adminctl"
+LOCKFILE="${IHSHOME}/logs/${SERVICENAME}.lock"
+if grep ^PidFile ${IHSHOME}/conf/admin.conf >/dev/null 2>&1; then
+  PIDFILE=${IHSHOME}/$(awk '/^PidFile/ { print $2 }' ${IHSHOME}/conf/admin.conf)
+else
+  PIDFILE=${IHSHOME}/logs/admin.pid
+fi
+RETVAL=0
+
+if [ "${INSTALLMODE}" = "admin" ]; then
+  SUDO='/bin/sh -c '
+else
+  case "$(whoami)" in
+    <%= @IHSUSR %>)
+      echo "Started as <%= @IHSUSR %>"
+      SUDO='/bin/sh -c '
+    ;;
+    root)
+      echo "Started from root, switching to <%= @IHSUSR %>"
+      SUDO='su - <%= @IHSUSR %> -s /bin/sh -c '
+    ;;
+    *)
+      echo "This service can only be controlled by <%= @IHSUSR %> or root."
+    ;;
+  esac
+fi
+
+start() {
+  status && return 0
+  echo "Starting..."
+  if start_output=$(eval ${SUDO} \"${APACHECTL} start\"); then
+    if [ -n "${start_output}" ]; then
+      echo ${start_output}
+    fi
+    # Don't rely on apachectl rc, check staus
+    local i=0
+    while ! status; do
+      let i+=1
+      if [ "${i}" = "60" ]; then
+        # Give up after one minute
+        echo "Waited ${SERVICENAME} to start for 10 minutes, giving up"
+        return 1
+      fi
+      sleep 10
+    done
+    echo "Service ${SERVICENAME} started successfully."
+    eval ${SUDO} \"touch ${LOCKFILE}\"
+    return 0
+  else
+    echo "Service ${SERVICENAME} failed to start."
+    return 1
+  fi 
+}
+
+stop() {
+  status || return 0
+  echo "Stopping..."
+  if eval ${SUDO} \"${APACHECTL} stop\"; then
+    # ... but check status anyway
+    local i=0
+    while status "silent"; do
+      # Wait for process to exit
+      let i+=1
+      if [ "${i}" = "60" ]; then
+        # Attempt to terminate parent PID
+        echo "Process did not exit after 10 minutes, attempting to terminate..."
+        kill -TERM "$(cat ${PIDFILE})"
+        sleep 10
+        if status "silent"; then
+          echo "Could not terminate ${SERVICENAME} parent process, giving up."
+          return 1
+        fi
+      fi
+      echo "Waiting for ${SERVICENAME} to exit..."
+      sleep 10
+    done
+    echo "Service ${SERVICENAME} stopped successfully."
+    rm -f $LOCKFILE 
+    return 0
+  else
+    echo "Service ${SERVICENAME} stopping failure, adminctl returned $?."
+    return 1
+  fi
+}
+
+status() {
+  local isrunning=0
+  # Try server-status page first
+  if /usr/bin/curl "http://127.0.0.1:<%= @IHSPORT %>/server-status" 2>&1 | grep "403 Forbidden" >/dev/null; then
+    [ "$1" != "silent" ] && echo "${SERVICENAME} is running on port <%= @IHSPORT %>"
+  # Check if PidFile exists
+  elif [ -f "${PIDFILE}" ]; then
+    # Check if recorded PID runs as parent process
+    if ps -ef | grep -v grep | awk '{ print $2 }' | grep -w $(cat ${PIDFILE}) >/dev/null 2>&1; then
+      [ "$1" != "silent" ] && echo "${SERVICENAME} is running with PID $(cat ${PIDFILE})"
+    fi
+  else
+    [ "$1" != "silent" ] && echo "${SERVICENAME} is stopped."
+    isrunning=1
+  fi
+  return ${isrunning}
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    echo "Restarting..."
+    stop
+    start
+    ;;
+  status)
+    status
+    ;;
+  *)
+    eval ${SUDO} \"${APACHECTL} ${OPTIONS}\"
+    ;;
+esac
+
+RETVAL=$?
+
+if [ $RETVAL -ne 0 -a "$1" != "status" ]; then
+  echo Exit code: $RETVAL
+fi
+
+exit $RETVAL

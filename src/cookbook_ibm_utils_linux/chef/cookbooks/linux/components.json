@@ -1,0 +1,122 @@
+[
+    {
+        "attributes": {
+            "ibm": {},
+            "linux": {
+                "yum_repositories": {
+                    "repo01": {
+                        "baseurl": "",
+                        "description": "",
+                        "enabled": true,
+                        "gpgcheck": true,
+                        "gpgkey": "",
+                        "repositoryid": "",
+                        "sslcacert": "",
+                        "sslverify": true
+                    }
+                }
+            }
+        },
+        "depends_on": [
+            ""
+        ],
+        "description": "Setup the yum repositories on node",
+        "displayname": "linux_add_yum_repo",
+        "name": "linux_add_yum_repo",
+        "objectname": "linux_add_yum_repo",
+        "run_list": [
+            "recipe[linux::yumrepo]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "$dynamicmaps": {
+            "linux": {
+                "filesystems": {
+                    "$count": "0",
+                    "$displayname": "File Systems",
+                    "$key": "filesystem",
+                    "$max": "4"
+                }
+            }
+        },
+        "attributes": {
+            "linux": {
+                "filesystems": {
+                    "filesystem($INDEX)": {
+                        "device": "/dev/xvdc",
+                        "force": "true",
+                        "fstype": "ext4",
+                        "group": "default",
+                        "label": "filesystem1",
+                        "mountpoint": "/var/filesystem1",
+                        "options": "defaults",
+                        "perms": "default",
+                        "size": "40",
+                        "user": "default"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Configure File Systems on Cloud",
+        "displayname": "linux_cloud_fs",
+        "name": "linux_cloud_fs",
+        "objectname": "linux_cloud_fs",
+        "run_list": [
+            "recipe[linux::create_fs]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "$dynamicmaps": {
+            "linux": {
+                "physicalvolumes": {
+                    "$count": "0",
+                    "$displayname": "Physical Volumes",
+                    "$key": "physicalvolume",
+                    "$max": "4",
+                    "physicalvolume($INDEX)": {
+                        "$dynamicmaps": {
+                            "logicalvolumes": {
+                                "$count": "0",
+                                "$displayname": "Logical Volumes",
+                                "$key": "logicalvolume",
+                                "$max": "4"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "attributes": {
+            "linux": {
+                "physicalvolumes": {
+                    "physicalvolume($INDEX)": {
+                        "device": "",
+                        "logicalvolumes": {
+                            "logicalvolume($INDEX)": {
+                                "filesystem": "ext4",
+                                "lv_name": "lvname",
+                                "lv_size": "10G",
+                                "mountpoint": "/var/filesystem1",
+                                "options": "rw"
+                            }
+                        },
+                        "size": "50",
+                        "vg_name": "vgname"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Configure LVM File Systems on Cloud",
+        "displayname": "linux_cloud_lvm",
+        "name": "linux_cloud_lvm",
+        "objectname": "linux_cloud_lvm",
+        "run_list": [
+            "recipe[linux::create_lvm]"
+        ],
+        "type": "chef_role"
+    }
+]

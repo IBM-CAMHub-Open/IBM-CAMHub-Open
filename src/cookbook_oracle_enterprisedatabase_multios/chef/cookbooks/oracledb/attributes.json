@@ -1,0 +1,198 @@
+{
+    "oracledb": {
+        "SID": {
+            "default": "orcl",
+            "description": "Name to identify a specific instance of a running Oracle database",
+            "displayname": "Oracle System Identifier",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "data_mount": {
+            "default": "/u01",
+            "description": "Mount point directory for the file system that contains the Oracle software.",
+            "displayname": "User Data Mount",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "install_group": {
+            "default": "oinstall",
+            "description": "Oracle OS Inventory Group",
+            "displayname": "Oracle Inventory Group",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "language": {
+            "default": "en",
+            "description": "Oracle Install Language",
+            "displayname": "Oracle Install Language",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "os_users": {
+            "oracle": {
+                "comment": {
+                    "default": "Oracle administrative user",
+                    "description": "Oracle OS User comment",
+                    "displayname": "Oracle OS User comment",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "gid": {
+                    "default": "dba",
+                    "description": "Oracle OS User gid",
+                    "displayname": "Oracle OS User gid",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "home": {
+                    "default": "/home/oracle",
+                    "description": "Oracle OS User home",
+                    "displayname": "Oracle OS User home",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "ldap_user": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "false",
+                    "description": "Oracle ldap_user",
+                    "displayname": "Oracle ldap_user",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "oracle",
+                    "description": "Oracle Operating System Username",
+                    "displayname": "Oracle Operating System Username",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "shell": {
+                    "default": "/bin/bash",
+                    "description": "Oracle OS User shell",
+                    "displayname": "Oracle OS User shell",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "port": {
+            "default": "1521",
+            "description": "Listening port to be configured in Oracle",
+            "displayname": "Oracle Listener Port",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "release_patchset": {
+            "default": "",
+            "description": "Identifier of patch set to apply to Oracle for improvement and bug fix",
+            "displayname": "Oracle Patchset Number",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "security": {
+            "sys_pw": {
+                "default": "",
+                "description": "Change the password for SYS user",
+                "displayname": "SYS Schema Password",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "true",
+                "type": "string"
+            },
+            "system_pw": {
+                "default": "",
+                "description": "Change the password for SYSTEM user",
+                "displayname": "SYSTEM Schema Password",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "true",
+                "type": "string"
+            }
+        },
+        "swap_file_size_mb": {
+            "default": "-1",
+            "description": "Swap size in MB",
+            "displayname": "Swap size in MB",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "version": {
+            "default": "v12c",
+            "description": "Version of Oracle DB to be installed",
+            "displayname": "Oracle DB Installation Version",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        }
+    }
+}

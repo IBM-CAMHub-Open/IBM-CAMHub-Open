@@ -1,0 +1,17 @@
+[Unit]
+Description=activefolder
+
+[Service]
+WorkingDirectory=/home
+ExecStart=/home/mqm/mq-service.sh start
+ExecStop=/home/mqm/mq-service.sh stop
+Type=oneshot
+#ExecReload=/home/mqm/mq-service.sh reload
+#PIDFile=/var/run/mq-service.pid
+#Environment="ENV=production"
+#User=mqm
+#Group=mqm
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

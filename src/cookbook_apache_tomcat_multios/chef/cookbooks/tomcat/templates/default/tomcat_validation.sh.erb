@@ -1,0 +1,66 @@
+#!/bin/bash
+
+exec >  >(tee -a <%= @evidence_dir %>/<%= @evidence_log %>)
+exec 2> >(tee -a <%= @evidence_dir %>/<%= @evidence_log %> >&2)
+
+ge_fail() {
+  echo "[$(date +"%Y:%m:%d %T %Z")] ERROR: ${1}"
+  exit 1
+}
+
+ge_pass() {
+  echo "[$(date +"%Y:%m:%d %T %Z")] INFO: ${1}"
+}
+
+# Get tomcat pid
+if [ -f "<%= @tomcat_pidfile %>" ]; then
+  tomcatPid=$(cat "<%= @tomcat_pidfile %>")
+else
+  ge_fail "Pid file '<%= @tomcat_pidfile %>' does not exist."
+fi
+
+# Wait for server to finish starting, timeout after 10 minutes
+initTime=$(date +"%s")
+for i in $(seq 1 60); do
+  if [ "$(($(date +"%s")-${initTime}))" -ge "600" ]; then
+    ge_fail "Server failed to start in $(($(date +"%s")-${initTime}))."
+  fi
+  # Verify server started per catalina.out
+  if tail -n 1 '<%= @tomcat_log_dir %>/catalina.out' | grep "INFO.* Server startup in "; then
+    ge_pass "Tomcat server started."
+    break
+  else
+    sleep 10
+  fi
+done
+
+# Verify no Java exceptions in catalina.out
+grep "Exception  " "<%= @tomcat_log_dir %>/catalina.out" && \
+  ge_fail "Errors in server log." || \
+  ge_pass "No errors in server log."
+
+# Verify catalina_home, daemon user are correct
+/bin/ps axo user:12,pid,cmd | grep -v grep | \
+  grep -w java | \
+  grep -w <%= @tomcat_user %> | \
+  grep -w "<%= @catalina_home %>" && \
+  ge_pass "Process running under user <%= @tomcat_user %> from directory <%= @catalina_home %>" || \
+  ge_fail "Process is not running as prescribed."
+
+# Verify tomcat is running on prescribed access ports
+tomcatPorts="<%= @http_port %> <%= @server_port %> <%= @ajp_port %>"
+<% if @ssl_enabled == 'true' -%>
+tomcatPorts="${tomcatPorts} <%= @ssl_port %>"
+<% end -%>
+
+for port in ${tomcatPorts}; do
+  ss -elpn | \
+    grep -w java |
+    grep -w "${port}" | \
+    grep -w $tomcatPid && \
+    ge_pass "Port ${port} is open by tomcat." || \
+    ge_fail "Port ${port} is NOT open by tomcat."
+done
+
+# Finished
+echo "Product successfully installed."

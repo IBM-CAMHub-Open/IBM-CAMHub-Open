@@ -1,0 +1,63 @@
+{
+    "name": "IBM WebSphere Application Server Liberty V17 on a single virtual machine - VMware vSphere",
+    "description": "This template deploys a standalone instance of WebSphere Liberty V17 on a Linux virtual machine. This template can install base, core or nd edition.",
+    "version": "1.0.2",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "VMware vSphere",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "vmware/terraform",
+        "templateFileName": "ibm_wasliberty_v17_standalone.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "IBM WebSphere Application Server Liberty V17 on a single virtual machine",
+      "providerDisplayName": "VMware vSphere",
+      "longDescription": "This template deploys a standalone instance of WebSphere Liberty V17 on a Linux virtual machine. This template can install base, core or nd edition.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " VMware<br>"},
+{
+    "title": "Template Version",
+    "description": "V1.0<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Red Hat Enterprise Linux 7<br>Red Hat Enterprise Linux 6<br>Ubuntu 16.04 LTS<br>Ubuntu 14.04 LTS<br>"},
+{
+    "title": "Topology",
+    "description": "1 virtual machine:<br>  Liberty server - single node<br>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM WebSphere Application Server Liberty V17<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 2, Memory (GB) 4<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. Modify the libertynode_was_liberty_edition variable in CAM Variables to change the installation type to base, core or nd.<br>3. IBM Knowledge Center for WAS Liberty - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/as_ditamaps/was900_welcome_liberty.html\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/as_ditamaps/was900_welcome_liberty.html</a><br>4. IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a><br>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

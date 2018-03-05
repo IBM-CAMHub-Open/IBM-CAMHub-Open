@@ -1,0 +1,31 @@
+{
+    "name" : "liberty_plugin_merge",
+    "description" : "create and configure a liberty server farm",
+    "json_class" : "Chef::Role",
+    "chef_type" : "role",
+    "default_attributes" : {
+      "ssh" : {
+        "private_key" : {
+          "path" : "/root/.ssh/CAMkey.pem"
+        }
+      },
+      "was_liberty" : {
+        "farm" : {
+          "webserverhost" : "",
+          "httpd_user" : "",
+          "httpd_plugins_dir": "",
+          "webserverPort": "88",
+          "webserverSecurePort" : "99",
+          "logFileName" : "serverfarm.log",
+          "pluginInstallRoot" : "plugin_install_root",
+          "webserverName" : "websrv",
+          "sslKeyringLocation" : "/tmp/liberty/sslkeyring",
+          "sslStashfileLocation" : "/tmp/liberty/stashfile",
+          "sslCertlabel" : "definedbyuser"
+        }
+      }
+    },
+    "run_list" : [
+        "recipe[wasliberty::server_farm]"
+    ]
+}

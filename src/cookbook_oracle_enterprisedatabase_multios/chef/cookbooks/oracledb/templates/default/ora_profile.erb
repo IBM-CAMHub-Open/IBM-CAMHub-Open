@@ -1,0 +1,26 @@
+# Enable core files
+ulimit -S -c unlimited > /dev/null 2>&1
+
+export EDITOR=/bin/vi
+
+export ORACLE_HOSTNAME=`hostname -f`
+export ORACLE_BASE=<%= @ORABASE %>
+export ORACLE_HOME=<%= @ORAHOME %>
+export ORACLE_SID=<%= @ORASID %>
+
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib
+
+export CLASSPATH=$ORACLE_HOME/jdbc/lib/classes111.zip
+export TNS_ADMIN=$ORACLE_HOME/network/admin
+
+PATH=/compat/linux/bin:/compat/linux/sbin:/compat/linux/usr/bin
+PATH=$PATH:/compat/linux/usr/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+
+export PATH=$PATH:/usr/local/bin:$ORACLE_HOME/bin:$ORACLE_HOME/OPatch
+
+export ORA_ENV=<%= File.basename @ORAHOME %>
+
+
+NLS_DATE_FORMAT='YYYYMMDD.HH24MISS'
+NLS_LANG=american_america.al32utf8
+export NLS_DATE_FORMAT NLS_LANG

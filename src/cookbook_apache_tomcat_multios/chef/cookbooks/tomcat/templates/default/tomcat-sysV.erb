@@ -1,0 +1,68 @@
+#!/bin/bash
+################################################################################
+# Copyright IBM Corp. 2017, 2017
+################################################################################
+# description: Tomcat Start Stop Restart
+# processname: tomcat
+# chkconfig: - 20 80
+
+case "$(whoami)" in
+  <%= @tomcat_user %>)
+    echo "Running as <%= @tomcat_user %>"
+    SUDO='/bin/sh -c '
+  ;;
+  root)
+    echo "Started as root, switching to <%= @tomcat_user %>"
+    SUDO='su - <%= @tomcat_user %> -s /bin/sh -c '
+  ;;
+  *)
+    echo "This service can only be controlled by <%= @tomcat_user %> or root."
+  ;;
+esac
+
+case $1 in
+  start)
+    eval ${SUDO} "<%= @catalina_home %>/bin/startup.sh"
+    Rc=$?
+    if [ $Rc -eq 0 ]; then
+      echo "Tomcat Start successful"
+    else
+      echo "Error in Tomcat Start: $Rc"
+    fi
+    ;;
+
+  stop)
+    <%= @catalina_home %>/bin/shutdown.sh
+    Rc=$?
+    if [ $Rc -eq 0 ]; then
+      echo "Tomcat Stop successful"
+      rm -f "<%= @catalina_pid %>"
+    else
+      echo "Error in Tomcat Stop: $Rc"
+    fi
+    ;;
+
+  restart)
+    $0 stop
+    $0 start
+    ;;
+
+  status)
+    if [ -f "<%= @catalina_pid %>" ]; then
+      read kpid < "<%= @catalina_pid %>"
+      if ps -axo user:12,pid,cmd | grep -w  <%= @tomcat_user %> | grep -w java | grep -w $kpid 2>&1 1>/dev/null; then
+        echo "tomcat is running with PID ${kpid}"
+      else
+        echo "PID file "<%= @catalina_pid %>" found, but $kpid is not running"
+      fi
+      unset kpid
+    else
+      echo "tomcat is stopped"
+      Rc=1
+    fi
+    ;;
+esac
+
+exit $Rc
+
+

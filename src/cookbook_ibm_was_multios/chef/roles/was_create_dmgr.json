@@ -1,0 +1,36 @@
+{
+  "name": "was_create_dmgr",
+  "description": "Create and configure the WebSphere Application Server Deployment manager profile",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "profiles": {
+            "dmgr": {
+              "profile": "Dmgr01",
+              "cell": "cell01",
+              "keystorepassword": ""
+            }
+          },
+          "wsadmin": {
+            "dmgr": {
+              "jvmproperty": {
+                "property_value_initial": "256",
+                "property_value_maximum": "512"
+              }
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_dmgr]",
+        "recipe[was::configure_dmgr]",
+        "recipe[was::cleanup]"
+      ],
+      "env_run_lists": {
+
+      }
+}

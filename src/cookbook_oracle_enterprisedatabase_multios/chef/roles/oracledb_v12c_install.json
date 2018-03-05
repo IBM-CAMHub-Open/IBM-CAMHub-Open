@@ -1,0 +1,27 @@
+{
+  "name":"oracledb_v12c_install",
+  "description":"Oracle Database v12c role for default installation and configuration",
+  "json_class":"Chef::Role",
+  "chef_type":"role",
+  "default_attributes":{
+    "ibm":{
+      "sw_repo":"",
+      "sw_repo_user": "repouser",
+      "sw_repo_password": "",
+      "sw_repo_self_signed_cert": "true",
+      "sw_repo_auth": "true"
+    },
+    "oracledb":{
+      "version":"v12c",
+      "release_patchset":"12.1.0.2.0",
+      "port":"1521"
+    }
+  },
+  "run_list":[
+    "recipe[oracledb::prereq]",
+    "recipe[oracledb::install]",
+    "recipe[oracledb::services]",
+    "recipe[oracledb::gather_evidence]",
+    "recipe[oracledb::cleanup]"
+  ]
+}

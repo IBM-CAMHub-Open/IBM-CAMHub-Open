@@ -1,0 +1,854 @@
+{
+  "input_namespaces": [
+    {
+      "name": "advanced_content_runtime_chef",
+      "label": "Advanced Content Runtime"
+    }
+  ],
+  "output_namespace": "content_template_output",
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "ssh_keys",
+      "label": "SSH Keys"
+    },
+    {
+      "name": "environment",
+      "label": "Environment"
+    },
+    {
+      "name": "httpnode01",
+      "label": "HTTPNode01"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "ibm_stack_name",
+      "type": "string",
+      "description": "A unique stack name.",
+      "hidden": true,
+      "label": "A unique stack name.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
+    {
+      "name": "HTTPNode01_httpd_php_mod_enabled",
+      "type": "string",
+      "description": "Enable PHP in Apache on Linux by Loading the Module",
+      "default": "true",
+      "hidden": false,
+      "label": "Enable PHP Module - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": true
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_vhosts_enabled",
+      "type": "string",
+      "description": "Allow to configure virtual hosts to run multiple websites on the same HTTP server",
+      "default": "false",
+      "hidden": false,
+      "label": "Enable Virtual Host Configuration - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_os_users_web_content_owner_gid",
+      "type": "string",
+      "description": "Group ID of web content owner to be configured in HTTP server",
+      "default": "webmaster",
+      "hidden": false,
+      "label": "Group Name of HTTP Web Content Owner - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_log_dir",
+      "type": "string",
+      "description": "Directory where HTTP Server logs will be sent",
+      "default": "/var/log/httpd",
+      "hidden": true,
+      "label": "HTTP Log Directory - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_server_admin",
+      "type": "string",
+      "description": "Email Address of the Webmaster",
+      "default": "webmaster@orpheus.ibm.com",
+      "hidden": false,
+      "label": "HTTP Server Admin - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_document_root",
+      "type": "string",
+      "description": "File System Location of the Document Root",
+      "default": "/var/www/html5",
+      "hidden": false,
+      "label": "HTTP Server Document Root Location - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_os_users_web_content_owner_shell",
+      "type": "string",
+      "description": "Default shell configured on Linux server",
+      "default": "/bin/bash",
+      "hidden": true,
+      "label": "HTTP Server HTTP Web Content Owner Unix Shell - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_listen",
+      "type": "string",
+      "description": "Listening port to be configured in HTTP server",
+      "default": "8080",
+      "hidden": false,
+      "label": "HTTP Server Listen Port - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_log_level",
+      "type": "string",
+      "description": "Log levels of the http process",
+      "default": "info",
+      "hidden": false,
+      "label": "HTTP Server Log Levels - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_data_dir_mode",
+      "type": "string",
+      "description": "OS Permisssions of data folders",
+      "default": "0755",
+      "hidden": true,
+      "label": "HTTP Server OS Permissions Data Directory - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_version",
+      "type": "string",
+      "description": "Version of HTTP Server to be installed.",
+      "default": "2.4",
+      "hidden": false,
+      "label": "HTTP Server version - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_server_name",
+      "type": "string",
+      "description": "The Name of the HTTP Server, normally the FQDN of server.",
+      "default": "orpheus.ibm.com",
+      "hidden": true,
+      "label": "HTTPd Server Name - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_httpd_os_users_web_content_owner_home",
+      "type": "string",
+      "description": "Home directory of web content owner to be configured in HTTP server",
+      "default": "/home/webmaster",
+      "hidden": false,
+      "label": "Home Directory of HTTP Web Content Owner - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "string",
+      "description": "IBM Software Repo Password",
+      "hidden": true,
+      "label": "IBM Software Repo Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repo Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "IBM Software Repo Username",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repo Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "HTTPNode01_datacenter",
+      "type": "string",
+      "description": "IBMCloud datacenter where infrastructure resources will be deployed",
+      "default": "dal09",
+      "hidden": false,
+      "label": "IBMCloud Datacenter - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "ams01",
+          "label": "Amsterdam 01, The Netherlands"
+        },
+        {
+          "value": "ams03",
+          "label": "Amsterdam 03, The Netherlands"
+        },
+        {
+          "value": "che01",
+          "label": "Chennai, India"
+        },
+        {
+          "value": "dal01",
+          "label": "Dallas 01, USA"
+        },
+        {
+          "value": "dal02",
+          "label": "Dallas 02, USA"
+        },
+        {
+          "value": "dal05",
+          "label": "Dallas 05, USA"
+        },
+        {
+          "value": "dal06",
+          "label": "Dallas 06, USA"
+        },
+        {
+          "value": "dal07",
+          "label": "Dallas 07, USA"
+        },
+        {
+          "value": "dal09",
+          "label": "Dallas 09, USA",
+          "default": "true"
+        },
+        {
+          "value": "dal10",
+          "label": "Dallas 10, USA"
+        },
+        {
+          "value": "fra02",
+          "label": "Frankfurt, Germany"
+        },
+        {
+          "value": "hkg02",
+          "label": "Hong Kong, China"
+        },
+        {
+          "value": "hou02",
+          "label": "Houston, USA"
+        },
+        {
+          "value": "lon02",
+          "label": "London, England"
+        },
+        {
+          "value": "mel01",
+          "label": "Melbourne, Australia"
+        },
+        {
+          "value": "mil01",
+          "label": "Milan, Italy"
+        },
+        {
+          "value": "mon01",
+          "label": "Montreal, Canada"
+        },
+        {
+          "value": "osl01",
+          "label": "Oslo, Norway"
+        },
+        {
+          "value": "par01",
+          "label": "Paris, France"
+        },
+        {
+          "value": "mex01",
+          "label": "Querétaro, Mexico"
+        },
+        {
+          "value": "sjc01",
+          "label": "San Jose 01, USA"
+        },
+        {
+          "value": "sjc03",
+          "label": "San Jose 03, USA"
+        },
+        {
+          "value": "sao01",
+          "label": "Sao Paulo, Brazil"
+        },
+        {
+          "value": "sea01",
+          "label": "Seattle, USA"
+        },
+        {
+          "value": "seo01",
+          "label": "Seoul 01, Korea"
+        },
+        {
+          "value": "sng01",
+          "label": "Singapore, Singapore"
+        },
+        {
+          "value": "syd01",
+          "label": "Sydney, Australia"
+        },
+        {
+          "value": "tok02",
+          "label": "Tokyo, Japan"
+        },
+        {
+          "value": "tor01",
+          "label": "Toronto, Canada"
+        },
+        {
+          "value": "wdc01",
+          "label": "Washington, D.C. 01, USA"
+        },
+        {
+          "value": "wdc04",
+          "label": "Washington, D.C. 04, USA"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01_dedicated_acct_host_only",
+      "type": "string",
+      "description": "Shared or dedicated host, where dedicated host usually means higher performance and cost",
+      "default": "false",
+      "hidden": false,
+      "label": "IBMCloud Dedicate Account Host - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True"
+        },
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01_hourly_billing",
+      "type": "string",
+      "description": "Billing cycle: hourly billed or monthly billed",
+      "default": "true",
+      "hidden": false,
+      "label": "IBMCloud Hourly Billing - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "False"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01_network_speed",
+      "type": "string",
+      "description": "Bandwidth of network communication applied to the virtual machine",
+      "default": 1000,
+      "hidden": false,
+      "label": "IBMCloud Network Speed - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": 100,
+          "label": "100"
+        },
+        {
+          "value": 1000,
+          "label": "1000",
+          "default": "true"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01_private_network_only",
+      "type": "string",
+      "description": "Provision the virtual machine with only private IP",
+      "default": "false",
+      "hidden": false,
+      "label": "IBMCloud Private Network - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True"
+        },
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01_memory",
+      "type": "string",
+      "description": "Amount of Memory (MBs), which is required to be one or more times of 1024",
+      "default": 4096,
+      "hidden": false,
+      "label": "IBMCloud VSI Memory - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": 1024,
+          "label": "1024"
+        },
+        {
+          "value": 2048,
+          "label": "2048"
+        },
+        {
+          "value": 4096,
+          "label": "4096",
+          "default": "true"
+        },
+        {
+          "value": 8192,
+          "label": "8192"
+        },
+        {
+          "value": 12288,
+          "label": "12288"
+        },
+        {
+          "value": 16384,
+          "label": "16384"
+        },
+        {
+          "value": 32768,
+          "label": "32768"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01_number_of_cores",
+      "type": "string",
+      "description": "Number of CPU cores, which is required to be a positive Integer",
+      "default": 2,
+      "hidden": false,
+      "label": "IBMCloud VSI Number of Cores - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": 1,
+          "label": "1"
+        },
+        {
+          "value": 2,
+          "label": "2",
+          "default": "true"
+        },
+        {
+          "value": 4,
+          "label": "4"
+        },
+        {
+          "value": 8,
+          "label": "8"
+        },
+        {
+          "value": 12,
+          "label": "12"
+        },
+        {
+          "value": 16,
+          "label": "16"
+        },
+        {
+          "value": 32,
+          "label": "32"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01-image",
+      "type": "string",
+      "description": "Operating system image id / template that should be used when creating the virtual image",
+      "default": "REDHAT_7_64",
+      "hidden": false,
+      "label": "Operating System ID / Template - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "HTTPNode01-os_admin_user",
+      "type": "string",
+      "description": "Name of the admin user account in the virtual machine that will be accessed via SSH",
+      "hidden": false,
+      "label": "Operating System Username - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "HTTPNode01_root_disk_size",
+      "type": "string",
+      "description": "Root Disk Size - HTTPNode01",
+      "default": "25",
+      "hidden": false,
+      "label": "Root Disk Size - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "25",
+          "label": "25 GB",
+          "default": true
+        },
+        {
+          "value": "100",
+          "label": "100 GB"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "cloud"
+    },
+    {
+      "name": "HTTPNode01-name",
+      "type": "string",
+      "description": "Short hostname of virtual machine",
+      "hidden": false,
+      "label": "Short hostname - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "HTTPNode01_httpd_os_users_web_content_owner_ldap_user",
+      "type": "string",
+      "description": "Use LDAP to authenticate Web Content Owner account on Linux HTTP server as well as web site logins",
+      "default": "false",
+      "hidden": true,
+      "label": "Use LDAP for Authentication - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01-mgmt-network-public",
+      "type": "string",
+      "description": "Expose and use public IP of virtual machine for internal communication",
+      "default": "true",
+      "hidden": false,
+      "label": "Use Public Management Network",
+      "secured": false,
+      "options": [
+        {
+          "value": false,
+          "label": false
+        },
+        {
+          "value": true,
+          "label": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "HTTPNode01_httpd_os_users_web_content_owner_name",
+      "type": "string",
+      "description": "User ID of web content owner to be configured in HTTP server",
+      "default": "webmaster",
+      "hidden": false,
+      "label": "User Name of HTTP Web Content Owner - HTTPNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "httpnode01"
+    },
+    {
+      "name": "HTTPNode01_local_disk",
+      "type": "string",
+      "description": "User local disk or SAN disk",
+      "default": "false",
+      "hidden": false,
+      "label": "IBMCloud - Local / SAN Disk - HTTPNode01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "True"
+        },
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "ibm_pm_private_ssh_key",
+      "type": "string",
+      "description": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest. - ssh_keys",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "ssh_keys",
+      "default": "${advanced_content_runtime_chef.ibm_pm_private_ssh_key}"
+    },
+    {
+      "name": "ibm_pm_public_ssh_key_name",
+      "type": "string",
+      "description": "Public CAMC SSH key name used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Public CAMC SSH key name used to connect to the virtual guest. - ssh_keys",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "ssh_keys",
+      "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key_name}"
+    },
+    {
+      "name": "user_public_ssh_key",
+      "type": "string",
+      "description": "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH.",
+      "default": "None",
+      "hidden": false,
+      "label": "User Public SSH Key - ssh_keys",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ssh_keys"
+    },
+    {
+      "name": "runtime_domain",
+      "type": "string",
+      "description": "domain name",
+      "default": "${advanced_content_runtime_chef.runtime_domain}",
+      "hidden": true,
+      "label": "domain name",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "cloud"
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "HTTPNode01_ip",
+      "label": "IP Addresss",
+      "description": "The Public and Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "HTTPNode01_name",
+      "label": "Node Name",
+      "description": "The chef node name",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "HTTPNode01_roles",
+      "label": "Chef Roles",
+      "description": "The chef roles deployed",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "stack_id",
+      "label": "Generated Stack ID",
+      "description": "The generated stack id",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
+  ]
+}

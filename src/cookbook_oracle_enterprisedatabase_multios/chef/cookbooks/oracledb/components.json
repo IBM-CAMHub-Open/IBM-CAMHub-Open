@@ -1,0 +1,51 @@
+[
+    {
+        "attributes": {
+            "oracledb": {
+                "SID": "ORCL",
+                "security": {
+                    "sys_pw": "",
+                    "system_pw": ""
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Oracle Database role that creates a new database",
+        "displayname": "oracledb_create_database",
+        "name": "oracledb_create_database",
+        "objectname": "oracledb_create_database",
+        "run_list": [
+            "recipe[oracledb::dbca]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "sw_repo": "",
+                "sw_repo_auth": "true",
+                "sw_repo_password": "",
+                "sw_repo_self_signed_cert": "true",
+                "sw_repo_user": "repouser"
+            },
+            "oracledb": {
+                "port": "1521",
+                "release_patchset": "12.1.0.2.0",
+                "version": "v12c"
+            }
+        },
+        "depends_on": [],
+        "description": "Oracle Database v12c role for default installation and configuration",
+        "displayname": "oracledb_v12c_install",
+        "name": "oracledb_v12c_install",
+        "objectname": "oracledb_v12c_install",
+        "run_list": [
+            "recipe[oracledb::prereq]",
+            "recipe[oracledb::install]",
+            "recipe[oracledb::services]",
+            "recipe[oracledb::gather_evidence]",
+            "recipe[oracledb::cleanup]"
+        ],
+        "type": "chef_role"
+    }
+]

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+  <featureManager>
+    <feature>jsp-2.3</feature>
+    <% @FEATURE_LIST.each do |ft|%>
+    <feature><%= ft %></feature>
+    <% end %>
+  </featureManager>
+
+   <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
+  <variable name="defaultHostName" value="<%= @HOST %>" />
+  <basicRegistry id="basic">
+    <!--%= @ADMINCENTER_USERS %-->
+    <% @USERS_PWDS.each do |usr, pwd| %>
+    <user name="<%= usr %>" password="<%= pwd %>" /> <%# ~password_checker %>
+    <% end %>
+  </basicRegistry>
+
+  <administrator-role>
+    <% @ADMINS.each do |admuser| %>
+    <user><%= admuser %></user>
+    <%end%>
+  </administrator-role>
+
+  <keyStore id="<%= @KEYSTORE_ID %>" password="<%= @KEYSTORE_PASSWORD %>" /> <%# ~password_checker %>
+
+  <config updateTrigger="mbean"/>
+  <applicationMonitor updateTrigger="mbean" dropinsEnabled="true"/>
+  <ssl id="defaultSSLConfig"  sslProtocol="TLSv1.2"  keyStoreRef="defaultKeyStore"  clientAuthenticationSupported="true"/>
+  <httpEndpoint id="defaultHttpEndpoint" host="*"  httpPort="<%= @HTTPPORT %>"   httpsPort="<%= @HTTPSPORT %>" />
+
+  <!-- Automatically expand WAR files and EAR files -->
+  <applicationManager autoExpand="true"/>
+
+  <remoteFileAccess> <writeDir>${server.config.dir}</writeDir> </remoteFileAccess>
+
+</server>

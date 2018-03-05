@@ -1,0 +1,12 @@
+description "Tomcat Server"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+respawn
+respawn limit 10 5
+
+setuid <%= @tomcat_user %>
+setgid <%= @tomcat_group %>
+
+exec "<%= @catalina_home %>/bin/catalina.sh run"
+

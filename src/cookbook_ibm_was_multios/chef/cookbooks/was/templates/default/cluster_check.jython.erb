@@ -1,0 +1,7 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+cluster_name="<%= @CLUSTER_NAME %>"
+
+print getClusterId( cluster_name )

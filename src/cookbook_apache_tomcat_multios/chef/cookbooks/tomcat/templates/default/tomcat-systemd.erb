@@ -1,0 +1,19 @@
+[Unit]
+Description=Apache Tomcat
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+ExecStart=<%= @catalina_home %>/bin/startup.sh
+ExecStop=<%= @catalina_home %>/bin/shutdown.sh
+
+User=<%= @tomcat_user %>
+Group=<%= @tomcat_group %>
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

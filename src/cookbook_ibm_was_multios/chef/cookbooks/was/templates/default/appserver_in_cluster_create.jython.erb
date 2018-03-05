@@ -1,0 +1,16 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+node_name="<%= @NODE_NAME %>"
+server_name="<%= @SERVER_NAME %>"
+cluster_name="<%= @CLUSTER_NAME %>"
+session_rep=<%= @SESSION_REP %>
+
+print "INFO: Creating Application Server \"%s\" in cluster \"%s\" on node \"%s\"" % (server_name,cluster_name,node_name)
+
+createServerInCluster(cluster_name, node_name, server_name, session_rep)
+
+print "INFO: Saving configuration & syncing nodes." 
+
+saveAndSync()

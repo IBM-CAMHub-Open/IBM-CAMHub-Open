@@ -1,0 +1,58 @@
+{
+    "tomcat": {
+        "software": {
+            "name": "Apache Tomcat",
+            "major_version": [
+                "8.0.15"
+            ],
+            "minor_version": [
+                "8.0.15"
+            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x",
+                "Ubuntu 14.x",
+                "Ubuntu 16.x"
+            ]
+        },
+        "disk": {
+            "/tmp": "1024",
+            "/var": "1024",
+            "/opt/tomcat": "1024",
+            "/tmp/ibm_cloud": "1024"
+        },
+        "prerequisites": {
+            "Min Memory": "1024",
+            "Min Disk": "20GB",
+            "Min CPU": "1",
+            "Remote Root Access": "yes",
+            "Internal Firewall": "off"
+        },
+        "ports": {
+            "Http Port": "8080",
+            "AJP Port": "8009",
+            "Server Port": "8005",
+            "Min CPU": "1"
+        },
+        "installation_files": {
+            "8.0.5": {
+                "X86_64": {
+                    "repo_root": "/apache/tomcat/v8/base",
+                    "file": ["apache-tomcat-8.0.5.tar.gz"]
+                }
+            }
+        },
+       "os_repository": {
+            "redhat": {
+                "x86_64": {
+                    "libraries": "nil"
+                }
+            },
+            "debian": {
+                "x86_64": {
+                    "libraries": "nil"
+                }
+            }
+        }
+    }
+}

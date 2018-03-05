@@ -1,0 +1,73 @@
+{
+    "wasliberty": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "Cleanup recipe removes the folders, where binaries extracted"
+            ]
+        },
+        "config_srv.rb": {
+            "description": [
+                "Install  recipe (install.rb)",
+                "Installation recipe, source the version, unpack the file and install product"
+            ]
+        },
+        "create_server.rb": {
+            "description": [
+                "Create server recipe (create_server.rb)",
+                "Create a new liberty server"
+            ]
+        },
+        "default.rb": {
+            "description": []
+        },
+        "fixpack.rb": {
+            "description": [
+                "Fixpack  recipe (fixpack.rb)",
+                "Fixpack recipe, source the version, unpack the file and apply maintenance to the  product"
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Gather evidence recipe (gather_evidence.rb)",
+                "Gather evidence that installation was successful"
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Install  recipe (install.rb)",
+                "Installation recipe, source the version, unpack the file and install product"
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Pre-Requisite recipe (prereq.rb)",
+                "Pre-Requisite recipe to install packages, create users and folders."
+            ]
+        },
+        "server_farm.rb": {
+            "description": [
+                "Start server recipe (server_farm.rb)",
+                "Add the required configuration for the liberty server farm"
+            ]
+        },
+        "start_server.rb": {
+            "description": [
+                "Start server recipe (start_server.rb)",
+                "Start server recipe, start liberty servers"
+            ]
+        },
+        "stop_servers.rb": {
+            "description": [
+                "Stop serverss recipe (stop_servers.rb)",
+                "Stop servers recipe, stop liberty servers"
+            ]
+        },
+        "uninstall.rb": {
+            "description": [
+                "Uninstall recipe (uninstall.rb)",
+                "Uninstalls liberty core and removes the folders, where the binaries were extracted"
+            ]
+        }
+    }
+}

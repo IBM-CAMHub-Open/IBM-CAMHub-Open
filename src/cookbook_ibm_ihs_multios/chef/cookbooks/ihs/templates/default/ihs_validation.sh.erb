@@ -1,0 +1,104 @@
+#!/bin/bash
+
+exec >  >(tee -a <%= @EVIDENCE_DIR %>/<%= @EVIDENCE_LOG %>)
+exec 2> >(tee -a <%= @EVIDENCE_DIR %>/<%= @EVIDENCE_LOG %> >&2)
+
+ge_fail() {
+  echo "[$(date +"%Y:%m:%d %T %Z")] ERROR: ${1}"
+  exit 1
+}
+
+ge_info() {
+  echo "[$(date +"%Y:%m:%d %T %Z")] INFO: ${1}"
+}
+
+# Wait for IHS to start
+sleep 10
+
+if grep "^PidFile" <%= @INSTALL_DIR %>/conf/httpd.conf >/dev/null 2>&1; then
+  PIDFILE=<%= @INSTALL_DIR %>/$(awk '/^PidFile/ { print $2 }' <%= @INSTALL_DIR %>/conf/httpd.conf)
+else
+  PIDFILE=<%= @INSTALL_DIR %>/logs/httpd.pid
+fi
+IHSPID="$(cat ${PIDFILE})"
+
+<% if @ADMIN_ENABLED == 'true' %>
+if grep "^PidFile" <%= @INSTALL_DIR %>/conf/admin.conf >/dev/null 2>&1; then
+  ADMPIDFILE=<%= @INSTALL_DIR %>/$(awk '/^PidFile/ { print $2 }' <%= @INSTALL_DIR %>/conf/admin.conf)
+else
+  ADMPIDFILE=<%= @INSTALL_DIR %>/logs/admin.pid
+fi
+ADMPID="$(cat ${ADMPIDFILE})"
+<% end %>
+
+# Verify daemon user, install dir are correct
+ge_info "Verifying IHS runs from <%= @INSTALL_DIR %> as <%= @IHS_USER %>"
+/bin/ps axo user:12,pid,cmd | grep -v grep | \
+  grep -w <%= @INSTALL_DIR %>/bin/httpd | \
+  awk '{ print $1 }' | \
+  grep -w <%= @IHS_USER %> && \
+  ge_info "Process running under user '<%= @IHS_USER %>' from directory '<%= @INSTALL_DIR %>'" || \
+  ge_fail "Process is not running under prescribed user '<%= @IHS_USER %>'."
+
+<% if @INSTALL_MODE != 'admin' %>
+# In nonAdmin mode no httpd process should run under root
+ge_info "Verifying parent IHS process runs from <%= @INSTALL_DIR %> as <%= @IHS_USER %> in nonAdmin install mode"
+/bin/ps axo user:12,pid,cmd | grep -v grep | \
+  grep -w <%= @INSTALL_DIR %>/bin/httpd | \
+  awk '{ print $1 }' | \
+  grep -w "^root" && \
+  ge_fail "httpd running as root is not expected in nonAdmin installations." || \
+  ge_info "No httpd proccess running as root (nonAdmin install mode)."
+<% end %>
+
+# Verify httpd is running on prescribed web access port
+ge_info "Verifying IHS with PID ${IHSPID} listens on port <%= @IHS_PORT%>"
+ss -elpn  | \
+  grep -w "<%= @IHS_PORT%>" | \
+  grep -w httpd | \
+  grep -w ${IHSPID} | \
+  grep -w LISTEN && \
+  ge_info "IHS is listening on prescribed http port <%= @IHS_PORT %>" || \
+  ge_fail "IHS is NOT listening on prescribed http port <%= @IHS_PORT %>"
+
+<% if @ADMIN_ENABLED == 'true' %>
+  # Verify admin server is running on prescribed port
+  # It can take a while for the server to open admin server port, so wait for it
+  FAILFLAG=1
+  ge_info "Verifying admin server with PID ${ADMPID} listens on port <%= @ADMIN_PORT%>"
+  for i in $(seq 1 60); do
+    if ss -elpn | grep -w httpd | grep -w LISTEN  | grep -w "<%= @ADMIN_PORT %>" | grep -w ${ADMPID}; then
+      ge_info "admin server is listening on prescribed http port <%= @ADMIN_PORT %>"
+      FAILFLAG=0
+      break
+    else
+      ge_info "Waiting for server to open admin server port..."
+      sleep 10
+    fi
+  done
+  if [ "${FAILFLAG}" != "0" ]; then
+    ge_fail "admin server is NOT listening on prescribed admin server port <%= @ADMIN_PORT %>"
+  fi
+<% end %>
+
+<% if @SSL_ENABLED == 'true' %>
+  # Verify IHS is running on prescribed SSL port
+  # It can take a while for the server to open SSL port, so wait for it
+  FAILFLAG=1
+  ge_info "Verifying IHS process with PID ${IHSPID} listens on port <%= @SSL_PORT%>"
+  for i in $(seq 1 60); do
+    if ss -elpn |  grep -w httpd | grep -w LISTEN | grep -w "<%= @SSL_PORT%>" | grep -w ${IHSPID}; then
+      ge_info "IHS is listening on prescribed https port <%= @SSL_PORT %>"
+      FAILFLAG=0
+      break
+    else
+      ge_info "Waiting for server to open SSL port..."
+      sleep 10
+    fi
+  done
+  if [ "${FAILFLAG}" != "0" ]; then
+    ge_fail "IHS is NOT listening on prescribed https port <%= @SSL_PORT %>"
+  fi
+<% end %>
+
+ge_info "Product successfully installed."

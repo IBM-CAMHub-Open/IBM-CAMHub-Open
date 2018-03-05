@@ -1,0 +1,19 @@
+execfile( "<%= @TMP %>/wsadminlib.py" )
+
+enableDebugMessages()
+
+nodename="<%= @NODENAME %>"
+servername="<%= @SERVERNAME %>"
+propertyname="<%= @PROPNAME %>"
+value="<%= @PROPVALUE %>"
+
+
+print "INFO: Setting JVM property for server \"%s\" on node \"%s\"" % (servername,nodename)
+print "INFO: Property: \"%s\"" % (propertyname)
+print "INFO: Value: \"%s\"" % (value)
+
+setJvmProperty(nodename,servername,propertyname,value)
+
+print "INFO: Saving configuration & syncing nodes." 
+
+saveAndSync()

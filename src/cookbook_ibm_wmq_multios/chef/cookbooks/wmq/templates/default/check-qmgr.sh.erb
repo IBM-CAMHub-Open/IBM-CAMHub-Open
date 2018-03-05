@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Name check-qmgr.sh
+# ----------------------------------------------------------------------------------------------------
+
+su - <%= @MQM %> -c "<%= @mqroot %>/bin/dspmq | grep \"Running\"" > /tmp/dspmq.txt
+cat /tmp/dspmq.txt | awk -F "(" '{print $2}' | awk -F ")" '{print $1}' > /tmp/QMGRSYSTEM
+
+# ----------------------------------------------------------------------------------------------------
+CHECKQMGR=`cat /tmp/QMGRSYSTEM | wc -l`
+# ----------------------------------------------------------------------------------------------------
+if [ $CHECKQMGR = 1 ]; then
+    su - <%= @MQM %> -c "<%= @mqroot %>/bin/endmqm -i `cat /tmp/QMGRSYSTEM`"
+    su - <%= @MQM %> -c "<%= @mqroot %>/bin/dltmqm `cat /tmp/QMGRSYSTEM`"
+else  if (( $CHECKQMGR > 1 )); then
+          su - <%= @MQM %> -c "for i in `cat /tmp/QMGRSYSTEM` ; do <%= @mqroot %>/bin/endmqm -i $i; done"
+          su - <%= @MQM %> -c "for i in `cat /tmp/QMGRSYSTEM` ; do <%= @mqroot %>/bin/dltmqm $i; done"
+   fi
+fi
+# ----------------------------------------------------------------------------------------------------

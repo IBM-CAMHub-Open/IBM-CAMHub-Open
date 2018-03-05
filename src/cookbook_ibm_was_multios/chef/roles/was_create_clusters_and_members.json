@@ -1,0 +1,34 @@
+{
+  "name": "was_create_clusters_and_members",
+  "description": "was_create_clusters_and_members",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "wsadmin": {
+            "clusters": {
+              "cluster01": {
+                "cluster_name": "cluster01",
+                "cluster_servers": {
+                  "cluster_server01": {
+                    "server_name": "server01"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_cluster]",
+        "recipe[was::create_clustermember]",
+        "recipe[was::start_clustermember]",
+        "recipe[was::cleanup]"
+      ],
+      "env_run_lists": {
+
+      }
+}

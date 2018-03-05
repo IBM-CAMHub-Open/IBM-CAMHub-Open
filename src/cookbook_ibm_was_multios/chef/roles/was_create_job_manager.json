@@ -1,0 +1,27 @@
+{
+  "name": "was_create_job_manager",
+  "description": "Create Job Manager Profile",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "profiles": {
+            "job_manager": {
+              "profile": "JobMgr01",
+              "cell": "cell01",
+              "keystorepassword": ""
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_job_manager]",
+        "recipe[was::cleanup]"
+      ],
+      "env_run_lists": {
+
+      }
+}

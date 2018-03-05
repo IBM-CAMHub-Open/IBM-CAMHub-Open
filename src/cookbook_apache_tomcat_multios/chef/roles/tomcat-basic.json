@@ -1,0 +1,39 @@
+{
+  "name": "tomcat-basic",
+  "description": "Basic Tomcat installation and configuration.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ibm": {
+      "sw_repo": "",
+      "sw_repo_user": "repouser",
+      "sw_repo_password": ""
+    },
+    "tomcat": {
+      "install_dir": "/opt/tomcat8",
+      "version": "8.5.12",
+      "http": {
+        "port": "8080"
+      },
+      "java": {
+        "version": "1.8.0"
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[tomcat::prereq_check]",
+    "recipe[tomcat::prereq]",
+    "recipe[tomcat::install]",
+    "recipe[tomcat::configure_tomcat_server]",
+    "recipe[tomcat::configure_tomcat_init]",
+    "recipe[tomcat::service]",
+    "recipe[tomcat::gather_evidence]",
+    "recipe[tomcat::cleanup]"
+  ],
+  "env_run_lists": {
+
+  }
+}

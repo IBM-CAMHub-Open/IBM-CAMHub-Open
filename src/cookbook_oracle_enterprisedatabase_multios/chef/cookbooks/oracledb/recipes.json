@@ -1,0 +1,76 @@
+{
+    "oracledb": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "This recipe will remove any temporary installation files created as part of the automation."
+            ]
+        },
+        "config_asm.rb": {
+            "description": [
+                "Installation recipe (config_asm.rb)",
+                "This recipe preforms the post installation operation of ASM"
+            ]
+        },
+        "dbca.rb": {
+            "description": [
+                "Create RDBMS recipe (dbca.rb)",
+                "This recipe will congire Database."
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe (default.rb)",
+                "The default recipe for the cookbook. It is recommended to not use the default recipe, but explicitly specify a run_list for the deployment node."
+            ]
+        },
+        "fixpack.rb": {
+            "description": [
+                "Fixpack recipe (fixpack.rb)",
+                "This recipe performs product fixpack installation."
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Evidence gathering recipe (gather_evidence.rb)",
+                "This recipe will collect functional product information and store it in an archive."
+            ]
+        },
+        "harden.rb": {
+            "description": [
+                "Product hardening recipe (harden.rb)",
+                "This recipe performs security hardening tasks."
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "This recipe performs the product installation."
+            ]
+        },
+        "install_grid.rb": {
+            "description": [
+                "Installation recipe (install_grid.rb)",
+                "This recipe performs the Grid product installation."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Installation recipe (prereq.rb)",
+                "This recipe configures the operating prerequisites for the product."
+            ]
+        },
+        "prereq_asm_disks.rb": {
+            "description": [
+                "Installation recipe (prereq_asm_disks.rb)",
+                "This recipe configures the operating prerequisites for the ASM."
+            ]
+        },
+        "services.rb": {
+            "description": [
+                "Installation recipe (services.rb)",
+                "This recipe creates and starts database services."
+            ]
+        }
+    }
+}

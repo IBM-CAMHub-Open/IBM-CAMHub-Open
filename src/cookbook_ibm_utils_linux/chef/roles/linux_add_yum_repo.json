@@ -1,0 +1,34 @@
+{
+  "name": "linux_add_yum_repo",
+  "description": "Setup the yum repositories on node",
+  "json_class": "Chef::Role",
+  "displayname": "linux_add_yum_repo",
+  "depends_on": "",
+  "default_attributes": {
+    "ibm": {
+    },
+    "linux": {
+      "yum_repositories": {
+        "repo01": { "description": "",
+                      "repositoryid": "",
+                      "baseurl": "",
+                      "enabled": true,
+                      "gpgkey": "",
+                      "gpgcheck": true,
+                      "sslverify": true,
+                      "sslcacert": ""
+                    }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[linux::yumrepo]"
+  ],
+  "env_run_lists": {
+
+  }
+}

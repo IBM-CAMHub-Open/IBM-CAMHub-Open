@@ -1,0 +1,914 @@
+{
+    "tomcat": {
+        "ajp": {
+            "port": {
+                "default": "8009",
+                "description": "Specifies the AJP port to be configured in Tomcat.",
+                "displayname": "Tomcat AJP port",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "http": {
+            "port": {
+                "default": "8080",
+                "description": "The Tomcat port to service HTTP requests.",
+                "displayname": "Tomcat HTTP port",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "install_dir": {
+            "default": "/opt/tomcat",
+            "description": "Specifies the directory to install Tomcat.",
+            "displayname": "Tomcat install directory",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "instance_dirs": {
+            "conf_dir": {
+                "default": "/opt/tomcat/conf",
+                "description": "Specifies the directory for Tomcat configuration data.",
+                "displayname": "Tomcat conf directory",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "log_dir": {
+                "default": "/opt/tomcat/logs",
+                "description": "Specifies the directory for Tomcat log files.",
+                "displayname": "Tomcat logs directory",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "temp_dir": {
+                "default": "/opt/tomcat/temp",
+                "description": "Specifies the temporary directory for Tomcat.",
+                "displayname": "Tomcat temp directory",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "webapps_dir": {
+                "default": "/opt/tomcat/webapps",
+                "description": "Specifies the Tomcat directory for web applications.",
+                "displayname": "Tomcat webapps directory",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "work_dir": {
+                "default": "/opt/tomcat/work",
+                "description": "Specifies the Tomcat working directory.",
+                "displayname": "Tomcat work directory",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "java": {
+            "catalina_opts": {
+                "default": "-Xms512M -Xmx1024M -server -XX:+UseParallelGC",
+                "description": "Specifies additional options on the java command used to start Tomcat.",
+                "displayname": "Tomcat catalina_opts",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "java_opts": {
+                "default": "-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom",
+                "description": "Specifies additional options for commands to start, stop and more on Tomcat.",
+                "displayname": "Tomcat java_opts",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "java_sdk": {
+                "default": "false",
+                "description": "Specifies the use of a Java Development Kit (false) or Runtime Environment (true).",
+                "displayname": "Tomcat Java Flavor",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "vendor": {
+                "default": "openjdk",
+                "description": "Currently only openjdk is supported as the Tomcat java vendor.",
+                "displayname": "Tomcat Java Vendor",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "version": {
+                "default": "1.8.0",
+                "description": "The version of Java to be used for Tomcat.",
+                "displayname": "Tomcat java version",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "os_users": {
+            "daemon": {
+                "comment": {
+                    "default": "tomcat daemon user",
+                    "description": "Specifies a login comment for the Tomcat daemon user.",
+                    "displayname": "Tomcat daemon user comment",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "gid": {
+                    "default": "tomcat",
+                    "description": "Specifies the name of the Operating System group for Tomcat daemon users.",
+                    "displayname": "Tomcat daemon user group",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "home": {
+                    "default": "/home/tomcat",
+                    "description": "Specifies the home directory of the Tomcat daemon user.",
+                    "displayname": "Tomcat daemon user home directory",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "ldap_user": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "false",
+                    "description": "Specifies whether the Tomcat daemon user is stored in LDAP.",
+                    "displayname": "Tomcat daemon user ldap",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "tomcat",
+                    "description": "Specifies the user for the Tomcat daemon.",
+                    "displayname": "Tomcat daemon user",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "shell": {
+                    "default": "/sbin/nologin",
+                    "description": "The Tomcat daemon Unix shell.",
+                    "displayname": "Tomcat daemon shell",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "server": {
+            "manage": {
+                "default": "false",
+                "description": "Specifies whether the tomcat server.xml is managed by CHEF or allows for manually modifications.",
+                "displayname": "Tomcat CHEF managed server.xml",
+                "hidden": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "port": {
+                "default": "8005",
+                "description": "Specifies the server port to be configured in Tomcat.",
+                "displayname": "Tomcat server port",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "shutdown_cmd": {
+                "default": "SHUTDOWN",
+                "description": "Specifies the command to be used to shutdown Tomcat.",
+                "displayname": "Tomcat shutdown command",
+                "hidden": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "service": {
+            "enabled": {
+                "default": "true",
+                "description": "Specifies whether the Tomcat service will be started automatically on server reboot.",
+                "displayname": "Tomcat service enabled",
+                "hidden": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "name": {
+                "default": "tomcat",
+                "description": "Specifies the Tomcat service name.",
+                "displayname": "Tomcat service name",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "started": {
+                "default": "true",
+                "description": "Specifies the desired Tomcat service state.",
+                "displayname": "Tomcat service state",
+                "hidden": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "ssl": {
+            "cert": {
+                "alias": {
+                    "default": "tomcat",
+                    "description": "Tomcat SSL certificate alias for identification in the keystore",
+                    "displayname": "Tomcat SSL certificate alias",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "c": {
+                    "default": "US",
+                    "description": "Tomcat SSL certificate country",
+                    "displayname": "Tomcat SSL certificate country",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "cn": {
+                    "default": "default",
+                    "description": "Tomcat SSL certificate common name",
+                    "displayname": "Tomcat SSL certificate common name",
+                    "hidden": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "l": {
+                    "default": "Rochester",
+                    "description": "Tomcat SSL certificate location",
+                    "displayname": "Tomcat SSL certificate location",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "o": {
+                    "default": "Company",
+                    "description": "Tomcat SSL certificate organization",
+                    "displayname": "Tomcat SSL certificate organization",
+                    "hidden": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "ou": {
+                    "default": "Org",
+                    "description": "Tomcat SSL certificate organizational unit",
+                    "displayname": "Tomcat SSL certificate organizational unit",
+                    "hidden": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "s": {
+                    "default": "MN",
+                    "description": "Tomcat SSL certificate state",
+                    "displayname": "Tomcat SSL certificate state",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "validity": {
+                    "default": "3650",
+                    "description": "Tomcat SSL certificate validity period",
+                    "displayname": "Tomcat SSL certificate validity",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            },
+            "enabled": {
+                "default": "true",
+                "description": "Indicates whether to enable the Tomcat SSL connector.",
+                "displayname": "Tomcat SSL enabled",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            },
+            "keystore": {
+                "alg": {
+                    "default": "RSA",
+                    "description": "The RSA algorithm should be preferred as a secure algorithm.",
+                    "displayname": "Tomcat SSL keystore algorithm",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "file": {
+                    "default": "/opt/tomcat/conf/keystore.jks",
+                    "description": "Path to the Tomcat SSL Keystore file.",
+                    "displayname": "Tomcat SSL keystore file",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "password": {
+                    "default": "",
+                    "description": "The keystore password used in Tomcat for SSL configuration.",
+                    "displayname": "Tomcat SSL keystore password",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "regex": "^[!-~]{8,32}$",
+                    "regexdesc": "Allow 8 to 32 printable ASCII characters except space.",
+                    "required": "true",
+                    "secret": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "JKS",
+                    "description": "Specifies the keystore type for which Tomcat supports JKS, PKCS11 or PKCS12 formats.",
+                    "displayname": "Tomcat SSL keystore type",
+                    "hidden": "false",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            },
+            "options": {
+                "ciphers": {
+                    "default": "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_RC4_128_SHA,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,SSL_RSA_WITH_RC4_128_SHA",
+                    "description": "Tomcat SSL options ciphers",
+                    "displayname": "Tomcat SSL options ciphers",
+                    "hidden": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "max_threads": {
+                    "default": "200",
+                    "description": "Tomcat SSL options max threads",
+                    "displayname": "Tomcat SSL options max threads",
+                    "hidden": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "protocol": {
+                    "default": "TLS",
+                    "description": "Tomcat SSL options protocol",
+                    "displayname": "Tomcat SSL options protocol",
+                    "hidden": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            },
+            "port": {
+                "default": "8443",
+                "description": "Tomcat port for SSL communication",
+                "displayname": "Tomcat SSL port",
+                "hidden": "false",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "secret": "false",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "ui_control": {
+            "all_roles": {
+                "admin-gui": {
+                    "choice": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "default": "enabled",
+                    "description": "Tomcat roles: admin-gui",
+                    "displayname": "Tomcat roles: admin-gui",
+                    "hidden": "false",
+                    "options": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "manager-gui": {
+                    "choice": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "default": "enabled",
+                    "description": "Tomcat roles: manager-gui",
+                    "displayname": "Tomcat roles: manager-gui",
+                    "hidden": "false",
+                    "options": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "manager-jmx": {
+                    "choice": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "default": "enabled",
+                    "description": "Tomcat roles: manager-jmx",
+                    "displayname": "Tomcat roles: manager-jmx",
+                    "hidden": "false",
+                    "options": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "manager-script": {
+                    "choice": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "default": "enabled",
+                    "description": "Tomcat roles: manager-script",
+                    "displayname": "Tomcat roles: manager-script",
+                    "hidden": "false",
+                    "options": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "manager-status": {
+                    "choice": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "default": "enabled",
+                    "description": "Tomcat roles: manager-status",
+                    "displayname": "Tomcat roles: manager-status",
+                    "hidden": "false",
+                    "options": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            },
+            "users": {
+                "administrator": {
+                    "name": {
+                        "default": "admin",
+                        "description": "Name of the admin user to be configured in Tomcat.",
+                        "displayname": "Tomcat admin username",
+                        "hidden": "false",
+                        "parm_type": "node",
+                        "precedence_level": "node",
+                        "required": "true",
+                        "secret": "false",
+                        "selectable": "true",
+                        "type": "string"
+                    },
+                    "password": {
+                        "default": "",
+                        "description": "Password of the admin user to be configured in Tomcat.",
+                        "displayname": "Tomcat admin user password",
+                        "hidden": "false",
+                        "parm_type": "node",
+                        "precedence_level": "node",
+                        "regex": "^[!-~]{8,32}$",
+                        "regexdesc": "Allow 8 to 32 printable ASCII characters except space.",
+                        "required": "true",
+                        "secret": "true",
+                        "selectable": "true",
+                        "type": "string"
+                    },
+                    "status": {
+                        "choice": [
+                            "enabled",
+                            "disabled"
+                        ],
+                        "default": "enabled",
+                        "description": "Specifies whether to enable the admin user in the Tomcat configuration.",
+                        "displayname": "Tomcat admin status",
+                        "hidden": "false",
+                        "options": [
+                            "enabled",
+                            "disabled"
+                        ],
+                        "parm_type": "node",
+                        "precedence_level": "node",
+                        "required": "true",
+                        "secret": "false",
+                        "selectable": "true",
+                        "type": "string"
+                    },
+                    "user_roles": {
+                        "admin-gui": {
+                            "choice": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "default": "enabled",
+                            "description": "Tomcat users administrator roles: admin-gui",
+                            "displayname": "Tomcat users administrator roles: admin-gui",
+                            "hidden": "false",
+                            "options": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "secret": "false",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "manager-gui": {
+                            "choice": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "default": "enabled",
+                            "description": "Tomcat users administrator roles: manager-gui",
+                            "displayname": "Tomcat users administrator roles: manager-gui",
+                            "hidden": "false",
+                            "options": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "secret": "false",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "manager-jmx": {
+                            "choice": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "default": "enabled",
+                            "description": "Tomcat users administrator roles: manager-jmx",
+                            "displayname": "Tomcat users administrator roles: manager-jmx",
+                            "hidden": "false",
+                            "options": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "secret": "false",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "manager-script": {
+                            "choice": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "default": "enabled",
+                            "description": "Tomcat users administrator roles: manager-script",
+                            "displayname": "Tomcat users administrator roles: manager-script",
+                            "hidden": "false",
+                            "options": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "secret": "false",
+                            "selectable": "true",
+                            "type": "string"
+                        },
+                        "manager-status": {
+                            "choice": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "default": "enabled",
+                            "description": "Tomcat users administrator roles: manager-status",
+                            "displayname": "Tomcat users administrator roles: manager-status",
+                            "hidden": "false",
+                            "options": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "true",
+                            "secret": "false",
+                            "selectable": "true",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "version": {
+            "default": "8.0.15",
+            "description": "The version of Tomcat to be installed.",
+            "displayname": "Tomcat install version",
+            "hidden": "false",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "secret": "false",
+            "selectable": "true",
+            "type": "string"
+        },
+        "webapps": {
+            "enabled": {
+                "ROOT": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "true",
+                    "description": "Tomcat webapp ROOT",
+                    "displayname": "Tomcat webapp ROOT",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "docs": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "true",
+                    "description": "Specifies whether to install the Tomcat webapp examples documentation.",
+                    "displayname": "Tomcat webapp docs",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "examples": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "true",
+                    "description": "Specifies whether to install the Tomcat webapp examples.",
+                    "displayname": "Tomcat webapp examples",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "host-manager": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "true",
+                    "description": "Specifies whether to install the Tomcat host-manager webapp.",
+                    "displayname": "Tomcat webapp host-manager",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "manager": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "true",
+                    "description": "Specifies whether to install the Tomcat manager webapp.",
+                    "displayname": "Tomcat webapp manager",
+                    "hidden": "false",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

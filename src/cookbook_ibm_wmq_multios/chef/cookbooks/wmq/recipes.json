@@ -1,0 +1,73 @@
+{
+    "wmq": {
+        "cleanup.rb": {
+            "description": [
+                "Cleanup recipe (cleanup.rb)",
+                "Perform post-install cleanup"
+            ]
+        },
+        "config_qmgr_single.rb": {
+            "description": [
+                "Create one or more queue managers if they do not already exist."
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Default recipe"
+            ]
+        },
+        "fixpack.rb": {
+            "description": [
+                "Installation recipe (fixpack.rb)",
+                "This recipe performs the fixpack installation for the product"
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Evidence gathering recipe (gather_evidence.rb)",
+                "This recipe will collect functional product information and store it in an archive."
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Installation recipe (install.rb)",
+                "This recipe performs the product installation."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Prerequisites recipe (prereq.rb)",
+                "This recipe configures the operating prerequisites for the product."
+            ]
+        },
+        "prereq_check.rb": {
+            "description": [
+                "Prerequisite Check Recipe (preq_check.rb)",
+                "This recipe wil check the target platform to ensure installation is possible"
+            ]
+        },
+        "service.rb": {
+            "description": [
+                "Create the MQ service and enables it on RHEL 7",
+                "Determine Service Type, systemd or not",
+                "Create the MQ service file",
+                "Create Upstart Service File",
+                "Create the MQ service script",
+                "Enable and start the httpd service",
+                "Enable and start the httpd service",
+                "Enable the MQ service",
+                "Start the MQ service"
+            ]
+        },
+        "start_qmgr.rb": {
+            "description": [
+                "Start all queue managers defined for the target node."
+            ]
+        },
+        "stop_qmgr.rb": {
+            "description": [
+                "Stop all queue managers defined for the target node."
+            ]
+        }
+    }
+}

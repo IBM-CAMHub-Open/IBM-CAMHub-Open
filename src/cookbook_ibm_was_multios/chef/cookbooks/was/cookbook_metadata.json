@@ -1,0 +1,79 @@
+{
+    "was": {
+        "software": {
+            "name": "IBM WebSphere ",
+            "major_version": [
+                "8.5.5",
+                "9.0.0"
+            ],
+            "minor_version": [
+                "8.5.5.12",
+                "9.0.0.4"
+            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x",
+                "Ubuntu 14.x",
+                "Ubuntu 16.x"
+            ]
+        },
+        "disk": {
+            "/tmp": "2048",
+            "/var": "512",
+            "/opt/IBM/WebSphere/AppServer": "2048",
+            "/tmp/ibm_cloud": "2048"
+        },
+        "prerequisites": {
+            "Min Memory": "1024",
+            "Min Disk": "20GB",
+            "Min CPU": "1",
+            "Remote Root Access": "yes",
+            "Internal Firewall": "off"
+        },
+        "ports": {
+            "WC adminhost Port": "9060",
+            "WC adminhost secure Port": "9043",
+            "BOOTSTRAP ADDRESS Port": "9809",
+            "SOAP CONNECTOR ADDRESS Port": "8879",
+            "IPC CONNECTOR ADDRESS Port": "9632",
+            "SAS SSL SERVERAUTH LISTENER ADDRESS Port": "9401",
+            "CSIV2 SSL SERVERAUTH LISTENER ADDRESS Port": "9403",
+            "CSIV2 SSL MUTUALAUTH LISTENER ADDRESS Port": "9402",
+            "ORB LISTENER ADDRESS Port": "9100",
+            "CELL DISCOVERY ADDRESS Port": "7277",
+            "DCS UNICASTADDRESS Port": "9352",
+            "DataPowerMgr inbound secure Port": "5555",
+            "XDAGENT PORT": "7060",
+            "OVERLAY UDP LISTENER ADDRESS Port": "11005",
+            "OVERLAY TCP LISTENER ADDRESS Port": "11006",
+            "STATUS LISTENER ADDRESS Port": "9420",
+            "Min CPU": "1"
+        },
+        "installation_files": {
+            "8.5.5": {
+                "X86_64": {
+                    "repo_root": "IM Repository File",
+                    "file": ["com.ibm.websphere.IHS.v85_8.5.5011.20161206_1434", "com.ibm.websphere.ND.v85_8.5.5011.20161206_1434", "com.ibm.websphere.PLG.v85_8.5.5011.20161206_1434", "com.ibm.websphere.WCT.v85_8.5.5011.20161206_1434"]
+                }
+            },
+            "9.0.0": {
+                "X86_64": {
+                    "repo_root": "IM Repository File",
+                    "file": ["com.ibm.websphere.BASE.v90_9.0.4.20170523_1327", "com.ibm.websphere.IHS.v90_9.0.4.20170523_1327", "com.ibm.websphere.ND.v90_9.0.4.20170523_1327", "com.ibm.websphere.PLG.v90_9.0.4.20170523_1327", "com.ibm.websphere.WCT.v90_9.0.4.20170523_1327"]
+                }
+            }
+        },
+        "os_repository": {
+            "redhat": {
+                "x86_64": {
+                    "libraries": "compat-libstdc++-33, compat-db, ksh, gtk2, gtk2-engines, pam, rpm-build, elfutils, elfutils-libs, libXft, glibc, libgcc, nss-softokn-freebl, libXp, libXmu, libXtst, openssl, compat-libstdc++-296"
+                }
+            },
+            "debian": {
+                "x86_64": {
+                    "libraries": "libxtst6, libgtk2.0-bin, libxft2"
+                }
+            }
+        }
+    }
+}

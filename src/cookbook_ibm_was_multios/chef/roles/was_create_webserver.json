@@ -1,0 +1,29 @@
+{
+  "name": "was_create_webserver",
+  "description": "was_create_webserver",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "webserver": {
+            "ihs_server": {
+              "webserver_name": "webserver1",
+              "webserver_port": "8080",
+              "install_dir": "/opt/IBM/HTTPServer",
+              "admin_port":"8008",
+              "ihs_admin_user":""
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::unmanaged_webserver]",
+        "recipe[was::cleanup]"
+      ],
+      "env_run_lists": {
+
+      }
+}

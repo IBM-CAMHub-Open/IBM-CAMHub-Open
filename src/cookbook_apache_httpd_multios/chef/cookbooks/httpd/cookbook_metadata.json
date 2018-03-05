@@ -1,0 +1,59 @@
+{
+    "httpd": {
+        "software": {
+            "name": "Apache HTTPd",
+            "major_version": [
+                "2.4"
+            ],
+            "minor_version": [
+                "2.4.6"
+            ],
+            "platforms": [
+                "RHEL 6.x",
+                "RHEL 7.x",
+                "Ubuntu 14.x",
+                "Ubuntu 16.x"
+            ]
+        },
+        "disk": {
+            "/tmp": "1024",
+            "/var": "1024",
+            "/opt/tomcat": "1024",
+            "/tmp/ibm_cloud": "1024"
+        },
+        "prerequisites": {
+            "Min Memory": "1024",
+            "Min Disk": "20GB",
+            "Min CPU": "1",
+            "Remote Root Access": "yes",
+            "Internal Firewall": "off"
+        },
+        "ports": {
+            "Http Port": "8080"
+        },
+        "installation_files": {
+            "2.4": {
+                "Redhat X86_64": {
+                    "repo_root": "Installed from Package Repository",
+                    "file": ["httpd", "httpd-tools", "php", "php-mysql"]
+                },
+                "Debian X86_64": {
+                    "repo_root": "Installed from Package Repository",
+                    "file": ["apache2", "apache2-utils", "php", "libapache2-mod-php", "php-mcrypt"]
+                }
+            }
+        },
+       "os_repository": {
+            "Redhat": {
+                "x86_64": {
+                    "libraries": "pyOpenSSL, openssl, net-tools"
+                }
+            },
+            "Debian": {
+                "x86_64": {
+                    "libraries": "python3-openssl, openssl, net-tools"
+                }
+            }
+        }
+    }
+}

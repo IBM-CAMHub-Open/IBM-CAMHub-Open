@@ -1,0 +1,49 @@
+{
+    "linux": {
+        "cleanup.rb": {
+            "description": [
+                "Left Empty on purpose, not used in cookbook."
+            ]
+        },
+        "create_fs.rb": {
+            "description": [
+                "Create 1..n disks and mount based on the ibm_cloud_fs resource"
+            ]
+        },
+        "create_lvm.rb": {
+            "description": [
+                "Create a series of physical volumes, volume groups and logical volumes"
+            ]
+        },
+        "default.rb": {
+            "description": [
+                "Executes the linux-utils role."
+            ]
+        },
+        "gather_evidence.rb": {
+            "description": [
+                "Left Empty on purpose, not used in cookbook."
+            ]
+        },
+        "install.rb": {
+            "description": [
+                "Left Empty on purpose, not used in cookbook."
+            ]
+        },
+        "prereq.rb": {
+            "description": [
+                "Install prequisite packages on Linux distro"
+            ]
+        },
+        "test_kitchen_fix.rb": {
+            "description": [
+                "Install net-tools for inspec testing of port numbers."
+            ]
+        },
+        "yumrepo.rb": {
+            "description": [
+                "Create xxx.repo files on a redhat server"
+            ]
+        }
+    }
+}
