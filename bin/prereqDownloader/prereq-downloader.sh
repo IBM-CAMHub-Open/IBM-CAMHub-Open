@@ -115,8 +115,17 @@ download_images() {
   echo "[*] Docker images saved succesfully"
 }
 
+download_cookbooks_and_templates() {
+  echo "[*] Cloning git repositories..."
+  ./../cloneGitRepositories/cloneRepositories.sh
+  mv ../../src/IBM-CAMHub-Open.tar $FOLDER_NAME/
+  rm -rf ../../src
+  echo "[*] Git repositories cloned succesfully"
+}
+
 download_chef
 download_docker
 download_compose
 download_images
+download_cookbooks_and_templates
 echo "[DONE] Succesfully downloaded all requirements to the folder: $FOLDER_NAME"
