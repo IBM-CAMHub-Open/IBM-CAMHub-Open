@@ -32,12 +32,20 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_standalone.git"
   },
   {
+    "name": "template_icp_installer_single",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_single.git"
+  },
+  {
     "name": "template_ibm_db2_v11_wasnd_v9_singleserver",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v9_singleserver.git"
   },
   {
     "name": "cookbook_apache_tomcat_multios",
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_apache_tomcat_multios.git"
+  },
+  {
+    "name": "template_integration_servicenow",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_servicenow.git"
   },
   {
     "name": "template_ibm_ihs_v9_standalone",
@@ -66,6 +74,18 @@
   {
     "name": "template_ibm_ihs_v9_liberty",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_liberty.git"
+  },
+  {
+    "name": "template_integration_apm",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_apm.git"
+  },
+  {
+    "name": "template_integration_icp-elk",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_icp-elk.git"
+  },
+  {
+    "name": "template_integration_apm_was",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_apm_was.git"
   },
   {
     "name": "template_ibm_wasnd_v9_standalone",
@@ -104,6 +124,10 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidisk.git"
   },
   {
+    "name": "template_icp_installer",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer.git"
+  },
+  {
     "name": "template_apache_http_v24_standalone_basic",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_basic.git"
   },
@@ -126,6 +150,10 @@
   {
     "name": "cookbook_apache_httpd_multios",
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_apache_httpd_multios.git"
+  },
+  {
+    "name": "template_integration_infoblox",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_infoblox.git"
   },
   {
     "name": "template_ibm_mq_v9_with_custom_mqsc",
