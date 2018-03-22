@@ -116,6 +116,10 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v8_standalone.git"
   },
   {
+    "name": "advanced_content_runtime_chef",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/advanced_content_runtime_chef.git"
+  },
+  {
     "name": "template_apache_tomcat_v8_standalone",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_tomcat_v8_standalone.git"
   },
@@ -142,6 +146,14 @@
   {
     "name": "template_ibm_ihs_v855_standalone",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v855_standalone.git"
+  },
+  {
+    "name": "IBMPower",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/IBMPower.git"
+  },
+  {
+    "name": "starterlibrary",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/starterlibrary.git"
   },
   {
     "name": "template_ibm_wasnd_v855_multinode",

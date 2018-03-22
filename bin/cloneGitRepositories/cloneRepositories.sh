@@ -8,13 +8,13 @@ toolrepositoryroot=$localtoolpath/../../
 host=github.com
 org=IBM-CAMHub-Open
 branch="DEFAULT"
-filterIn="cookbook|template"
+filterIn="cookbook|template|advanced|starterlibrary|IBMPower"
 filterOut="NOTHINGTOFILTEROUT"
 pwd=`pwd`
 theList=""
 theFullList=""
 tarFile=true
-srcPath=$toolrepositoryroot/src/
+srcPath=`echo $toolrepositoryroot/src/ | tr -s '/'`
 [[ -d $srcPath ]] && mv $srcPath $srcPath/../src-`date | tr : - | tr ' ' _`
 
 while test $# -gt 0; do
@@ -33,15 +33,20 @@ theFullList=`listRepositories $host $org true`
 [[ -z "$theFullList" ]] && { echo "No repositories found, possibly the connection to the host https://$host/$org failed" ; exit 1 ; }
 
 theList=`echo $theFullList | tr ' ' '\n' | egrep $filterIn | egrep -v $filterOut`
-[[ -z "$theList" ]] && { echo "The filter in: $filterIn and filter out: $filterOut, resulted in no repositories in the list" ; exit 0; } 
+[[ -z "$theList" ]] && { echo "The filter in: $filterIn and filter out: $filterOut, resulted in no repositories in the list" ; exit 0; }
+
+echo "[*] Clone repositories from $host:$org ..."
+echo -n "Cloning "
 
 set `echo $theList`
-while test $# -gt "0" 
+while test $# -gt "0"
 do
 	cloneRepository $srcPath $host $org $branch $1
 	shift
 done
+echo
 
-[[ "$tarFile" = true ]] && { cd $srcPath ; tar cvf IBM-CAMHub-Open.tar `ls -1 | egrep cookbook` > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open.tar" ; }
+[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open.tar `ls -1 | egrep cookbook` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open.tar" ; }
+[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_templates.tar `ls -1 | egrep -v "cookbook|IBM-CAMHub-Open.tar"` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_templates.tar" ; }
 
 exit 0
