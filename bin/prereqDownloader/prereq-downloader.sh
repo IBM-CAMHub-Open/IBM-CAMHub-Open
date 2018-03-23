@@ -112,12 +112,13 @@ download_images() {
   echo "[*] Saving Docker images to files..."
   docker save $DOCKER_REGISTRY/camc-sw-repo:$SWREPO_IMAGE_VERSION > $FOLDER_NAME/camc-sw-repo
   docker save $DOCKER_REGISTRY/camc-pattern-manager:$PM_IMAGE_VERSION > $FOLDER_NAME/camc-pattern-manager
-  echo "[*] Docker images saved succesfully"
+  echo "[*] Docker images saved successfully"
 }
 
 download_cookbooks_and_templates() {
   echo "[*] Cloning git repositories..."
   ./../cloneGitRepositories/cloneRepositories.sh
+  mv ../../src/IBM-CAMHub-Open_advanced_content_runtime.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open_templates.tar $FOLDER_NAME/
   rm -rf ../../src
@@ -129,4 +130,4 @@ download_docker
 download_compose
 download_images
 download_cookbooks_and_templates
-echo "[DONE] Succesfully downloaded all requirements to the folder: $FOLDER_NAME"
+echo "[DONE] Successfully downloaded all requirements to the folder: $FOLDER_NAME"

@@ -46,7 +46,8 @@ do
 done
 echo
 
+[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_advanced_content_runtime.tar `ls -1 | egrep cookbook` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_advanced_content_runtime.tar" ; }
 [[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open.tar `ls -1 | egrep cookbook` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open.tar" ; }
-[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_templates.tar `ls -1 | egrep -v "cookbook|IBM-CAMHub-Open.tar"` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_templates.tar" ; }
+[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_templates.tar `ls -1 | egrep -v "cookbook|advanced|IBM-CAMHub-Open.tar"` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_templates.tar" ; }
 
 exit 0
