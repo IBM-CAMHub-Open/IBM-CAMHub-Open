@@ -9,10 +9,15 @@ cd IBM-CAMHub-Open/bin/cloneGitRepositories/
 
 ### Output :
 
+IBM-CAMHub-Open_advanced_content_runtime.tar
+- tar file containing Content Runtime Terraform templates
+- For an offline environment, this tar simplifies download for import into Gitlab or GHE
+- Alternatively, import into Cloud Automation Manager using loadContentRuntimeTemplates.sh
+
 IBM-CAMHub-Open.tar
 - tar file containing Chef cookbooks
-- Used for importing cookbooks during an Offline Advanced Content Runtime installation
-- Place in /var of the virtual machine being used for the Offline Advanced Content Runtime
+- Used for importing cookbooks during an offline Content Runtime provision
+- Place in /var of the virtual machine being used for the offline Content Runtime
 
 IBM-CAMHub-Open_templates.tar
 - tar file containing Terraform templates
