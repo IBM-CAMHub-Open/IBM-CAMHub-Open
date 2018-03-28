@@ -119,7 +119,6 @@ download_cookbooks_and_templates() {
   echo "[*] Cloning git repositories..."
   ./../cloneGitRepositories/cloneRepositories.sh
   echo "[*] Git repositories cloned successfully"
-  cp ../cloneGitRepositories/loadContentRuntimeTemplates.sh $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open_advanced_content_runtime.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open_templates.tar $FOLDER_NAME/

@@ -30,13 +30,10 @@ docker.(deb,rpm)
 docker-compose
 - docker-compose binary
 
-loadContenRuntimeTemplates.sh
-- Script to load Content Runtime templates only in the case where GitLab or GHE are not available
-
 IBM-CAMHub-Open_advanced_content_runtime.tar (via cloneGitRepositories.sh)
 - tar file containing Content Runtime Terraform templates
 - For an offline environment, this tar simplifies download for import into Gitlab or GHE
-- Alternatively, import into Cloud Automation Manager using loadContentRuntimeTemplates.sh
+- loadContentRuntimeTemplates.sh is a script to load Content Runtime templates only in the case where GitLab or GHE are not available
 
 IBM-CAMHub-Open.tar (via cloneGitRepositories.sh)
 - tar file containing Chef cookbooks

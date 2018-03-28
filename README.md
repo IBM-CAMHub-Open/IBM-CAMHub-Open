@@ -61,8 +61,8 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | template_icp_installer_single | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_single/blob/master/README.md) |
 | template_integration_apm | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm/blob/master/README.md) |
 | template_integration_apm_was | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm_was/blob/master/README.md) |
-| template_integration_icp-elk | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_icp-elk/blob/master/README.md) |
-| template_integration_infoblox | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_infoblox/blob/master/README.md) |
+| template_integration_icp-elk | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_icp-elk/blob/master/README.md) |
+| template_integration_infoblox | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_infoblox/blob/master/README.md) |
 | template_integration_servicenow | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_servicenow/blob/master/README.md) |
 | template_lamp_stack_v1_standalone | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/template_lamp_stack_v1_standalone/blob/master/README.md) |
 | template_oracle_database_v12c_standalone | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_database_v12c_standalone/blob/master/README.md) |
