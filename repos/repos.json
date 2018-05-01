@@ -56,8 +56,16 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios.git"
   },
   {
+    "name": "template_git_clone_content_hub",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_git_clone_content_hub.git"
+  },
+  {
     "name": "template_ibm_db2_v10_standalone",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_standalone.git"
+  },
+  {
+    "name": "template_ansible_playbook_example",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ansible_playbook_example.git"
   },
   {
     "name": "cookbook_ibm_ihs_multios",
@@ -110,6 +118,10 @@
   {
     "name": "cookbook_ibm_cloud_utils_multios",
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_cloud_utils_multios.git"
+  },
+  {
+    "name": "template_ansible_node",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ansible_node.git"
   },
   {
     "name": "template_ibm_mq_v8_standalone",
