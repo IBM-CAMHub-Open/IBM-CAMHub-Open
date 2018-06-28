@@ -112,6 +112,10 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_oracle_mysql_multios.git"
   },
   {
+    "name": "template_icp_modules",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_modules.git"
+  },
+  {
     "name": "template_ibm_db2_v10_multidisk",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidisk.git"
   },
@@ -186,6 +190,10 @@
   {
     "name": "template_ibm_mq_v9_standalone",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_standalone.git"
+  },
+  {
+    "name": "template_icp_installer_medium",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_medium.git"
   },
   {
     "name": "template_apache_http_v24_standalone_full",
