@@ -1,0 +1,18 @@
+SCRIPT_VERSION=1.0
+
+# Software versions
+CHEF_VERSION=12.11.1
+CHEF_CLIENT_VERSION=12.17.44
+DOCKER_VERSION=17.09.0
+DOCKER_COMPOSE_VERSION=1.17.0
+
+# Docker images
+DOCKER_REGISTRY=ibmcom
+SWREPO_IMAGE_VERSION=1.0-current
+PM_IMAGE_VERSION=1.0-current
+
+# Content Runtime templates
+CR_VERSION=2.1
+
+# Cookbook/middleware/starter templates
+TEMPLATES_VERSION=1.0

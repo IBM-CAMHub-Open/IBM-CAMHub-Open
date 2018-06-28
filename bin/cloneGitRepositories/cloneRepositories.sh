@@ -1,5 +1,8 @@
 #!/bin/bash
 #
+# Copyright : IBM Corporation 2016, 2017
+#
+#
 [[ `dirname $0 | cut -c1` = '/' ]] && localtoolpath=`dirname $0`/ || localtoolpath=`pwd`/`dirname $0`/
 toolrepositoryroot=$localtoolpath/../../
 
@@ -41,7 +44,7 @@ echo -n "Cloning "
 set `echo $theList`
 while test $# -gt "0"
 do
-	cloneRepository $srcPath $host $org $branch $1
+	cloneRepository $srcPath $host $org $branch $1 2>> clone.log
 	shift
 done
 echo

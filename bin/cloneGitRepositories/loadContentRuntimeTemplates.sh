@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Copyright : IBM Corporation 2016, 2017
+#
 
 CAM_IP=''
 CAM_USER=''
@@ -44,6 +47,9 @@ obtain_tenant_id() {
 upload_content_runtime() {
   TEMPLATE_FOLDER=$1
   CR_FILE=./content_runtime.json
+  echo "[*] Preprocessing $TEMPLATE_FOLDER/catalog.json"
+  mv $TEMPLATE_FOLDER/catalog.json $TEMPLATE_FOLDER/catalog.json.back
+  sed ':a;N;s/\n/&/1;Ta;/template_source/d' "$TEMPLATE_FOLDER/catalog.json.back" | sed -e '/githubRepoUrl/d;/githubAccessToken/d;/relativePathToTemplateFolder/d;/templateFileName/d' > $TEMPLATE_FOLDER/catalog.json
   curl -k -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "@$TEMPLATE_FOLDER/catalog.json" -X POST "https://$CAM_IP:30000/cam/api/v1/templates?cloudOE_spaceGuid=default&ace_orgGuid=dummy-org-id&tenantId=$TENANT_ID" > $CR_FILE
 
   if [ $? != 0 ]; then

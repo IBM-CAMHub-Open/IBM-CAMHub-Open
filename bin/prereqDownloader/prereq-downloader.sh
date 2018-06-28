@@ -13,26 +13,25 @@ set -o pipefail
 PLATFORM="ubuntu"
 PLATFORM_VERSION="16.04"
 
-# Software versions
-CHEF_VERSION=12.11.1
-DOCKER_VERSION=17.09.0
-DOCKER_COMPOSE_VERSION=1.17.0
-
-# Docker images
-DOCKER_REGISTRY=ibmcom
-SWREPO_IMAGE_VERSION=1.0-current
-PM_IMAGE_VERSION=1.0-current
-
 # Process parameters
-if [ "$#" -ne 2 ]; then
-    echo "Usage: ./prereq-downloader platform platform_version"
+if [ $# -lt 2 ]; then
+    echo "Usage: ./prereq-downloader platform platform_version (optional: release)"
     exit 1
 fi
+
 PLATFORM=$1
 PLATFORM_VERSION=$2
+RELEASE=${3:-"2.0"}
+
+if [ -f releases/$RELEASE ]; then
+    . releases/$RELEASE
+else
+  echo "[ERROR] $RELEASE is not a valid release number. Available releases are 1.0 and 2.0"
+  exit 1
+fi
 
 # Downloaded prereqs location
-FOLDER_NAME="prereqs_"$PLATFORM"_"$PLATFORM_VERSION
+FOLDER_NAME="prereqs_"$PLATFORM"_"$PLATFORM_VERSION"_"$RELEASE
 mkdir -p $FOLDER_NAME
 
 # Check if the executing platform is supported
@@ -80,7 +79,7 @@ download_file() {
 }
 
 download_chef() {
-  echo "[*] Downloading Chef installation package..."
+  echo "[*] Downloading Chef installation package v$CHEF_VERSION..."
   if [[ $PLATFORM == *"ubuntu"* ]]; then
     CHEF_URL=https://packages.chef.io/files/stable/chef-server/$CHEF_VERSION/ubuntu/$PLATFORM_VERSION/chef-server-core_$CHEF_VERSION-1_amd64.deb
   else
@@ -89,8 +88,17 @@ download_chef() {
   download_file $CHEF_URL chef.$PACKAGE_FORMAT
 }
 
+download_clients() {
+  echo "[*] Downloading Chef client installation packages v$CHEF_CLIENT_VERSION..."
+  mkdir -p $FOLDER_NAME/chef-clients
+  download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/ubuntu/16.04/chef_$CHEF_CLIENT_VERSION-1_amd64.deb" "chef-clients/chef_$CHEF_CLIENT_VERSION-1_amd64.deb"
+  download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/el/6/chef-$CHEF_CLIENT_VERSION-1.el6.x86_64.rpm" "chef-clients/chef-$CHEF_CLIENT_VERSION-1.el6.x86_64.rpm"
+  download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/el/7/chef-$CHEF_CLIENT_VERSION-1.el7.x86_64.rpm" "chef-clients/chef-$CHEF_CLIENT_VERSION-1.el7.x86_64.rpm"
+  download_file "https://rubygems.org/downloads/chef-vault-2.9.0.gem" "chef-clients/chef-vault-2.9.0.gem"
+}
+
 download_docker() {
-  echo "[*] Downloading Docker installation package..."
+  echo "[*] Downloading Docker installation package v$DOCKER_VERSION..."
   if [[ $PLATFORM == *"ubuntu"* ]]; then
     VERSION_NAME=$(get_ubuntu_version)
     DOCKER_URL=https://download.docker.com/linux/$PLATFORM/dists/$VERSION_NAME/pool/stable/amd64/docker-ce_$DOCKER_VERSION~ce-0~ubuntu_amd64.deb
@@ -101,12 +109,12 @@ download_docker() {
 }
 
 download_compose() {
-  echo "[*] Downloading Docker Compose..."
+  echo "[*] Downloading Docker Compose v$DOCKER_COMPOSE_VERSION..."
   download_file https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-Linux-x86_64 docker-compose
 }
 
 download_images() {
-  echo "[*] Pulling Docker images..."
+  echo "[*] Pulling Docker images (camc-sw-repo v$SWREPO_IMAGE_VERSION, camc-pm-repo v$PM_IMAGE_VERSION)..."
   docker pull $DOCKER_REGISTRY/camc-sw-repo:$SWREPO_IMAGE_VERSION
   docker pull $DOCKER_REGISTRY/camc-pattern-manager:$PM_IMAGE_VERSION
   echo "[*] Saving Docker images to files..."
@@ -116,19 +124,23 @@ download_images() {
 }
 
 download_cookbooks_and_templates() {
-  echo "[*] Cloning git repositories..."
-  ./../cloneGitRepositories/cloneRepositories.sh
-  echo "[*] Git repositories cloned successfully"
-  mv ../../src/IBM-CAMHub-Open_advanced_content_runtime.tar $FOLDER_NAME/
+  echo "[*] Downloading Cookbooks and Templates v$TEMPLATES_VERSION..."
+  ./../cloneGitRepositories/cloneRepositories.sh --branch "$TEMPLATES_VERSION" --filter "cookbook|template|starterlibrary|IBMPower" --filterOut "advanced"
   mv ../../src/IBM-CAMHub-Open.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open_templates.tar $FOLDER_NAME/
-  rm -rf ../../src
+  echo "[*] Downloading Content Runtimes v$CR_VERSION..."
+  ./../cloneGitRepositories/cloneRepositories.sh --branch "$CR_VERSION" --filter "advanced"
+  echo "[*] Git repositories cloned successfully"
+  mv ../../src/IBM-CAMHub-Open_advanced_content_runtime.tar $FOLDER_NAME/
+  rm -rf ../../src*
   echo "[*] Gathered Content Runtime prerequisite files in $FOLDER_NAME/"
 }
 
+echo "[*] Prerequisite Downloader version $SCRIPT_VERSION"
 download_chef
 download_docker
 download_compose
 download_images
+download_clients
 download_cookbooks_and_templates
 echo "[DONE] Successfully downloaded all requirements to the folder: $FOLDER_NAME"
