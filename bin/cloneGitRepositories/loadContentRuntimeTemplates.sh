@@ -19,6 +19,11 @@ if [ -z "$CAM_IP" ] || [ -z "$CAM_USER" ] || [ -z "$CAM_PASSWORD" ]; then
   exit 1
 fi
 
+if [[ "$OSTYPE" != *"linux"* ]]; then
+  echo "[ERROR] This script must be executed from a Linux machine"
+  exit 1
+fi
+
 obtain_access_id () {
   TOKEN_FILE=./token.json
   curl -k -H "Content-Type: application/json" -d '{"grant_type": "password", "password": "admin", "username": "admin", "scope": "openid"}' https://$CAM_IP:30000/cam/v1/auth/identitytoken > $TOKEN_FILE
