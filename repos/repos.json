@@ -60,6 +60,10 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_git_clone_content_hub.git"
   },
   {
+    "name": "cookbook_ibm_workflow_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios.git"
+  },
+  {
     "name": "template_ibm_db2_v10_standalone",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_standalone.git"
   },
@@ -194,6 +198,10 @@
   {
     "name": "template_icp_installer_medium",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_medium.git"
+  },
+  {
+    "name": "template_ibm_workflow_singlenode",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_workflow_singlenode.git"
   },
   {
     "name": "template_apache_http_v24_standalone_full",

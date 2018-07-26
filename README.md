@@ -28,6 +28,7 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | cookbook_ibm_wasliberty_multios | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wasliberty_multios/blob/master/README.md) |
 | cookbook_ibm_was_multios | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios/blob/master/README.md) |
 | cookbook_ibm_wmq_multios | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/blob/master/README.md) |
+| cookbook_ibm_workflow_multios | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios/blob/master/README.md) |
 | cookbook_oracle_enterprisedatabase_multios | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/cookbook_oracle_enterprisedatabase_multios/blob/master/README.md) |
 | cookbook_oracle_mysql_multios | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_oracle_mysql_multios/blob/master/README.md) |
 
@@ -60,6 +61,7 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | template_ibm_wasnd_v855_standalone | 2.0.3 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_standalone/blob/master/README.md) |
 | template_ibm_wasnd_v9_multinode | 2.0.3 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_multinode/blob/master/README.md) |
 | template_ibm_wasnd_v9_standalone | 2.0.4 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_standalone/blob/master/README.md) |
+| template_ibm_workflow_singlenode | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_workflow_singlenode/blob/master/README.md) |
 | template_icp_installer | 2.1.3 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer/blob/master/README.md) |
 | template_icp_installer_medium | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_medium/blob/master/README.md) |
 | template_icp_installer_single | 2.1.4 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_single/blob/master/README.md) |
