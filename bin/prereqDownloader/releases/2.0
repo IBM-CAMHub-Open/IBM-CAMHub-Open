@@ -3,8 +3,11 @@ SCRIPT_VERSION=2.0
 # Software versions
 CHEF_VERSION=12.17.33
 CHEF_CLIENT_VERSION=14.0.190
-DOCKER_VERSION=17.09.0
 DOCKER_COMPOSE_VERSION=1.17.1
+
+#Docker package name
+CENTOS_DOCKER_PACKAGE=docker-ce-18.06.1.ce-3.el7.x86_64.rpm
+UBUNTU_DOCKER_PACKAGE=docker-ce_18.06.1~ce~3-0~ubuntu_amd64.deb
 
 # Docker images
 DOCKER_REGISTRY=ibmcom
@@ -12,7 +15,7 @@ SWREPO_IMAGE_VERSION=2.0-current
 PM_IMAGE_VERSION=2.0-current
 
 # Content Runtime templates
-CR_VERSION=2.2
+CR_VERSION=2.3
 
 # Cookbook/middleware/starter templates
 TEMPLATES_VERSION=2.0

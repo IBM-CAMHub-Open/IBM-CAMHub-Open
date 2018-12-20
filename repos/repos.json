@@ -24,6 +24,10 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios.git"
   },
   {
+    "name": "template_icp_upgrade",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_upgrade.git"
+  },
+  {
     "name": "template_ibm_db2_v11_wasnd_v855_singleserver",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v855_singleserver.git"
   },
@@ -46,6 +50,10 @@
   {
     "name": "template_integration_servicenow",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_servicenow.git"
+  },
+  {
+    "name": "template_integration_ilmt",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_ilmt.git"
   },
   {
     "name": "template_ibm_ihs_v9_standalone",
@@ -86,6 +94,10 @@
   {
     "name": "template_ibm_ihs_v9_liberty",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_liberty.git"
+  },
+  {
+    "name": "template_import_vmware",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_import_vmware.git"
   },
   {
     "name": "template_integration_apm",
@@ -160,6 +172,10 @@
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_multinode.git"
   },
   {
+    "name": "template_ibm_workflow_multinode",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_workflow_multinode.git"
+  },
+  {
     "name": "template_ibm_wasliberty_v17_serverfarm",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_serverfarm.git"
   },
@@ -218,5 +234,13 @@
   {
     "name": "cookbook_oracle_enterprisedatabase_multios",
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_oracle_enterprisedatabase_multios.git"
+  },
+  {
+    "name": "template_icp_node",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_node.git"
+  },
+  {
+    "name": "template_integration_icam",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_icam.git"
   }
 ]

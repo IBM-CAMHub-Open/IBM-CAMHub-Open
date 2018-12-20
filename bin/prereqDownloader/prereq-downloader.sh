@@ -98,12 +98,13 @@ download_clients() {
 }
 
 download_docker() {
-  echo "[*] Downloading Docker installation package v$DOCKER_VERSION..."
   if [[ $PLATFORM == *"ubuntu"* ]]; then
     VERSION_NAME=$(get_ubuntu_version)
-    DOCKER_URL=https://download.docker.com/linux/$PLATFORM/dists/$VERSION_NAME/pool/stable/amd64/docker-ce_$DOCKER_VERSION~ce-0~ubuntu_amd64.deb
+    echo "[*] Downloading Docker installation package $UBUNTU_DOCKER_PACKAGE..."
+    DOCKER_URL=https://download.docker.com/linux/$PLATFORM/dists/$VERSION_NAME/pool/stable/amd64/${UBUNTU_DOCKER_PACKAGE}
   else
-    DOCKER_URL=https://download.docker.com/linux/centos/$MAIN_VERSION/x86_64/stable/Packages/docker-ce-$DOCKER_VERSION.ce-1.el7.centos.x86_64.rpm
+    echo "[*] Downloading Docker installation package $CENTOS_DOCKER_PACKAGE..."
+    DOCKER_URL=https://download.docker.com/linux/centos/$MAIN_VERSION/x86_64/stable/Packages/${CENTOS_DOCKER_PACKAGE}
   fi
   download_file $DOCKER_URL docker.$PACKAGE_FORMAT
 }
