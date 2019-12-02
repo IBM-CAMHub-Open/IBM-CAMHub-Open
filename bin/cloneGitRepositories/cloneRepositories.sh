@@ -50,8 +50,10 @@ done
 echo
 
 cp $srcPath/../bin/cloneGitRepositories/loadContentRuntimeTemplates.sh $srcPath/advanced_content_runtime_chef/
+cp $srcPath/../bin/cloneGitRepositories/loadStarterTemplates.sh $srcPath/starterlibrary/
 [[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_advanced_content_runtime.tar `ls -1 | egrep advanced` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_advanced_content_runtime.tar" ; }
 [[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open.tar `ls -1 | egrep cookbook` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open.tar" ; }
-[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_templates.tar `ls -1 | egrep -v "cookbook|advanced|IBM-CAMHub-Open.tar"` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_templates.tar" ; }
+[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_starterlibrary.tar `ls -1 | egrep starterlibrary` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_starterlibrary.tar" ; }
+[[ "$tarFile" = true ]] && { cd $srcPath ; tar cf IBM-CAMHub-Open_templates.tar `ls -1 | egrep -v "cookbook|advanced|starterlibrary|IBM-CAMHub-Open.tar"` 2>&1 > /dev/null ; echo "Tar file generated: $srcPath/IBM-CAMHub-Open_templates.tar" ; }
 
 exit 0

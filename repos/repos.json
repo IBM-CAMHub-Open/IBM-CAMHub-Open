@@ -1,246 +1,322 @@
 [
   {
-    "name": "template_ibm_db2_v10_multidb",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidb.git"
-  },
-  {
-    "name": "template_oracle_database_v12c_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_oracle_database_v12c_standalone.git"
-  },
-  {
-    "name": "template_oracle_mysql_v57_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_oracle_mysql_v57_standalone.git"
-  },
-  {
-    "name": "template_ibm_db2_v11_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_standalone.git"
-  },
-  {
-    "name": "template_ibm_db2_v11_multidb",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidb.git"
-  },
-  {
-    "name": "cookbook_ibm_wmq_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios.git"
-  },
-  {
-    "name": "template_icp_upgrade",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_upgrade.git"
-  },
-  {
-    "name": "template_ibm_db2_v11_wasnd_v855_singleserver",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v855_singleserver.git"
-  },
-  {
-    "name": "template_ibm_wasliberty_v17_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_standalone.git"
-  },
-  {
-    "name": "template_icp_installer_single",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_single.git"
-  },
-  {
-    "name": "template_ibm_db2_v11_wasnd_v9_singleserver",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v9_singleserver.git"
-  },
-  {
-    "name": "cookbook_apache_tomcat_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_apache_tomcat_multios.git"
-  },
-  {
-    "name": "template_integration_servicenow",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_servicenow.git"
-  },
-  {
-    "name": "template_integration_ilmt",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_ilmt.git"
-  },
-  {
-    "name": "template_ibm_ihs_v9_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_standalone.git"
-  },
-  {
-    "name": "cookbook_ibm_was_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios.git"
-  },
-  {
-    "name": "template_git_clone_content_hub",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_git_clone_content_hub.git"
-  },
-  {
-    "name": "cookbook_ibm_workflow_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios.git"
-  },
-  {
-    "name": "template_ibm_db2_v10_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_standalone.git"
-  },
-  {
-    "name": "template_ansible_playbook_example",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ansible_playbook_example.git"
-  },
-  {
-    "name": "cookbook_ibm_ihs_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_ihs_multios.git"
-  },
-  {
-    "name": "cookbook_ibm_utils_linux",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_utils_linux.git"
-  },
-  {
-    "name": "cookbook_ibm_db2_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_db2_multios.git"
-  },
-  {
-    "name": "template_ibm_ihs_v9_liberty",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_liberty.git"
-  },
-  {
-    "name": "template_import_vmware",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_import_vmware.git"
-  },
-  {
-    "name": "template_integration_apm",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_apm.git"
-  },
-  {
-    "name": "template_integration_icp-elk",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_icp-elk.git"
-  },
-  {
-    "name": "template_integration_apm_was",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_apm_was.git"
-  },
-  {
-    "name": "template_ibm_wasnd_v9_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_standalone.git"
-  },
-  {
-    "name": "cookbook_ibm_wasliberty_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_wasliberty_multios.git"
-  },
-  {
-    "name": "cookbook_ibm_im_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_im_multios.git"
-  },
-  {
-    "name": "cookbook_oracle_mysql_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_oracle_mysql_multios.git"
-  },
-  {
-    "name": "template_icp_modules",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_modules.git"
-  },
-  {
-    "name": "template_ibm_db2_v10_multidisk",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidisk.git"
-  },
-  {
-    "name": "cookbook_ibm_cloud_utils_multios",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_cloud_utils_multios.git"
-  },
-  {
-    "name": "template_ansible_node",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ansible_node.git"
-  },
-  {
-    "name": "template_ibm_mq_v8_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v8_standalone.git"
-  },
-  {
-    "name": "advanced_content_runtime_chef",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/advanced_content_runtime_chef.git"
-  },
-  {
-    "name": "template_apache_tomcat_v8_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_tomcat_v8_standalone.git"
-  },
-  {
-    "name": "template_ibm_db2_v11_multidisk",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidisk.git"
-  },
-  {
-    "name": "template_icp_installer",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer.git"
-  },
-  {
-    "name": "template_apache_http_v24_standalone_basic",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_basic.git"
-  },
-  {
-    "name": "template_ibm_wasnd_v9_multinode",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_multinode.git"
-  },
-  {
-    "name": "template_ibm_workflow_multinode",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_workflow_multinode.git"
-  },
-  {
-    "name": "template_ibm_wasliberty_v17_serverfarm",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_serverfarm.git"
-  },
-  {
-    "name": "template_ibm_ihs_v855_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v855_standalone.git"
+    "name": "starterlibrary",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/starterlibrary.git"
   },
   {
     "name": "IBMPower",
     "clone_url": "https://github.com/IBM-CAMHub-Open/IBMPower.git"
   },
   {
-    "name": "starterlibrary",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/starterlibrary.git"
+    "name": "cookbook_ibm_utils_linux",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_utils_linux.git"
   },
   {
-    "name": "template_ibm_wasnd_v855_multinode",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_multinode.git"
+    "name": "cookbook_ibm_ihs_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_ihs_multios.git"
+  },
+  {
+    "name": "cookbook_ibm_db2_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_db2_multios.git"
   },
   {
     "name": "cookbook_apache_httpd_multios",
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_apache_httpd_multios.git"
   },
   {
-    "name": "template_integration_infoblox",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_infoblox.git"
+    "name": "cookbook_ibm_cloud_utils_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_cloud_utils_multios.git"
   },
   {
-    "name": "template_ibm_mq_v9_with_custom_mqsc",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_with_custom_mqsc.git"
+    "name": "cookbook_ibm_im_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_im_multios.git"
   },
   {
-    "name": "template_ibm_mq_v9_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_standalone.git"
+    "name": "cookbook_ibm_wmq_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios.git"
   },
   {
-    "name": "template_icp_installer_medium",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_medium.git"
+    "name": "cookbook_ibm_was_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios.git"
   },
   {
-    "name": "template_ibm_workflow_singlenode",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_workflow_singlenode.git"
+    "name": "cookbook_ibm_wasliberty_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_wasliberty_multios.git"
   },
   {
-    "name": "template_apache_http_v24_standalone_full",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_full.git"
+    "name": "cookbook_apache_tomcat_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_apache_tomcat_multios.git"
   },
   {
-    "name": "template_lamp_stack_v1_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_lamp_stack_v1_standalone.git"
-  },
-  {
-    "name": "template_ibm_wasnd_v855_standalone",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_standalone.git"
+    "name": "cookbook_oracle_mysql_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_oracle_mysql_multios.git"
   },
   {
     "name": "cookbook_oracle_enterprisedatabase_multios",
     "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_oracle_enterprisedatabase_multios.git"
   },
   {
-    "name": "template_icp_node",
-    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_node.git"
+    "name": "template_lamp_stack_v1_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_lamp_stack_v1_standalone.git"
+  },
+  {
+    "name": "template_ibm_wasnd_v855_multinode",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_multinode.git"
+  },
+  {
+    "name": "template_apache_http_v24_standalone_full",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_full.git"
+  },
+  {
+    "name": "template_ibm_db2_v11_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_standalone.git"
+  },
+  {
+    "name": "template_oracle_database_v12c_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_oracle_database_v12c_standalone.git"
+  },
+  {
+    "name": "template_apache_http_v24_standalone_basic",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_basic.git"
+  },
+  {
+    "name": "template_apache_tomcat_v8_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_apache_tomcat_v8_standalone.git"
+  },
+  {
+    "name": "template_ibm_mq_v8_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v8_standalone.git"
+  },
+  {
+    "name": "template_ibm_ihs_v855_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v855_standalone.git"
+  },
+  {
+    "name": "template_ibm_ihs_v9_liberty",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_liberty.git"
+  },
+  {
+    "name": "template_ibm_mq_v9_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_standalone.git"
+  },
+  {
+    "name": "template_oracle_mysql_v57_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_oracle_mysql_v57_standalone.git"
+  },
+  {
+    "name": "template_ibm_db2_v10_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_standalone.git"
+  },
+  {
+    "name": "template_ibm_mq_v9_with_custom_mqsc",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_with_custom_mqsc.git"
+  },
+  {
+    "name": "template_ibm_db2_v11_multidisk",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidisk.git"
+  },
+  {
+    "name": "template_ibm_db2_v10_multidisk",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidisk.git"
+  },
+  {
+    "name": "template_ibm_db2_v10_multidb",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidb.git"
+  },
+  {
+    "name": "template_ibm_db2_v11_multidb",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidb.git"
+  },
+  {
+    "name": "template_ibm_wasnd_v9_multinode",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_multinode.git"
+  },
+  {
+    "name": "template_ibm_db2_v11_wasnd_v9_singleserver",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v9_singleserver.git"
+  },
+  {
+    "name": "template_ibm_db2_v11_wasnd_v855_singleserver",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v855_singleserver.git"
+  },
+  {
+    "name": "template_ibm_ihs_v9_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_standalone.git"
+  },
+  {
+    "name": "template_ibm_wasnd_v9_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_standalone.git"
+  },
+  {
+    "name": "template_ibm_wasnd_v855_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_standalone.git"
+  },
+  {
+    "name": "template_ibm_wasliberty_v17_serverfarm",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_serverfarm.git"
+  },
+  {
+    "name": "template_ibm_wasliberty_v17_standalone",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_standalone.git"
+  },
+  {
+    "name": "template_integration_servicenow",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_servicenow.git"
+  },
+  {
+    "name": "template_integration_apm_was",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_apm_was.git"
+  },
+  {
+    "name": "template_icp_installer",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer.git"
+  },
+  {
+    "name": "template_icp_installer_single",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_single.git"
+  },
+  {
+    "name": "template_integration_apm",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_apm.git"
+  },
+  {
+    "name": "template_integration_infoblox",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_infoblox.git"
+  },
+  {
+    "name": "template_integration_icp-elk",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_icp-elk.git"
+  },
+  {
+    "name": "advanced_content_runtime_chef",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/advanced_content_runtime_chef.git"
+  },
+  {
+    "name": "template_ansible_node",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ansible_node.git"
+  },
+  {
+    "name": "template_ansible_playbook_example",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ansible_playbook_example.git"
+  },
+  {
+    "name": "template_git_clone_content_hub",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_git_clone_content_hub.git"
+  },
+  {
+    "name": "template_icp_modules",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_modules.git"
+  },
+  {
+    "name": "template_icp_installer_medium",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_installer_medium.git"
+  },
+  {
+    "name": "cookbook_ibm_workflow_multios",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios.git"
+  },
+  {
+    "name": "template_ibm_workflow_singlenode",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_workflow_singlenode.git"
   },
   {
     "name": "template_integration_icam",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_icam.git"
+  },
+  {
+    "name": "template_icp_node",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_node.git"
+  },
+  {
+    "name": "template_import_vmware",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_import_vmware.git"
+  },
+  {
+    "name": "template_ibm_workflow_multinode",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_workflow_multinode.git"
+  },
+  {
+    "name": "template_integration_ilmt",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_ilmt.git"
+  },
+  {
+    "name": "template_icp_aws",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_aws.git"
+  },
+  {
+    "name": "template_icp_ibmcloud",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_ibmcloud.git"
+  },
+  {
+    "name": "template_icp_azure",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_azure.git"
+  },
+  {
+    "name": "template_icp_googlecloud",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_googlecloud.git"
+  },
+  {
+    "name": "template_mcm_modules",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_mcm_modules.git"
+  },
+  {
+    "name": "template_mcm_install",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_mcm_install.git"
+  },
+  {
+    "name": "template_import_openstack",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_import_openstack.git"
+  },
+  {
+    "name": "template_kubernetes_iks",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_kubernetes_iks.git"
+  },
+  {
+    "name": "template_integration_cam",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_cam.git"
+  },
+  {
+    "name": "template_kubernetes_eks",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_kubernetes_eks.git"
+  },
+  {
+    "name": "template_kubernetes_aks",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_kubernetes_aks.git"
+  },
+  {
+    "name": "template_kubernetes_gke",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_kubernetes_gke.git"
+  },
+  {
+    "name": "template_openshift_modules",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_openshift_modules.git"
+  },
+  {
+    "name": "template_openshift_installer",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_openshift_installer.git"
+  },
+  {
+    "name": "template_openshift_installer_single",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_openshift_installer_single.git"
+  },
+  {
+    "name": "template_deploy_IBMi",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_deploy_IBMi.git"
+  },
+  {
+    "name": "template_cam_common",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_cam_common.git"
+  },
+  {
+    "name": "template_openshift_node",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_openshift_node.git"
+  },
+  {
+    "name": "template_icp_on_ocp",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_on_ocp.git"
+  },
+  {
+    "name": "template_icp_upgrade",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_upgrade.git"
   }
 ]

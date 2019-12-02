@@ -21,12 +21,12 @@ fi
 
 PLATFORM=$1
 PLATFORM_VERSION=$2
-RELEASE=${3:-"2.0"}
+RELEASE=${3:-"3.0"}
 
 if [ -f releases/$RELEASE ]; then
     . releases/$RELEASE
 else
-  echo "[ERROR] $RELEASE is not a valid release number. Available releases are 1.0 and 2.0"
+  echo "[ERROR] $RELEASE is not a valid release number. Available releases are 1.0, 2.0 and 3.0"
   exit 1
 fi
 
@@ -97,6 +97,12 @@ download_clients() {
   download_file "https://rubygems.org/downloads/chef-vault-2.9.0.gem" "chef-clients/chef-vault-2.9.0.gem"
 }
 
+download_chefdk() {
+  echo "[*] Downloading Chef DK installation packages v$CHEFDK_VERSION..."
+  mkdir -p $FOLDER_NAME/chefdk
+  download_file "https://packages.chef.io/files/stable/chefdk/$CHEFDK_VERSION/el/7/chefdk-$CHEFDK_VERSION-1.el7.x86_64.rpm" "chefdk/chefdk-$CHEFDK_VERSION-1.el7.x86_64.rpm"
+}
+
 download_docker() {
   if [[ $PLATFORM == *"ubuntu"* ]]; then
     VERSION_NAME=$(get_ubuntu_version)
@@ -143,5 +149,10 @@ download_docker
 download_compose
 download_images
 download_clients
+CHEFDK_FOUND=${CHEFDK_VERSION:-""}
+if [[ -n $CHEFDK_FOUND ]]; then
+        download_chefdk
+fi
 download_cookbooks_and_templates
+
 echo "[DONE] Successfully downloaded all requirements to the folder: $FOLDER_NAME"

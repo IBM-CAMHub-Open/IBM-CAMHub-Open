@@ -11,7 +11,7 @@ cd IBM-CAMHub-Open/bin/prereqDownloader/
 
 - `platform_version` is the version of this distribution. Valid inputs include `14.04` and `16.04` for Ubuntu and `7` for Red Hat and CentOS.
 
-- `release` sets the version of products to be downloaded (available releases: `1.0` and `2.0`). If no `release` is provided, the latest release will be selected automatically. Details on these product versions can be found below.
+- `release` sets the version of products to be downloaded (available releases: `1.0`, `2.0` and `3.0`). If no `release` is provided, the latest release will be selected automatically. Details on these product versions can be found below.
 
 #### Example
 If a Content Runtime will be created in a VM running Ubuntu 16.04 and using the latest release
@@ -38,6 +38,9 @@ chef.(deb,rpm)
 chef-clients
 - Folder that contains chef client installation binaries that will be stored in the Software Repository for later use
 
+chefdk
+- Folder that contains Chef DK. (added in release 3.0)
+
 docker.(deb,rpm)
 - Platform specific Docker package
 
@@ -54,6 +57,11 @@ IBM-CAMHub-Open_templates.tar
 - Contains the CAM Middleware, Integration and Starterpack templates. These can be placed in GitLab, GHE or manually loaded into Cloud Automation Manager.
 
 ## Product versions included
+
+#### Note
+Release 1.0 should be used exclusively on environments that require Chef client version 12. This product is **no longer supported**, thus it is discouraged.  
+Release 3.0 should be used on environments that require ChefInfra Server 13.x (or higher), ChefInfra Client 15.x (or higher) and Chef DK 4.x (or higher).
+
 ### Release 1.0
 
 | Product   |      Version      |
@@ -69,8 +77,6 @@ IBM-CAMHub-Open_templates.tar
 | middleware | 1.0 |
 | starter | 1.0 |
 
-#### Note
-Release 1.0 should be used exclusively on environments that require Chef client version 12. This product is **no longer supported**, thus it is discouraged.
 
 ### Release 2.0
 
@@ -83,6 +89,23 @@ Release 1.0 should be used exclusively on environments that require Chef client 
 | camc-sw-repo | 2.0-current |
 | camc-pattern-manager | 2.0-current |
 | advanced_content_runtime | 2.2 |
+| cookbooks | 2.0 |
+| middleware | 2.0 |
+| starter | 2.0 |
+
+
+### Release 3.0
+
+| Product   |      Version      |
+|----------|:-------------:|
+| chef server | 13.x.x |
+| chef client | 15.x.x |
+| chef-dk     | 4.x.x   |
+| docker | 18.06.1 or higher |
+| docker-compose | 1.17.1 |
+| camc-sw-repo | 2.0-current |
+| camc-pattern-manager | 3.0-current |
+| advanced_content_runtime | 2.6 |
 | cookbooks | 2.0 |
 | middleware | 2.0 |
 | starter | 2.0 |
