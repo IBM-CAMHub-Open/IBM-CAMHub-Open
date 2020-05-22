@@ -63,11 +63,15 @@ Follow the steps below to load advanced content runtime
 
 Example:
 
+If CAM and MCM are running on specific ports, use  hostname:port or ip:port for cam_console and mcm_console.
+
 ```bash
-./loadContentRuntimeTemplates.sh --cam_console 9.30.247.164:30000 --mcm_console 9.30.247.164:8443 --cam_user admin --cam_password Passw0rd
+./loadContentRuntimeTemplates.sh --cam_console 1.2.3.4:30000 --mcm_console 1.2.3.4:8443 --cam_user admin --cam_password Passw0rd
 ```
 
 or
+
+If CAM and MCM are running on standard ports (443 for https), use just hostname or ip for cam_console and mcm_console.
 
 ```bash
 ./loadContentRuntimeTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd
@@ -102,14 +106,18 @@ Follow the steps below to load starter library
 
 Example:
 
+If CAM and MCM are running on specific ports, use  hostname:port or ip:port for cam_console and mcm_console.
+
 ```bash
-./loadStarterTemplates.sh --cam_console 9.30.247.164:30000 --mcm_console 9.30.247.164:8443 --cam_user admin --cam_password Passw0rd
+./loadStarterTemplates.sh --cam_console 1.2.3.4:30000 --mcm_console 1.2.3.4:8443 --cam_user admin --cam_password Passw0rd
 ```
 
 or
 
+If CAM and MCM are running on standard ports (443 for https), use just hostname or ip for cam_console and mcm_console.
+
 ```bash
-./loadContentRuntimeTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd
+./loadStarterTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd
 ```
 
 ###Note 
