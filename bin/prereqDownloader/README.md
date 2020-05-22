@@ -83,9 +83,9 @@ IBM-CAMHub-Open.tar
 IBM-CAMHub-Open_templates.tar
 - Contains the CAM Middleware, Integration and Starterpack templates. These can be placed in GitLab, GHE or manually loaded into Cloud Automation Manager.
 
-###Note 
+### Dependency on template_cam_common 
 
-To use some of these templates you will have to manually import [template_cam_common](https://github.com/IBM-CAMHub-Open/template_cam_common) from IBM-CAMHub-Open_templates.tar. Branch 4.x for IBM CAM 4.x and branch
+To use some of these templates in IBM-CAMHub-Open_templates.tar you will have to manually import [template_cam_common](https://github.com/IBM-CAMHub-Open/template_cam_common) from IBM-CAMHub-Open_templates.tar. Branch 4.x for IBM CAM 4.x and branch
 3.2.1 for IBM CAM 3.2.x.
 
 ## Starter Library
@@ -120,7 +120,11 @@ If CAM and MCM are running on standard ports (443 for https), use just hostname 
 ./loadStarterTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd
 ```
 
-###Note 
+### Re-running loadStarterTemplates.sh 
+
+You must delete the starterlibrary folder and untar IBM-CAMHub-Open_starterlibrary.tar before re-running loadStarterTemplates.sh from the same system.
+
+### Dependency on template_cam_common
 
 To use some of these templates you will have to manually import [template_cam_common](https://github.com/IBM-CAMHub-Open/template_cam_common) from IBM-CAMHub-Open_templates.tar. Branch 4.x for IBM CAM 4.x and branch
 3.2.1 for IBM CAM 3.2.x.
