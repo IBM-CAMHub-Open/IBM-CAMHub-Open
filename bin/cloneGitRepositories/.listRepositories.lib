@@ -58,7 +58,6 @@ local clonerepository=$5
 mkdir -p $topath
 
 [[ `git clone -q $clonebranchp https://$clonehost/$cloneorg/$clonerepository $topath` ]] && { echo "Clone failed on : https://$clonetoken@$clonehost/$cloneorg/$clonerepository" ; exit 1 ; }
-
 echo -n "#"
 
 }

@@ -18,5 +18,9 @@ PM_IMAGE_VERSION=3.0-current
 # Content Runtime templates
 CR_VERSION=2.6
 
-# Cookbook/middleware/starter templates
+# Default version for templates
 TEMPLATES_VERSION=2.0
+
+# CAM version to be used to get the template version
+# CAM templates will be loaded from IBM-CAMHub-Open\bin\cloneGitRepositories\template<CAM_VERSION>
+CAM_VERSION=4200

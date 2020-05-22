@@ -1,7 +1,10 @@
 
 # IBM Cloud Automation Manager Hub
 
-Copyright IBM Corp. 2018, 2018
+Copyright IBM Corp. 2018, 2020
+
+The scripts in this branch has been enhanced to support IBM Cloud Automation Manager integration with IBM Multicloud Manager. Use this branch to load
+content into IBM Cloud Automation Manager 4.x or IBM Multicloud Manager 1.3.x or higher.
 
 The following Chef cookbooks and Terraform templates reside in this organization. This README will be updated each time the version of one of the cookbooks or templates is updated. Watch this repository to be notified when a new version of your cookbook or template is available.
 

@@ -131,8 +131,13 @@ download_images() {
 }
 
 download_cookbooks_and_templates() {
-  echo "[*] Downloading Cookbooks and Templates v$TEMPLATES_VERSION..."
-  ./../cloneGitRepositories/cloneRepositories.sh --branch "$TEMPLATES_VERSION" --filter "cookbook|template|starterlibrary|IBMPower" --filterOut "advanced"
+  echo "[*] Downloading Cookbooks and Templates..."
+  ###
+  #TEMPLATES_VERSION is the default version which is 2.0 used for cookbooks.
+  #But version is overridden by entries in cloneGitRepositories/template<release> see cloneGitRepositories/cloneRepositories.sh
+  ###
+  ./../cloneGitRepositories/cloneRepositories.sh --branch "$TEMPLATES_VERSION" --filter "cookbook|template|starterlibrary|IBMPower" --filterOut "advanced" --release $CAM_VERSION
+  mv ../../src/IBM-CAMHub-Open_starterlibrary.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open.tar $FOLDER_NAME/
   mv ../../src/IBM-CAMHub-Open_templates.tar $FOLDER_NAME/
   echo "[*] Downloading Content Runtimes v$CR_VERSION..."

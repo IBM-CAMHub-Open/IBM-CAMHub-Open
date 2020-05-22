@@ -1,23 +1,23 @@
 #!/bin/bash
 #
-# Copyright : IBM Corporation 2016, 2017
+# Copyright : IBM Corporation 2020
 #
 
-CAM_IP=''
-CAM_USER='admin'
-CAM_PASSWORD='admin'
-CAM_nodePort='30000'
+CAM_CONSOLE=''
+MCM_CONSOLE=''
+CAM_USER=''
+CAM_PASSWORD=''
 
 while test $# -gt 0; do
-  [[ $1 =~ ^-c|--cam_ip$ ]] && { CAM_IP="$2"; shift 2; continue; };
-  [[ $1 =~ ^-n|--CAM_nodePort$ ]] && { CAM_nodePort="$2"; shift 2; continue; };
-  [[ $1 =~ ^-p|--cam_password$ ]] && { CAM_USER="$2"; shift 2; continue; };
-  [[ $1 =~ ^-u|--cam_user$ ]] && { CAM_PASSWORD="$2"; shift 2; continue; };
+  [[ $1 =~ ^-c|--cam_console$ ]] && { CAM_CONSOLE="$2"; shift 2; continue; };
+  [[ $1 =~ ^-m|--mcm_console$ ]] && { MCM_CONSOLE="$2"; shift 2; continue; };
+  [[ $1 =~ ^-p|--cam_password$ ]] && { CAM_PASSWORD="$2"; shift 2; continue; };
+  [[ $1 =~ ^-u|--cam_user$ ]] && { CAM_USER="$2"; shift 2; continue; };
 done
 
-if [ -z "$CAM_IP" ] || [ -z "$CAM_USER" ] || [ -z "$CAM_PASSWORD" ]; then
-  echo "[ERROR] This script requires the IP address, username and password of the CAM instance"
-  echo "[ERROR] Correct usage: $0 -c CAM_IP -u CAM_USER -p CAM_PASSWORD"
+if [ -z "$CAM_CONSOLE" ] || [ -z "$MCM_CONSOLE" ] || [ -z "$CAM_USER" ] || [ -z "$CAM_PASSWORD" ]; then
+  echo "[ERROR] This script requires the CAM Console, username and password of the CAM instance"
+  echo "[ERROR] Correct usage: $0 -c CAM_CONSOLE -u CAM_USER -p CAM_PASSWORD -m MCM_CONSOLE"
   exit 1
 fi
 
@@ -28,10 +28,10 @@ fi
 
 obtain_access_id () {
   TOKEN_FILE=./token.json
-  curl -k -H "Content-Type: application/json" -d '{"grant_type": "password", "password": $CAM_PASSWORD, "username": $CAM_USER, "scope": "openid"}' https://$CAM_IP:$CAM_nodePort/cam/v1/auth/identitytoken > $TOKEN_FILE
+  curl -k -H "Content-Type: application/json" -d '{"grant_type": "password", "password": "'$CAM_PASSWORD'", "username": "'$CAM_USER'", "scope": "openid"}' https://$MCM_CONSOLE/idprovider/v1/auth/identitytoken > $TOKEN_FILE
 
   if [ $? != 0 ]; then
-    echo "[ERROR] There was an error retrieving the access ID from $CAM_IP"
+    echo "[ERROR] There was an error retrieving the access ID from $MCM_CONSOLE"
     exit 1
   fi
 
@@ -40,10 +40,10 @@ obtain_access_id () {
 
 obtain_tenant_id() {
   TENANT_FILE=./tenant.json
-  curl -k -H "Authorization: bearer $TOKEN" https://$CAM_IP:$CAM_nodePort/cam/tenant/api/v1/tenants/getTenantOnPrem > $TENANT_FILE
+  curl -k -H "Authorization: bearer $TOKEN" https://$CAM_CONSOLE/cam/tenant/api/v1/tenants/getTenantOnPrem > $TENANT_FILE
 
   if [ $? != 0 ]; then
-    echo "[ERROR] There was an error retrieving the tenant ID from $CAM_IP"
+    echo "[ERROR] There was an error retrieving the tenant ID from $CAM_CONSOLE"
     exit 1
   fi
 
@@ -54,13 +54,13 @@ obtain_tenant_id() {
 upload_content_runtime() {
   TEMPLATE_FOLDER=$1
   CR_FILE=./content_runtime.json
-  echo "[*] Preprocessing $TEMPLATE_FOLDER/catalog.json"
-  mv $TEMPLATE_FOLDER/catalog.json $TEMPLATE_FOLDER/catalog.json.back
-  sed ':a;N;s/\n/&/1;Ta;/template_source/d' "$TEMPLATE_FOLDER/catalog.json.back" | sed -e '/githubRepoUrl/d;/githubAccessToken/d;/relativePathToTemplateFolder/d;/templateFileName/d' > $TEMPLATE_FOLDER/catalog.json
-  curl -k -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "@$TEMPLATE_FOLDER/catalog.json" -X POST "https://$CAM_IP:$CAM_nodePort/cam/api/v1/templates?cloudOE_spaceGuid=default&ace_orgGuid=dummy-org-id&tenantId=$TENANT_ID" > $CR_FILE
+  echo "[*] Preprocessing $TEMPLATE_FOLDER/camtemplate.json"
+  mv $TEMPLATE_FOLDER/camtemplate.json $TEMPLATE_FOLDER/camtemplate.json.back
+  sed ':a;N;s/\n/&/1;Ta;/template_source/d' "$TEMPLATE_FOLDER/camtemplate.json.back" | sed -e '/githubRepoUrl/d;/githubAccessToken/d;/relativePathToTemplateFolder/d;/templateFileName/d' > $TEMPLATE_FOLDER/camtemplate.json
+  curl -k -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "@$TEMPLATE_FOLDER/camtemplate.json" -X POST "https://$CAM_CONSOLE/cam/api/v1/templates?cloudOE_spaceGuid=default&ace_orgGuid=dummy-org-id&tenantId=$TENANT_ID" > $CR_FILE
 
   if [ $? != 0 ]; then
-    echo "[ERROR] There was an error creating the Content Runtime $TEMPLATE_FOLDER/catalog.json on $CAM_IP"
+    echo "[ERROR] There was an error creating the Content Runtime $TEMPLATE_FOLDER/camtemplate.json on $CAM_CONSOLE"
     exit 1
   fi
 
@@ -69,7 +69,7 @@ upload_content_runtime() {
   # Add the terraform template
   cat $TEMPLATE_FOLDER/content_runtime.tf | sed -e 's|\\|\\\\|g' | sed -e 's/\"/\\\"/g' | sed -e 's/\t/    /g' > tmp.tf
   CR_TERRAFORM=$(awk '{printf "%s\\n", $0}' tmp.tf)
-  TF_PROVIDER=$(grep -Po '"template_provider":(\d*?,|.*?[^\\]",)' $TEMPLATE_FOLDER/catalog.json | awk -F ':' '{print $2}' | awk -F '"' '{print $2}')
+  TF_PROVIDER=$(grep -Po '"template_provider":(\d*?,|.*?[^\\]",)' $TEMPLATE_FOLDER/camtemplate.json | awk -F ':' '{print $2}' | awk -F '"' '{print $2}')
 
   # Add camvariables
   VARIABLES=$(cat $TEMPLATE_FOLDER/camvariables.json)
@@ -78,7 +78,7 @@ upload_content_runtime() {
   echo '{"templateData":"'$CR_TERRAFORM'", "templateVariables": '$VARIABLES'}' > data.json
   unset IFS
 
-  curl -k -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "@data.json" -X PUT "https://$CAM_IP:30000/cam/api/v1/templateVersions/$CONTENT_RUNTIME_ID?cloudOE_spaceGuid=default&ace_orgGuid=dummy-org-id&tenantId=$TENANT_ID" > result.json
+  curl -k -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "@data.json" -X PUT "https://$CAM_CONSOLE/cam/api/v1/templateVersions/$CONTENT_RUNTIME_ID?cloudOE_spaceGuid=default&ace_orgGuid=dummy-org-id&tenantId=$TENANT_ID" > result.json
   if [ $? != 0 ]; then
     echo "[ERROR] There was an error adding the Content Runtime template from: $TEMPLATE_FOLDER/content_runtime.tf"
     exit 1
@@ -99,4 +99,4 @@ for cloud in content_runtime_template/*; do
  done
 done
 
-echo "[SUCCESS] Successfully uploaded Content Runtime templates to $CAM_IP"
+echo "[SUCCESS] Successfully uploaded Content Runtime templates to $CAM_CONSOLE"

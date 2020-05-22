@@ -22,3 +22,7 @@ IBM-CAMHub-Open.tar
 IBM-CAMHub-Open_templates.tar
 - tar file containing Terraform templates
 - Simplifies download for import into Gitlab, GHE or manual load into IBM Cloud Automation Manager
+
+IBM-CAMHub-Open_starterlibrary.tar
+- tar file containing terraform template samples in starterlibrary
+- You can import the starter library using loadStarterTemplates.sh when you decide not to store starterlibrary in Gitlab or GHE. 
