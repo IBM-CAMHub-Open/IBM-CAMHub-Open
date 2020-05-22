@@ -121,8 +121,10 @@ To use some of these templates you will have to manually import [template_cam_co
 
 #### Note
 Release 1.0 should be used exclusively on environments that require Chef client version 12. This product is **no longer supported**, thus it is discouraged.  
+
 Release 2.0 is deprecated and is not encouraged.
-Release 3.0 supports is the latest version. This release also supports ChefInfra Server 13.x (or higher), ChefInfra Client 15.x (or higher) and Chef DK 4.x (or higher).
+
+Release 3.0 is the latest version. This release also supports ChefInfra Server 13.x (or higher), ChefInfra Client 15.x (or higher) and Chef DK 4.x (or higher).
 
 ### Release 1.0
 
