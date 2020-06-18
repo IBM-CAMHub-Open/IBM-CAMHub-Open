@@ -60,6 +60,7 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | template_ibm_mq_v8_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v8_standalone/blob/master/README.md) |
 | template_ibm_mq_v9_standalone | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_standalone/blob/master/README.md) |
 | template_ibm_mq_v9_with_custom_mqsc | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_with_custom_mqsc/blob/master/README.md) |
+| template_ibm_roks | | [README](https://github.com/IBM-CAMHub-Open/template_ibm_roks/blob/master/README.md) |
 | template_ibm_wasliberty_v17_serverfarm | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_serverfarm/blob/master/README.md) |
 | template_ibm_wasliberty_v17_standalone | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_standalone/blob/master/README.md) |
 | template_ibm_wasnd_v855_multinode | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_multinode/blob/master/README.md) |

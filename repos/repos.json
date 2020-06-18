@@ -318,5 +318,9 @@
   {
     "name": "template_icp_upgrade",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_icp_upgrade.git"
+  },
+  {
+    "name": "template_ibm_roks",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_roks.git"
   }
 ]
