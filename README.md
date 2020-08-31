@@ -81,6 +81,7 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | template_icp_on_ocp | | [README](https://github.com/IBM-CAMHub-Open/template_icp_on_ocp/blob/master/README.md) |
 | template_icp_upgrade | | [README](https://github.com/IBM-CAMHub-Open/template_icp_upgrade/blob/master/README.md) |
 | template_import_openstack | | [README](https://github.com/IBM-CAMHub-Open/template_import_openstack/blob/master/README.md) |
+| template_import_rhacm | | [README](https://github.com/IBM-CAMHub-Open/template_import_rhacm/blob/master/README.md) |
 | template_import_vmware | 1.0.2 | [README](https://github.com/IBM-CAMHub-Open/template_import_vmware/blob/master/README.md) |
 | template_integration_apm | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm/blob/master/README.md) |
 | template_integration_apm_was | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm_was/blob/master/README.md) |
@@ -103,3 +104,4 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | template_openshift_node | | [README](https://github.com/IBM-CAMHub-Open/template_openshift_node/blob/master/README.md) |
 | template_oracle_database_v12c_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_database_v12c_standalone/blob/master/README.md) |
 | template_oracle_mysql_v57_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_mysql_v57_standalone/blob/master/README.md) |
+| template_rhacm_modules | | [README](https://github.com/IBM-CAMHub-Open/template_rhacm_modules/blob/master/README.md) |

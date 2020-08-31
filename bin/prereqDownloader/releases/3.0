@@ -23,4 +23,4 @@ TEMPLATES_VERSION=2.0
 
 # CAM version to be used to get the template version
 # CAM templates will be loaded from IBM-CAMHub-Open\bin\cloneGitRepositories\template<CAM_VERSION>
-CAM_VERSION=4200
+CAM_VERSION=5000

@@ -322,5 +322,13 @@
   {
     "name": "template_ibm_roks",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_ibm_roks.git"
+  },
+  {
+    "name": "template_rhacm_modules",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_rhacm_modules.git"
+  },
+  {
+    "name": "template_import_rhacm",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_import_rhacm.git"
   }
 ]
