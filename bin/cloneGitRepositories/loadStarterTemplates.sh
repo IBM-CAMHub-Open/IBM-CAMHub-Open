@@ -2,12 +2,16 @@ CAM_CONSOLE=''
 MCM_CONSOLE=''
 CAM_USER=''
 CAM_PASSWORD=''
+SUPPORTED_ONLY='no'
+
+EXCLUDE_OOB_REPOS_LIST=( './BlueMix/terraform/hcl/strongloop-single-stack' './BlueMix/terraform/hcl/strongloop-three-tiers' './BlueMix/terraform/hcl/mongodb' './BlueMix/terraform/hcl/nodejs' './VRA/terraform/hcl/cluster-deploy' './IBM_Cloud/blockchain-platform' './IBM_Cloud/cf-goapp-sample' './IBM_Cloud/watson-service-sample' './IBM_Cloud/hpc-fss-cluster' './IBM_Cloud/helm-tiller' './IBM_Cloud/cloudant' './VMware/terraform/hcl/tomcat' './VMware/terraform/hcl/mariadb' './VMware/terraform/hcl/strongloop-single-stack' './VMware/terraform/hcl/strongloop-three-tiers' './VMware/terraform/hcl/mongodb' './VMware/terraform/hcl/nodejs' )
 
 while test $# -gt 0; do
   [[ $1 =~ ^-c|--cam_console$ ]] && { CAM_CONSOLE="$2"; shift 2; continue; };
   [[ $1 =~ ^-m|--mcm_console$ ]] && { MCM_CONSOLE="$2"; shift 2; continue; };
   [[ $1 =~ ^-p|--cam_password$ ]] && { CAM_PASSWORD="$2"; shift 2; continue; };
   [[ $1 =~ ^-u|--cam_user$ ]] && { CAM_USER="$2"; shift 2; continue; };
+  [[ $1 =~ ^-s|--supported_only$ ]] && { SUPPORTED_ONLY="$2"; shift 2; continue; };
 done
 
 if [ -z "$CAM_CONSOLE" ] || [ -z "$MCM_CONSOLE" ] || [ -z "$CAM_USER" ] || [ -z "$CAM_PASSWORD" ]; then
@@ -93,18 +97,33 @@ obtain_access_id
 echo "[*] Obtaining Tenant ID"
 obtain_tenant_id
 
-  for cloud in $(find . -name camtemplate.json | sed 's|/[^/]*$||'); do
+for cloud in $(find . -name camtemplate.json | sed 's|/[^/]*$||'); do
   [[ $cloud =~ ^(images) ]] && continue
-   #Merge all TF files
-   paste --serial --delimiter=\\n $cloud/*.tf > $cloud/main_load_template.tf
-   #Use awk if paste not in os
-   #awk 'FNR==1{print ""}1' $cloud/*.tf > $cloud/main_load_template.tf
-   #TF_Name=$(ls $cloud/*.tf | egrep -v "bastionhost.tf|output.tf|variables.tf|httpproxy.tf")
-   TF_Name=$cloud/main_load_template.tf
-   echo "[*] Uploading $cloud"
+  if [[ "$SUPPORTED_ONLY" == "yes" ]]; then
+    load=1
+    for aexclude in "${EXCLUDE_OOB_REPOS_LIST[@]}"
+    do
+      if [[ "$aexclude" == "$cloud" ]]; then
+       load=0
+       break
+      fi
+    done
+    if [[ $load -eq 1 ]]; then
+      echo "Load supported template $cloud"
+    else
+      echo "Load only supported templates is set to yes. Skipping $cloud"
+    fi
+  fi
+  #Merge all TF files
+  paste --serial --delimiter=\\n $cloud/*.tf > $cloud/main_load_template.tf
+  #Use awk if paste not in os
+  #awk 'FNR==1{print ""}1' $cloud/*.tf > $cloud/main_load_template.tf
+  #TF_Name=$(ls $cloud/*.tf | egrep -v "bastionhost.tf|output.tf|variables.tf|httpproxy.tf")
+  TF_Name=$cloud/main_load_template.tf
+  echo "[*] Uploading $cloud"
   #echo "${cloud##*/}"
   #upload_starterTemplates $cloud
-   upload_starterTemplates $cloud $TF_Name
-  done
+  upload_starterTemplates $cloud $TF_Name
+done
 
 echo "[SUCCESS] Successfully uploaded Starter templates to $CAM_CONSOLE"

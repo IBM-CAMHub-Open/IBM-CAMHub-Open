@@ -1,15 +1,24 @@
 #  cloneRepositories.sh
-This script can be used to simplify the download of Terraform templates and Chef cookbooks which are available for use with IBM Cloud Automation Manager.
+This script can be used to simplify the download of Terraform templates and Chef cookbooks which are available for use with IBM Cloud Automation Manager or IBM CloudPak for Multicloud Management.
 
 ### Usage :
 ```
 cd IBM-CAMHub-Open/bin/cloneGitRepositories/
 ./cloneRepositories.sh --branch 2.0 --release 5100
 ```
-branch - Cookbooks branch. Latest branch is 2.0.
+branch - Cookbooks branch. Latest branch is 2.0. Default value is 2.0
 
-release - Release of IBM Cloud Automation Manager or IBM CloudPak for Multicloud Management. This value is used to clone the template (and versions) that pertains to the release. 
-The templates that are cloned is defined in file template<release>. Note IBM CloudPak for Multicloud Management version 2.0 maps to release 5000 and 2.1 maps to 5100.
+release - Release of IBM Cloud Automation Manager or IBM CloudPak for Multicloud Management. This value is used to clone the template (and versions) that pertains to the release. The templates that are cloned is defined in file template<release>. The following table maps the product release name to the value required for this argument. Default value is 5300
+
+| Product Release        | Value for argument release     | Corresponding template file    |
+|------------------------|--------------------------------|--------------------------------|
+| IBM CAM 4.2.0.x        | 4200                           | template4200                   |
+| IBM CP4MCM 2.0         | 5000                           | template5000                   |
+| IBM CP4MCM 2.1         | 5100                           | template5100                   |
+| IBM CP4MCM 2.2         | 5200                           | template5200                   |
+| IBM CP4MCM 2.3         | 5300                           | template5300                   |
+
+
 
 ### Output :
 

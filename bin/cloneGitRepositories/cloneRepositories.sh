@@ -17,20 +17,20 @@ pwd=`pwd`
 theList=""
 theFullList=""
 tarFile=true
-release=4200
+release=5300
 srcPath=`echo $toolrepositoryroot/src/ | tr -s '/'`
 [[ -d $srcPath ]] && mv $srcPath $srcPath/../src-`date | tr : - | tr ' ' _`
 
 while test $# -gt 0; do
 	[[ $1 =~ ^-e|--release$ ]] && { release="$2"; shift 2; continue; };
 	[[ $1 =~ ^-h|--host$ ]] && { host="$2"; shift 2; continue; };
-        [[ $1 =~ ^-o|--org$ ]] && { org="$2" ; shift 2; continue; };
-        [[ $1 =~ ^-b|--branch$ ]] && { branch="$2"; shift 2; continue; };
-       	[[ $1 =~ ^-p|--private$ ]] && { grepString="true|false"; shift ; continue; };
+    [[ $1 =~ ^-o|--org$ ]] && { org="$2" ; shift 2; continue; };
+    [[ $1 =~ ^-b|--branch$ ]] && { branch="$2"; shift 2; continue; };
+    [[ $1 =~ ^-p|--private$ ]] && { grepString="true|false"; shift ; continue; };
 	[[ $1 =~ ^-f|--filter$ ]] && { filterIn="$2"; shift 2; continue; };
 	[[ $1 =~ ^-f|--filterOut$ ]] && { filterOut="$2"; shift 2; continue; };
 	[[ $1 =~ ^-d|--debug$ ]] && { set -x ; shift; continue; };
-        [[ $1 =~ ^-r|--skiptar$ ]] && { tarFile=false ; shift; continue; };
+    [[ $1 =~ ^-r|--skiptar$ ]] && { tarFile=false ; shift; continue; };
 	shift
 done
 ##

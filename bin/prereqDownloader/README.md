@@ -11,7 +11,7 @@ cd IBM-CAMHub-Open/bin/prereqDownloader/
 
 - `platform_version` is the version of this distribution. Valid inputs include `16.04` for Ubuntu and `7` for Red Hat and CentOS.
 
-- `release` sets the version of products to be downloaded (supported release: 3.0.  2.0 is deprecated and 1.0 is not supported.). If no release is provided, the latest release will be selected automatically. Details on these product versions can be found in "Product versions included" section.
+- `release` Maps to the file under `releases` directory. The values in the file under `releases` determines the version of products and templates that get downloaded for offline install. Supported value is 3.0 (2.0 and 1.0 is not supported.). If no release is provided, the latest release will be selected automatically.
 
 #### Example
 If a Content Runtime will be created in a VM running Ubuntu 16.04 and using the latest release
@@ -21,10 +21,10 @@ If a Content Runtime will be created in a VM running Ubuntu 16.04 and using the 
 
 ### Notes :
 - An installation of Docker is REQUIRED on the machine where the script is executed
-- The versions of software to be downloaded can be confirmed under the "releases" folder.
+- The versions of software to be downloaded can be modified by chaging the file under the "releases" folder.
 
 ### Output :
-The following files are prerequisites for an offline Content Runtime installation, they have been placed in a folder named `prereqs_<platform>_<platform_version>_<release>` based on the parameters provided on execution.
+The following files which are prerequisites for an offline Content Runtime installation, can be found in a folder named `prereqs_<platform>_<platform_version>_<release>` based on the parameters provided on execution.
 
 camc-pattern-manager
 - Docker image for IBM Cloud Automation Manager Content Runtime Pattern Manager
@@ -48,9 +48,21 @@ docker-compose
 - docker-compose binary
 
 IBM-CAMHub-Open_advanced_content_runtime.tar
-- Contains the Content Runtime Terraform templates that can be imported into GitLab or Github Enterprise (GHE). The loadContentRuntimeTemplates.sh script can be used to load the Content Runtime templates when the templates are not stored in GitLab or GHE
+- Contains the Content Runtime Terraform templates that can be stored into GitLab or Github Enterprise (GHE). The Content Runtime templates can be either stored in GitLab or GHE and then imported into the product using the import user interface provided in the product. For more details refer to the product documentation. Alternatively, you can manually import the templates directly into the product using instruction in  [Loading Content Runtime Templates](#loading-content-runtime-templates). 
 
-Follow the steps below to load advanced content runtime
+IBM-CAMHub-Open.tar
+- Contains the Chef cookbooks that are used by the middleware terraform templates.
+
+IBM-CAMHub-Open_templates.tar
+- Contains the Middleware, Integration and Starterpack templates. These templates can be stored in GitLab or GHE and imported into the product using the import user interface provided in the product. For more details refer to the product documentation. Alternatively, you can manually import them directly into the product. Starterpack templates can be imported directly into the product using instructions in [Loading Starter Library](#loading-starter-library). 
+
+## Support changes for templates
+
+**Starting from IBM CP4MCM 2.3, the middleware, integration and starterlibrary templates are classfied as as-is and supported templates. For more details on list of supprted templates see product documentation.**
+  
+## Loading Content Runtime Templates
+
+loadContentRuntimeTemplates.sh is a helper script that imports the Content Runtime template directly into the product. Follow the steps below to load advanced content runtime templates.
 
 1. Navigate to prereqs_<platform>_<platform_version>_<release>.
 2. Untar IBM-CAMHub-Open_advanced_content_runtime.tar. tar xvf IBM-CAMHub-Open_advanced_content_runtime.tar. This will create a directory advanced_content_runtime_chef.
@@ -63,7 +75,7 @@ Follow the steps below to load advanced content runtime
 
 Example:
 
-If CAM and MCM are running on specific ports, use  hostname:port or ip:port for cam_console and mcm_console.
+If CAM and CP4MCM are running on specific ports, use  hostname:port or ip:port for cam_console and mcm_console.
 
 ```bash
 ./loadContentRuntimeTemplates.sh --cam_console 1.2.3.4:30000 --mcm_console 1.2.3.4:8443 --cam_user admin --cam_password Passw0rd
@@ -71,27 +83,20 @@ If CAM and MCM are running on specific ports, use  hostname:port or ip:port for 
 
 or
 
-If CAM and MCM are running on standard ports (443 for https), use just hostname or ip for cam_console and mcm_console.
+If CAM and CP4MCM are running on standard ports (443 for https), use just hostname or ip for cam_console and mcm_console.
 
 ```bash
 ./loadContentRuntimeTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd
 ```
 
-IBM-CAMHub-Open.tar
-- Contains the Chef cookbooks that are used by the middleware terraform templates.
-
-IBM-CAMHub-Open_templates.tar
-- Contains the CAM Middleware, Integration and Starterpack templates. These can be placed in GitLab, GHE or manually loaded into Cloud Automation Manager.
-
 ### Dependency on template_cam_common 
 
-To use some of these templates in IBM-CAMHub-Open_templates.tar you will have to manually import [template_cam_common](https://github.com/IBM-CAMHub-Open/template_cam_common) from IBM-CAMHub-Open_templates.tar. Branch 4.x for IBM CAM 4.x and branch
-3.2.1 for IBM CAM 3.2.x.
+**To use some of these templates in IBM-CAMHub-Open_templates.tar you will have to manually import [template_cam_common](https://github.com/IBM-CAMHub-Open/template_cam_common) from IBM-CAMHub-Open_templates.tar. Branch 4.x for IBM CAM 4.x and branch
+3.2.1 for IBM CAM 3.2.x.**
 
-## Starter Library
+## Loading Starter Library
 
-In addition to the content runtime templates, you will also find some sample templates in IBM-CAMHub-Open_starterlibrary.tar.
-You can import the starter library using loadStarterTemplates.sh when they are not stored in Gitlab or GHE. 
+In addition to the content runtime templates, you will also find some sample templates in IBM-CAMHub-Open_starterlibrary.tar. loadStarterTemplates.sh is a helper script that imports the starter library template directly into the product.
 
 Follow the steps below to load starter library 
 
@@ -106,7 +111,7 @@ Follow the steps below to load starter library
 
 Example:
 
-If CAM and MCM are running on specific ports, use  hostname:port or ip:port for cam_console and mcm_console.
+If CAM and CP4MCM are running on specific ports, use  hostname:port or ip:port for cam_console and mcm_console.
 
 ```bash
 ./loadStarterTemplates.sh --cam_console 1.2.3.4:30000 --mcm_console 1.2.3.4:8443 --cam_user admin --cam_password Passw0rd
@@ -114,15 +119,23 @@ If CAM and MCM are running on specific ports, use  hostname:port or ip:port for 
 
 or
 
-If CAM and MCM are running on standard ports (443 for https), use just hostname or ip for cam_console and mcm_console.
+If CAM and CP4MCM are running on standard ports (443 for https), use just hostname or ip for cam_console and mcm_console.
 
 ```bash
 ./loadStarterTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd
 ```
 
+**Note: Starting from 2.3 release of IBM CP4MCM, the starterlibrary content has been classified as supported and as-is content. To load only supported content you must provide an additional argument `--supported_only yes` otheriwse this script will load all the templates.**
+
+Example command to load only supported starterlibrary templates (valid from IBM CP4MCM 2.3)
+
+```bash
+./loadStarterTemplates.sh --cam_console cam.apps.brunets.mycom.com --mcm_console icp-console.apps.ocp42.mycom.com --cam_user admin --cam_password Passw0rd --supported_only yes
+```
+
 ### Re-running loadStarterTemplates.sh 
 
-You must delete the starterlibrary folder and untar IBM-CAMHub-Open_starterlibrary.tar before re-running loadStarterTemplates.sh from the same system.
+**You must delete the starterlibrary folder and untar IBM-CAMHub-Open_starterlibrary.tar before re-running loadStarterTemplates.sh from the same system.**
 
 ### Dependency on template_cam_common
 

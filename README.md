@@ -30,7 +30,7 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | cookbook_ibm_utils_linux | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_utils_linux/blob/master/README.md) |
 | cookbook_ibm_wasliberty_multios | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wasliberty_multios/blob/master/README.md) |
 | cookbook_ibm_was_multios | 2.0.5 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios/blob/master/README.md) |
-| cookbook_ibm_wmq_multios | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/blob/master/README.md) |
+| cookbook_ibm_wmq_multios | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/blob/master/README.md) |
 | cookbook_ibm_workflow_multios | 2.0.4 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios/blob/master/README.md) |
 | cookbook_oracle_enterprisedatabase_multios | 2.0.5 | [README](https://github.com/IBM-CAMHub-Open/cookbook_oracle_enterprisedatabase_multios/blob/master/README.md) |
 | cookbook_oracle_mysql_multios | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_oracle_mysql_multios/blob/master/README.md) |
