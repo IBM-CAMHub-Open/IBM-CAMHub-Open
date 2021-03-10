@@ -28,10 +28,10 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 | cookbook_ibm_ihs_multios | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_ihs_multios/blob/master/README.md) |
 | cookbook_ibm_im_multios | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_im_multios/blob/master/README.md) |
 | cookbook_ibm_utils_linux | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_utils_linux/blob/master/README.md) |
-| cookbook_ibm_wasliberty_multios | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wasliberty_multios/blob/master/README.md) |
+| cookbook_ibm_wasliberty_multios | 2.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wasliberty_multios/blob/2.0/README.md) |
 | cookbook_ibm_was_multios | 2.0.5 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios/blob/master/README.md) |
 | cookbook_ibm_wmq_multios | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_wmq_multios/blob/master/README.md) |
-| cookbook_ibm_workflow_multios | 2.0.4 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios/blob/master/README.md) |
+| cookbook_ibm_workflow_multios | 3.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_ibm_workflow_multios/blob/3.0/README.md) |
 | cookbook_oracle_enterprisedatabase_multios | 2.0.5 | [README](https://github.com/IBM-CAMHub-Open/cookbook_oracle_enterprisedatabase_multios/blob/master/README.md) |
 | cookbook_oracle_mysql_multios | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/cookbook_oracle_mysql_multios/blob/master/README.md) |
 
@@ -40,68 +40,68 @@ See the [IBM Cloud Automation Manager knowledge center](https://www.ibm.com/supp
 |:----------|:---------------:|:---------------:|
 | template_ansible_node | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/template_ansible_node/blob/master/README.md) |
 | template_ansible_playbook_example | 2.0.2 | [README](https://github.com/IBM-CAMHub-Open/template_ansible_playbook_example/blob/master/README.md) |
-| template_apache_http_v24_standalone_basic | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_basic/blob/master/README.md) |
-| template_apache_http_v24_standalone_full | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_full/blob/master/README.md) |
-| template_apache_tomcat_v8_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_apache_tomcat_v8_standalone/blob/master/README.md) |
-| template_cam_common | | [README](https://github.com/IBM-CAMHub-Open/template_cam_common/blob/master/README.md) |
-| template_deploy_IBMi | | [README](https://github.com/IBM-CAMHub-Open/template_deploy_IBMi/blob/master/README.md) |
+| template_apache_http_v24_standalone_basic | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_basic/blob/2.1/README.md) |
+| template_apache_http_v24_standalone_full | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_apache_http_v24_standalone_full/blob/2.1/README.md) |
+| template_apache_tomcat_v8_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_apache_tomcat_v8_standalone/blob/2.1/README.md) |
+| template_cam_common | 5.1.0 | [README](https://github.com/IBM-CAMHub-Open/template_cam_common/blob/5.1.0/README.md) |
+| template_deploy_IBMi | 1.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_deploy_IBMi/blob/1.0.0/README.md) |
 | template_git_clone_content_hub | 2.0.1 | [README](https://github.com/IBM-CAMHub-Open/template_git_clone_content_hub/blob/master/README.md) |
-| template_ibm_db2_v10_multidb | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidb/blob/master/README.md) |
-| template_ibm_db2_v10_multidisk | 2.1.4 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidisk/blob/master/README.md) |
-| template_ibm_db2_v10_standalone | 2.1.4 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_standalone/blob/master/README.md) |
-| template_ibm_db2_v11_multidb | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidb/blob/master/README.md) |
-| template_ibm_db2_v11_multidisk | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidisk/blob/master/README.md) |
-| template_ibm_db2_v11_standalone | 2.1.5 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_standalone/blob/master/README.md) |
-| template_ibm_db2_v11_wasnd_v855_singleserver | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v855_singleserver/blob/master/README.md) |
-| template_ibm_db2_v11_wasnd_v9_singleserver | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v9_singleserver/blob/master/README.md) |
+| template_ibm_db2_v10_multidb | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidb/blob/2.1/README.md) |
+| template_ibm_db2_v10_multidisk | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_multidisk/blob/2.1/README.md) |
+| template_ibm_db2_v10_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v10_standalone/blob/2.1/README.md) |
+| template_ibm_db2_v11_multidb | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidb/blob/2.1/README.md) |
+| template_ibm_db2_v11_multidisk | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_multidisk/blob/2.1/README.md) |
+| template_ibm_db2_v11_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_standalone/blob/2.1/README.md) |
+| template_ibm_db2_v11_wasnd_v855_singleserver | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v855_singleserver/blob/2.1/README.md) |
+| template_ibm_db2_v11_wasnd_v9_singleserver | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_db2_v11_wasnd_v9_singleserver/blob/2.1/README.md) |
 | template_ibm_ihs_v855_standalone | 2.0.4 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v855_standalone/blob/master/README.md) |
-| template_ibm_ihs_v9_liberty | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_liberty/blob/master/README.md) |
-| template_ibm_ihs_v9_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_standalone/blob/master/README.md) |
-| template_ibm_mq_v8_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v8_standalone/blob/master/README.md) |
-| template_ibm_mq_v9_standalone | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_standalone/blob/master/README.md) |
-| template_ibm_mq_v9_with_custom_mqsc | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_with_custom_mqsc/blob/master/README.md) |
-| template_ibm_roks | | [README](https://github.com/IBM-CAMHub-Open/template_ibm_roks/blob/master/README.md) |
-| template_ibm_wasliberty_v17_serverfarm | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_serverfarm/blob/master/README.md) |
-| template_ibm_wasliberty_v17_standalone | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_standalone/blob/master/README.md) |
-| template_ibm_wasnd_v855_multinode | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_multinode/blob/master/README.md) |
-| template_ibm_wasnd_v855_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_standalone/blob/master/README.md) |
-| template_ibm_wasnd_v9_multinode | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_multinode/blob/master/README.md) |
-| template_ibm_wasnd_v9_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_standalone/blob/master/README.md) |
-| template_ibm_workflow_multinode | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_workflow_multinode/blob/master/README.md) |
-| template_ibm_workflow_singlenode | 3.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_workflow_singlenode/blob/master/README.md) |
-| template_icp_aws | 3.1.1.7 | [README](https://github.com/IBM-CAMHub-Open/template_icp_aws/blob/master/README.md) |
-| template_icp_azure | 3.1.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_icp_azure/blob/master/README.md) |
-| template_icp_googlecloud | 3.1.1.3 | [README](https://github.com/IBM-CAMHub-Open/template_icp_googlecloud/blob/master/README.md) |
-| template_icp_ibmcloud | 3.1.1.13 | [README](https://github.com/IBM-CAMHub-Open/template_icp_ibmcloud/blob/master/README.md) |
-| template_icp_installer | 2.3.4 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer/blob/master/README.md) |
-| template_icp_installer_medium | 2.3.5 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_medium/blob/master/README.md) |
-| template_icp_installer_single | 2.3.4 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_single/blob/master/README.md) |
-| template_icp_modules | 2.3.9 | [README](https://github.com/IBM-CAMHub-Open/template_icp_modules/blob/master/README.md) |
-| template_icp_node | 2.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_icp_node/blob/master/README.md) |
-| template_icp_on_ocp | | [README](https://github.com/IBM-CAMHub-Open/template_icp_on_ocp/blob/master/README.md) |
-| template_icp_upgrade | | [README](https://github.com/IBM-CAMHub-Open/template_icp_upgrade/blob/master/README.md) |
-| template_import_openstack | | [README](https://github.com/IBM-CAMHub-Open/template_import_openstack/blob/master/README.md) |
-| template_import_rhacm | | [README](https://github.com/IBM-CAMHub-Open/template_import_rhacm/blob/master/README.md) |
-| template_import_vmware | 1.0.2 | [README](https://github.com/IBM-CAMHub-Open/template_import_vmware/blob/master/README.md) |
-| template_integration_apm | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm/blob/master/README.md) |
-| template_integration_apm_was | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm_was/blob/master/README.md) |
-| template_integration_cam | | [README](https://github.com/IBM-CAMHub-Open/template_integration_cam/blob/master/README.md) |
-| template_integration_icam | 2.1.3 | [README](https://github.com/IBM-CAMHub-Open/template_integration_icam/blob/master/README.md) |
-| template_integration_icp-elk | 2.1.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_icp-elk/blob/master/README.md) |
-| template_integration_ilmt | 1.0.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_ilmt/blob/master/README.md) |
-| template_integration_infoblox | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_infoblox/blob/master/README.md) |
-| template_integration_servicenow | 2.0.4 | [README](https://github.com/IBM-CAMHub-Open/template_integration_servicenow/blob/master/README.md) |
-| template_kubernetes_aks | | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_aks/blob/master/README.md) |
-| template_kubernetes_eks | | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_eks/blob/master/README.md) |
-| template_kubernetes_gke | | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_gke/blob/master/README.md) |
-| template_kubernetes_iks | | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_iks/blob/master/README.md) |
-| template_lamp_stack_v1_standalone | 2.1.3 | [README](https://github.com/IBM-CAMHub-Open/template_lamp_stack_v1_standalone/blob/master/README.md) |
-| template_mcm_install | 3.1.1.4 | [README](https://github.com/IBM-CAMHub-Open/template_mcm_install/blob/master/README.md) |
-| template_mcm_modules | 3.1.1.8 | [README](https://github.com/IBM-CAMHub-Open/template_mcm_modules/blob/master/README.md) |
-| template_openshift_installer | | [README](https://github.com/IBM-CAMHub-Open/template_openshift_installer/blob/master/README.md) |
-| template_openshift_installer_single | | [README](https://github.com/IBM-CAMHub-Open/template_openshift_installer_single/blob/master/README.md) |
-| template_openshift_modules | | [README](https://github.com/IBM-CAMHub-Open/template_openshift_modules/blob/master/README.md) |
-| template_openshift_node | | [README](https://github.com/IBM-CAMHub-Open/template_openshift_node/blob/master/README.md) |
-| template_oracle_database_v12c_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_database_v12c_standalone/blob/master/README.md) |
-| template_oracle_mysql_v57_standalone | 2.1.2 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_mysql_v57_standalone/blob/master/README.md) |
-| template_rhacm_modules | | [README](https://github.com/IBM-CAMHub-Open/template_rhacm_modules/blob/master/README.md) |
+| template_ibm_ihs_v9_liberty | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_liberty/blob/2.1/README.md) |
+| template_ibm_ihs_v9_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_ihs_v9_standalone/blob/2.1/README.md) |
+| template_ibm_mq_v8_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v8_standalone/blob/2.1/README.md) |
+| template_ibm_mq_v9_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_standalone/blob/2.1/README.md) |
+| template_ibm_mq_v9_with_custom_mqsc | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_mq_v9_with_custom_mqsc/blob/2.1/README.md) |
+| template_ibm_roks | 1.0 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_roks/blob/1.0/README.md) |
+| template_ibm_wasliberty_v17_serverfarm | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_serverfarm/blob/2.1/README.md) |
+| template_ibm_wasliberty_v17_standalone | 2.2 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasliberty_v17_standalone/blob/2.2/README.md) |
+| template_ibm_wasnd_v855_multinode | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_multinode/blob/2.1/README.md) |
+| template_ibm_wasnd_v855_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v855_standalone/blob/2.1/README.md) |
+| template_ibm_wasnd_v9_multinode | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_multinode/blob/2.1/README.md) |
+| template_ibm_wasnd_v9_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_wasnd_v9_standalone/blob/2.1/README.md) |
+| template_ibm_workflow_multinode | 4.0 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_workflow_multinode/blob/4.0/README.md) |
+| template_ibm_workflow_singlenode | 5.0 | [README](https://github.com/IBM-CAMHub-Open/template_ibm_workflow_singlenode/blob/5.0/README.md) |
+| template_icp_aws | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_aws/blob/3.2.1/README.md) |
+| template_icp_azure | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_azure/blob/3.2.1/README.md) |
+| template_icp_googlecloud | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_googlecloud/blob/3.2.1/README.md) |
+| template_icp_ibmcloud | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_ibmcloud/blob/3.2.1/README.md) |
+| template_icp_installer | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer/blob/3.2.1/README.md) |
+| template_icp_installer_medium | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_medium/blob/3.2.1/README.md) |
+| template_icp_installer_single | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_installer_single/blob/3.2.1/README.md) |
+| template_icp_modules | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_modules/blob/3.2.1/README.md) |
+| template_icp_node | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_node/blob/3.2.1/README.md) |
+| template_icp_on_ocp | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_on_ocp/blob/3.2.1/README.md) |
+| template_icp_upgrade | 3.2.1 | [README](https://github.com/IBM-CAMHub-Open/template_icp_upgrade/blob/3.2.1/README.md) |
+| template_import_openstack | 1.1 | [README](https://github.com/IBM-CAMHub-Open/template_import_openstack/blob/1.1/README.md) |
+| template_import_rhacm | 5.1.0 | [README](https://github.com/IBM-CAMHub-Open/template_import_rhacm/blob/5.1.0/README.md) |
+| template_import_vmware | 1.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_import_vmware/blob/1.0.0/README.md) |
+| template_integration_apm | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm/blob/2.1/README.md) |
+| template_integration_apm_was | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_apm_was/blob/2.1/README.md) |
+| template_integration_cam | 1.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_cam/blob/1.1/README.md) |
+| template_integration_icam | 2.2 | [README](https://github.com/IBM-CAMHub-Open/template_integration_icam/blob/2.2/README.md) |
+| template_integration_icp-elk | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_icp-elk/blob/2.1/README.md) |
+| template_integration_ilmt | 1.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_ilmt/blob/1.0.0/README.md) |
+| template_integration_infoblox | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_integration_infoblox/blob/2.1/README.md) |
+| template_integration_servicenow | 2.0 | [README](https://github.com/IBM-CAMHub-Open/template_integration_servicenow/blob/2.0/README.md) |
+| template_kubernetes_aks | 1.11 | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_aks/blob/1.11/README.md) |
+| template_kubernetes_eks | 1.11 | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_eks/blob/1.11/README.md) |
+| template_kubernetes_gke | 1.11 | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_gke/blob/1.11/README.md) |
+| template_kubernetes_iks | 1.12 | [README](https://github.com/IBM-CAMHub-Open/template_kubernetes_iks/blob/1.12/README.md) |
+| template_lamp_stack_v1_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_lamp_stack_v1_standalone/blob/2.1/README.md) |
+| template_mcm_install | 5.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_mcm_install/blob/5.0.0/README.md) |
+| template_mcm_modules | 5.0.0 | [README](https://github.com/IBM-CAMHub-Open/template_mcm_modules/blob/5.0.0/README.md) |
+| template_openshift_installer | 4.2 | [README](https://github.com/IBM-CAMHub-Open/template_openshift_installer/blob/4.2/README.md) |
+| template_openshift_installer_single | 3.11 | [README](https://github.com/IBM-CAMHub-Open/template_openshift_installer_single/blob/3.11/README.md) |
+| template_openshift_modules | 4.2 | [README](https://github.com/IBM-CAMHub-Open/template_openshift_modules/blob/4.2/README.md) |
+| template_openshift_node | 3.11 | [README](https://github.com/IBM-CAMHub-Open/template_openshift_node/blob/3.11/README.md) |
+| template_oracle_database_v12c_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_database_v12c_standalone/blob/2.1/README.md) |
+| template_oracle_mysql_v57_standalone | 2.1 | [README](https://github.com/IBM-CAMHub-Open/template_oracle_mysql_v57_standalone/blob/2.1/README.md) |
+| template_rhacm_modules | 5.1.0 | [README](https://github.com/IBM-CAMHub-Open/template_rhacm_modules/blob/5.1.0/README.md) |
