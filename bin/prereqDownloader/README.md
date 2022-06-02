@@ -9,7 +9,7 @@ cd IBM-CAMHub-Open/bin/prereqDownloader/
 ```
 - `platform` is the Linux distribution where the Content Runtime instance will be created. Valid options are `ubuntu`, `rhel` or `redhat`, and `centos`.
 
-- `platform_version` is the version of this distribution. Valid inputs include `16.04` for Ubuntu and `7` for Red Hat and CentOS.
+- `platform_version` is the version of this distribution. Valid inputs include `16.04` and `18.04` (for WAIPos 3.4 or higher) for Ubuntu and `7` for Red Hat and CentOS.
 
 - `release` Maps to the file under `releases` directory. The values in the file under `releases` determines the version of products and templates that get downloaded for offline install. Supported value is 3.0 (2.0 and 1.0 is not supported.). If no release is provided, the latest release will be selected automatically.
 
@@ -149,7 +149,9 @@ Release 1.0 should be used exclusively on environments that require Chef client 
 
 Release 2.0 is deprecated and is not encouraged.
 
-Release 3.0 is the latest version. This release also supports ChefInfra Server 13.x (or higher), ChefInfra Client 15.x (or higher) and Chef DK 4.x (or higher).
+Release 3.0 must be used with IBM CPMCM 2.3 and IBM WAIOps 3.3. This release also supports ChefInfra Server 13.x (or higher), ChefInfra Client 15.x (or higher) and Chef DK 4.x (or higher).
+
+Release 4.0 is the latest version and must be used with IBM WAIOps 3.4. This release supports Ubuntu 18.04 and no longer supports Ubuntu 16.04 or lower. This release also supports ChefInfra Server 12.18 (or higher), ChefInfra Client 14.1.1 (or higher) and Chef DK 4.x (or higher).
 
 ### Release 1.0
 
@@ -200,6 +202,24 @@ Supports chef server 13.x or higher
 | cookbooks | 2.0 |
 | middleware | multiple |
 | starter | 2.4 |
+
+### Release 4.0
+
+Supports chef server 13.x or higher
+
+| Product   |      Version      |
+|----------|:-------------:|
+| chef server | 12.18.14 and 13.x.x |
+| chef client | 14.1.1 and 15.x.x |
+| chef-dk     | 3.x.x and 4.x.x   |
+| docker | 20.10.1 or higher |
+| docker-compose | 1.17.1 |
+| camc-sw-repo | 2.0-current |
+| camc-pattern-manager | 3.0-current |
+| advanced_content_runtime | 2.7 |
+| cookbooks | 2.0 |
+| middleware | multiple |
+| starter | 2.5 |
 
 
 

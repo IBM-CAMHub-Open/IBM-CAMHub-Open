@@ -17,6 +17,8 @@ release - Release of IBM Cloud Automation Manager or IBM CloudPak for Multicloud
 | IBM CP4MCM 2.1         | 5100                           | template5100                   |
 | IBM CP4MCM 2.2         | 5200                           | template5200                   |
 | IBM CP4MCM 2.3         | 5300                           | template5300                   |
+| IBM CP4MCM 3.3         | 5300                           | template5300                   |
+| IBM CP4MCM 3.4         | 5400                           | template5400                   |
 
 
 

@@ -1,0 +1,27 @@
+SCRIPT_VERSION=4.0
+
+# Software versions that will be downloaded to be used in Content Runtime deployment.
+CHEF_VERSION=12.18.14
+CHEF_CLIENT_VERSION=14.1.1
+DOCKER_COMPOSE_VERSION=1.17.1
+CHEFDK_VERSION=3.0.36
+
+#Docker package name that will be downloaded to be used in Content Runtime deployment.
+CENTOS_DOCKER_PACKAGE=docker-ce-cli-20.10.9-3.el7.x86_64.rpm
+UBUNTU_DOCKER_PACKAGE=docker-ce_20.10.9~3-0~ubuntu-bionic_amd64.deb
+
+# Docker images that will be downloaded to be used in Content Runtime deployment.
+DOCKER_REGISTRY=ibmcom
+SWREPO_IMAGE_VERSION=2.0-current
+PM_IMAGE_VERSION=3.0-current
+
+# Content Runtime templates that will be cloned to be used in Content Runtime deployment.
+CR_VERSION=2.7
+
+# Default version for templates that will be cloned. This value is overridden by file under IBM-CAMHub-Open\bin\cloneGitRepositories\template<CAM_VERSION>
+TEMPLATES_VERSION=2.0
+
+# Version of templates to be cloned
+# Template versions will loaded from IBM-CAMHub-Open\bin\cloneGitRepositories\template<CAM_VERSION>
+CAM_VERSION=5400
+

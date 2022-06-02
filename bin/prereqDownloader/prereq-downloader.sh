@@ -11,6 +11,7 @@ set -o nounset
 set -o pipefail
 
 PLATFORM="ubuntu"
+#Set this to 18.04 for WAPIOps 3.4 or higher.
 PLATFORM_VERSION="16.04"
 
 # Process parameters
@@ -68,6 +69,9 @@ get_ubuntu_version() {
     16.04)
       echo "xenial"
       ;;
+    18.04)
+      echo "bionic"
+      ;;      
     *)
       echo "[ERROR] The provided Ubuntu version is not supported"
       exit 1
@@ -91,7 +95,7 @@ download_chef() {
 download_clients() {
   echo "[*] Downloading Chef client installation packages v$CHEF_CLIENT_VERSION..."
   mkdir -p $FOLDER_NAME/chef-clients
-  download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/ubuntu/16.04/chef_$CHEF_CLIENT_VERSION-1_amd64.deb" "chef-clients/chef_$CHEF_CLIENT_VERSION-1_amd64.deb"
+  download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/ubuntu/$PLATFORM_VERSION/chef_$CHEF_CLIENT_VERSION-1_amd64.deb" "chef-clients/chef_$CHEF_CLIENT_VERSION-1_amd64.deb"
   download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/el/6/chef-$CHEF_CLIENT_VERSION-1.el6.x86_64.rpm" "chef-clients/chef-$CHEF_CLIENT_VERSION-1.el6.x86_64.rpm"
   download_file "https://packages.chef.io/files/stable/chef/$CHEF_CLIENT_VERSION/el/7/chef-$CHEF_CLIENT_VERSION-1.el7.x86_64.rpm" "chef-clients/chef-$CHEF_CLIENT_VERSION-1.el7.x86_64.rpm"
   download_file "https://rubygems.org/downloads/chef-vault-2.9.0.gem" "chef-clients/chef-vault-2.9.0.gem"

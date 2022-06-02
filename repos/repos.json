@@ -330,5 +330,9 @@
   {
     "name": "template_import_rhacm",
     "clone_url": "https://github.com/IBM-CAMHub-Open/template_import_rhacm.git"
+  },
+  {
+    "name": "template_integration_turbonomic",
+    "clone_url": "https://github.com/IBM-CAMHub-Open/template_integration_turbonomic.git"
   }
 ]
