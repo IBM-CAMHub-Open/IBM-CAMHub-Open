@@ -7,8 +7,8 @@ DOCKER_COMPOSE_VERSION=1.17.1
 CHEFDK_VERSION=3.0.36
 
 #Docker package name that will be downloaded to be used in Content Runtime deployment.
-CENTOS_DOCKER_PACKAGE=docker-ce-cli-20.10.9-3.el7.x86_64.rpm
-UBUNTU_DOCKER_PACKAGE=docker-ce_20.10.9~3-0~ubuntu-bionic_amd64.deb
+CENTOS_DOCKER_PACKAGE=ddocker-ce-cli-20.10.24-3.el7.x86_64.rpm
+UBUNTU_DOCKER_PACKAGE=ddocker-ce_20.10.24~3-0~ubuntu-bionic_amd64.deb
 
 # Docker images that will be downloaded to be used in Content Runtime deployment.
 DOCKER_REGISTRY=ibmcom
